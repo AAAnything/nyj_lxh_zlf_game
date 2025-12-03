@@ -1,0 +1,46 @@
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.opensdf
+*.sdf
+*.cache
+*.db
+
+# Build output
+Debug/
+Release/
+bin/
+obj/
+out/
+*.pdb
+*.ilk
+*.idb
+*.tlog
+*.ipch
+
+# Cocos2dx generated
+proj.win32/Debug*/
+proj.win32/Release*/
+proj.win32/*.sln
+proj.win32/*.vcxproj*
+cocos2d/cocos/platform/win32/Debug*/
+cocos2d/cocos/platform/win32/Release*/
+
+# Simulator caches
+simulator/runtime/*
+.simulation/
+
+# Android
+proj.android/*
+!proj.android/res/
+!proj.android/src/
+!proj.android/AndroidManifest.xml
+gradle/
+.gradle/
+local.properties
+
+# Mac/iOS (如果你以后可能用到的话)
+*.xcworkspace
+*.xcuserstate
+DerivedData/
