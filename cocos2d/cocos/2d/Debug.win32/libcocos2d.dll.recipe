@@ -2,7 +2,7 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>D:\AAAschool\coding\craft\ProgrammingParadigm\nyj_lxh_zlf_game\proj.win32\Debug.win32\libcocos2d.dll</FullPath>
+      <FullPath>D:\AAAschool\coding\craft\ProgrammingParadigm\nyj_lxh_zlf_game\cocos2d\tools\simulator\frameworks\runtime-src\proj.win32\Debug.win32\libcocos2d.dll</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />
