@@ -9,6 +9,6 @@ public:
     Crop(int growDays);
     virtual ~Crop() = default;
 
-    virtual void OneDayPass();     // 每过一天调用
+    virtual void OnDayPass();     // 每过一天调用
     virtual bool IsMature() const;
 };
