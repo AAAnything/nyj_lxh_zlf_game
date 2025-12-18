@@ -1,4 +1,5 @@
 #include "AppDelegate.h"
+#include "MainMenuScene.h"
 
 // 用于音频引擎选择
 // #define USE_AUDIO_ENGINE 1
@@ -97,7 +98,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     register_all_packages();
 
     // create a scene. it's an autorelease object
-    auto scene = HelloWorld::createScene();
+    auto scene = MainMenu::createScene();
 
     // run
     director->runWithScene(scene);
