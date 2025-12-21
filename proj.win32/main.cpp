@@ -23,12 +23,12 @@
  ****************************************************************************/
 
 #include "main.h"
-#include "AppDelegate.h"
-#include "cocos2d.h" // cocos±ê×¼Í·ÎÄ¼ş
+#include "Core/AppDelegate.h"
+#include "cocos2d.h" // cocosï¿½ï¿½×¼Í·ï¿½Ä¼ï¿½
 
-USING_NS_CC; // Ê¹ÓÃcocos2dÃüÃû¿Õ¼ä£¬== using namespace cocos2d;
+USING_NS_CC; // Ê¹ï¿½ï¿½cocos2dï¿½ï¿½ï¿½ï¿½ï¿½Õ¼ä£¬== using namespace cocos2d;
 
-// Win32 Ó¦ÓÃ³ÌĞòÈë¿Úº¯Êı£¬²»ÊÇmain¶øÊÇ _tWinMain
+// Win32 Ó¦ï¿½Ã³ï¿½ï¿½ï¿½ï¿½ï¿½Úºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½mainï¿½ï¿½ï¿½ï¿½ _tWinMain
 // int main
 int WINAPI _tWinMain(HINSTANCE hInstance,
                        HINSTANCE hPrevInstance,
@@ -38,7 +38,8 @@ int WINAPI _tWinMain(HINSTANCE hInstance,
     UNREFERENCED_PARAMETER(hPrevInstance); // 
     UNREFERENCED_PARAMETER(lpCmdLine);
 
-	// ´´½¨Ó¦ÓÃ³ÌĞòÊµÀı
+	// ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½Ã³ï¿½ï¿½ï¿½Êµï¿½ï¿½
     AppDelegate app;
     return Application::getInstance()->run();
 }
+
