@@ -23,7 +23,7 @@
  ****************************************************************************/
 
 #include "main.h"
-#include "AppDelegate.h"
+#include "Core\AppDelegate.h"
 #include "cocos2d.h" // cocos标准头文件
 
 USING_NS_CC; // 使用cocos2d命名空间，== using namespace cocos2d;
