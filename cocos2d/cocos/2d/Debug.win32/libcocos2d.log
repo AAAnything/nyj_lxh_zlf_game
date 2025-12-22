@@ -18,8 +18,8 @@
   CCScrollView.cpp
   CCTableView.cpp
   CCTableViewCell.cpp
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\external\unzip\unzip.h(47,9): warning C4005: “CC_DLL”: 宏重定义
   CCParticle3DAffector.cpp
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\external\unzip\unzip.h(47,9): warning C4005: “CC_DLL”: 宏重定义
   (编译源文件“/extensions/assets-manager/AssetsManager.cpp”)
       C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\platform\win32\CCPlatformDefine-win32.h(40,13):
       参见“CC_DLL”的前一个定义
@@ -30,23 +30,23 @@ C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\external\unzip\unzip.h(47,9): w
   CCPUAffector.cpp
   CCPUAffectorManager.cpp
   CCPUAffectorTranslator.cpp
-  CCPUAlignAffector.cpp
-  CCPUAlignAffectorTranslator.cpp
-  CCPUBaseCollider.cpp
-  CCPUBaseColliderTranslator.cpp
 C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\external\unzip\unzip.h(47,9): warning C4005: “CC_DLL”: 宏重定义
   (编译源文件“/extensions/assets-manager/AssetsManagerEx.cpp”)
       C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\platform\win32\CCPlatformDefine-win32.h(40,13):
       参见“CC_DLL”的前一个定义
   
+  CCPUAlignAffector.cpp
+  CCPUAlignAffectorTranslator.cpp
+  CCPUBaseCollider.cpp
+  CCPUBaseColliderTranslator.cpp
   CCPUBaseForceAffector.cpp
   CCPUBaseForceAffectorTranslator.cpp
   CCPUBeamRender.cpp
   CCPUBehaviour.cpp
+  CCPUBehaviourManager.cpp
 C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\extensions\assets-manager\AssetsManagerEx.cpp(1180,27): warning C4305: “+=”: 从“double”到“float”截断
   (编译源文件“/extensions/assets-manager/AssetsManagerEx.cpp”)
   
-  CCPUBehaviourManager.cpp
   CCPUBehaviourTranslator.cpp
   CCPUBillboardChain.cpp
   CCPUBoxCollider.cpp
@@ -204,6 +204,7 @@ C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\extensions\assets-manager\Asset
   ioapi_mem.cpp
   ioapi.cpp
   unzip.cpp
+  xxhash.c
 C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\external\unzip\ioapi.h(25,9): warning C4005: “CC_DLL”: 宏重定义
   (编译源文件“/external/unzip/ioapi.cpp”)
       C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\platform\win32\CCPlatformDefine-win32.h(40,13):
@@ -214,28 +215,27 @@ C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\external\unzip\ioapi.h(25,9): w
       C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\platform\win32\CCPlatformDefine-win32.h(40,13):
       参见“CC_DLL”的前一个定义
   
+  CCAABB.cpp
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\external\xxhash\xxhash.c(312,5): warning C4804: “/”: 在操作中使用类型“bool”不安全
+  (编译源文件“/external/xxhash/xxhash.c”)
+  
 C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\external\unzip\unzip.h(47,9): warning C4005: “CC_DLL”: 宏重定义
   (编译源文件“/external/unzip/unzip.cpp”)
       C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\platform\win32\CCPlatformDefine-win32.h(40,13):
       参见“CC_DLL”的前一个定义
   
-  xxhash.c
-  CCAABB.cpp
   CCAnimate3D.cpp
   CCAnimation3D.cpp
   CCAttachNode.cpp
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\external\xxhash\xxhash.c(312,5): warning C4804: “/”: 在操作中使用类型“bool”不安全
-  (编译源文件“/external/xxhash/xxhash.c”)
-  
   CCBillBoard.cpp
   CCBundle3D.cpp
   CCBundleReader.cpp
   CCFrustum.cpp
   CCMesh.cpp
+  CCMeshSkin.cpp
 C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\external\flatbuffers\idl_parser.cpp(790,3): warning C4858: 正在放弃返回值: The 'remove' and 'remove_if' algorithms return the iterator past the last element that should be kept. You need to call container.erase(result, container.end()) afterwards. In C++20, 'std::erase' and 'std::erase_if' are simpler replacements for these two steps.
   (编译源文件“/external/flatbuffers/idl_parser.cpp”)
   
-  CCMeshSkin.cpp
   CCMeshVertexIndexData.cpp
   CCMotionStreak3D.cpp
   CCOBB.cpp
@@ -272,14 +272,14 @@ C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\external\flatbuffers\idl_parser
   CCData.cpp
   CCDataVisitor.cpp
   CCDirector.cpp
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\base\CCDirector.cpp(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“/base/CCDirector.cpp”)
+  
   CCEvent.cpp
   CCEventAcceleration.cpp
   CCEventController.cpp
   CCEventCustom.cpp
   CCEventDispatcher.cpp
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\base\CCDirector.cpp(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
-  (编译源文件“/base/CCDirector.cpp”)
-  
   CCEventFocus.cpp
   CCEventKeyboard.cpp
   CCEventListener.cpp
@@ -366,6 +366,14 @@ C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\external\unzip\unzip.h(47,9): w
   CCArmature.cpp
   CCArmatureAnimation.cpp
   CCArmatureDataManager.cpp
+  CCArmatureDefine.cpp
+  CCBatchNode.cpp
+  CCBone.cpp
+  CCColliderDetector.cpp
+  CCComAttribute.cpp
+  CCComAudio.cpp
+  CCComController.cpp
+  CCComRender.cpp
 C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305: “参数”: 从“double”到“T”截断
 C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         with
 C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         [
@@ -380,14 +388,6 @@ C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio
 C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         ]
   (编译源文件“/editor-support/cocostudio/ActionTimeline/CCActionTimelineCache.cpp”)
   
-  CCArmatureDefine.cpp
-  CCBatchNode.cpp
-  CCBone.cpp
-  CCColliderDetector.cpp
-  CCComAttribute.cpp
-  CCComAudio.cpp
-  CCComController.cpp
-  CCComRender.cpp
   CCDataReaderHelper.cpp
   CCDatas.cpp
   CCDecorativeDisplay.cpp
@@ -408,10 +408,6 @@ C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio
   DictionaryHelper.cpp
   FlatBuffersSerialize.cpp
   LocalizationManager.cpp
-  TriggerBase.cpp
-  TriggerMng.cpp
-  TriggerObj.cpp
-  WidgetCallBackHandlerProtocol.cpp
 C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305: “参数”: 从“double”到“T”截断
 C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         with
 C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         [
@@ -426,220 +422,203 @@ C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio
 C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         ]
   (编译源文件“/editor-support/cocostudio/ActionTimeline/CSLoader.cpp”)
   
+  TriggerBase.cpp
+  TriggerMng.cpp
+  TriggerObj.cpp
+  WidgetCallBackHandlerProtocol.cpp
   ArmatureNodeReader.cpp
   ButtonReader.cpp
   CheckBoxReader.cpp
   ComAudioReader.cpp
   GameMapReader.cpp
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305: “参数”: 从“double”到“T”截断
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         with
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         [
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:             T=float
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         ]
+  (编译源文件“/editor-support/cocostudio/WidgetReader/ArmatureNodeReader/ArmatureNodeReader.cpp”)
+  
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305: “参数”: 从“double”到“T”截断
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         with
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         [
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:             T=float
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         ]
+  (编译源文件“/editor-support/cocostudio/WidgetReader/ArmatureNodeReader/ArmatureNodeReader.cpp”)
+  
   GameNode3DReader.cpp
 C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305: “参数”: 从“double”到“T”截断
 C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         with
 C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         [
 C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:             T=float
 C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         ]
-  (编译源文件“/editor-support/cocostudio/WidgetReader/ArmatureNodeReader/ArmatureNodeReader.cpp”)
+  (编译源文件“/editor-support/cocostudio/WidgetReader/ComAudioReader/ComAudioReader.cpp”)
   
 C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305: “参数”: 从“double”到“T”截断
 C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         with
 C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         [
 C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:             T=float
 C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         ]
-  (编译源文件“/editor-support/cocostudio/WidgetReader/ArmatureNodeReader/ArmatureNodeReader.cpp”)
+  (编译源文件“/editor-support/cocostudio/WidgetReader/ComAudioReader/ComAudioReader.cpp”)
+  
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305: “参数”: 从“double”到“T”截断
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         with
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         [
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:             T=float
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         ]
+  (编译源文件“/editor-support/cocostudio/WidgetReader/ButtonReader/ButtonReader.cpp”)
+  
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305: “参数”: 从“double”到“T”截断
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         with
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         [
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:             T=float
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         ]
+  (编译源文件“/editor-support/cocostudio/WidgetReader/ButtonReader/ButtonReader.cpp”)
   
   ImageViewReader.cpp
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305: “参数”: 从“double”到“T”截断
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         with
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         [
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:             T=float
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         ]
+  (编译源文件“/editor-support/cocostudio/WidgetReader/GameMapReader/GameMapReader.cpp”)
+  
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305: “参数”: 从“double”到“T”截断
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         with
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         [
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:             T=float
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         ]
+  (编译源文件“/editor-support/cocostudio/WidgetReader/GameMapReader/GameMapReader.cpp”)
+  
   LayoutReader.cpp
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305: “参数”: 从“double”到“T”截断
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         with
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         [
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:             T=float
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         ]
+  (编译源文件“/editor-support/cocostudio/WidgetReader/CheckBoxReader/CheckBoxReader.cpp”)
+  
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305: “参数”: 从“double”到“T”截断
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         with
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         [
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:             T=float
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         ]
+  (编译源文件“/editor-support/cocostudio/WidgetReader/CheckBoxReader/CheckBoxReader.cpp”)
+  
   Light3DReader.cpp
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305: “参数”: 从“double”到“T”截断
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         with
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         [
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:             T=float
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         ]
+  (编译源文件“/editor-support/cocostudio/WidgetReader/GameNode3DReader/GameNode3DReader.cpp”)
+  
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305: “参数”: 从“double”到“T”截断
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         with
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         [
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:             T=float
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         ]
+  (编译源文件“/editor-support/cocostudio/WidgetReader/GameNode3DReader/GameNode3DReader.cpp”)
+  
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305: “参数”: 从“double”到“T”截断
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         with
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         [
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:             T=float
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         ]
+  (编译源文件“/editor-support/cocostudio/WidgetReader/Light3DReader/Light3DReader.cpp”)
+  
   ListViewReader.cpp
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305: “参数”: 从“double”到“T”截断
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         with
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         [
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:             T=float
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         ]
-  (编译源文件“/editor-support/cocostudio/WidgetReader/GameNode3DReader/GameNode3DReader.cpp”)
-  
 C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305: “参数”: 从“double”到“T”截断
 C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         with
 C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         [
 C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:             T=float
 C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         ]
-  (编译源文件“/editor-support/cocostudio/WidgetReader/GameNode3DReader/GameNode3DReader.cpp”)
-  
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305: “参数”: 从“double”到“T”截断
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         with
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         [
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:             T=float
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         ]
-  (编译源文件“/editor-support/cocostudio/WidgetReader/GameMapReader/GameMapReader.cpp”)
-  
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305: “参数”: 从“double”到“T”截断
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         with
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         [
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:             T=float
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         ]
-  (编译源文件“/editor-support/cocostudio/WidgetReader/GameMapReader/GameMapReader.cpp”)
-  
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305: “参数”: 从“double”到“T”截断
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         with
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         [
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:             T=float
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         ]
-  (编译源文件“/editor-support/cocostudio/WidgetReader/ComAudioReader/ComAudioReader.cpp”)
-  
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305: “参数”: 从“double”到“T”截断
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         with
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         [
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:             T=float
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         ]
-  (编译源文件“/editor-support/cocostudio/WidgetReader/ComAudioReader/ComAudioReader.cpp”)
-  
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305: “参数”: 从“double”到“T”截断
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         with
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         [
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:             T=float
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         ]
-  (编译源文件“/editor-support/cocostudio/WidgetReader/ButtonReader/ButtonReader.cpp”)
-  
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305: “参数”: 从“double”到“T”截断
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         with
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         [
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:             T=float
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         ]
-  (编译源文件“/editor-support/cocostudio/WidgetReader/ButtonReader/ButtonReader.cpp”)
+  (编译源文件“/editor-support/cocostudio/WidgetReader/Light3DReader/Light3DReader.cpp”)
   
   LoadingBarReader.cpp
   NodeReaderDefine.cpp
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305: “参数”: 从“double”到“T”截断
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         with
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         [
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:             T=float
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         ]
-  (编译源文件“/editor-support/cocostudio/WidgetReader/CheckBoxReader/CheckBoxReader.cpp”)
-  
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305: “参数”: 从“double”到“T”截断
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         with
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         [
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:             T=float
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         ]
-  (编译源文件“/editor-support/cocostudio/WidgetReader/CheckBoxReader/CheckBoxReader.cpp”)
-  
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305: “参数”: 从“double”到“T”截断
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         with
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         [
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:             T=float
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         ]
-  (编译源文件“/editor-support/cocostudio/WidgetReader/Light3DReader/Light3DReader.cpp”)
-  
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305: “参数”: 从“double”到“T”截断
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         with
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         [
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:             T=float
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         ]
-  (编译源文件“/editor-support/cocostudio/WidgetReader/Light3DReader/Light3DReader.cpp”)
-  
   NodeReaderProtocol.cpp
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305: “参数”: 从“double”到“T”截断
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         with
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         [
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:             T=float
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         ]
-  (编译源文件“/editor-support/cocostudio/WidgetReader/LayoutReader/LayoutReader.cpp”)
-  
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305: “参数”: 从“double”到“T”截断
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         with
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         [
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:             T=float
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         ]
-  (编译源文件“/editor-support/cocostudio/WidgetReader/LayoutReader/LayoutReader.cpp”)
-  
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305: “参数”: 从“double”到“T”截断
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         with
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         [
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:             T=float
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         ]
-  (编译源文件“/editor-support/cocostudio/WidgetReader/ImageViewReader/ImageViewReader.cpp”)
-  
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305: “参数”: 从“double”到“T”截断
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         with
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         [
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:             T=float
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         ]
-  (编译源文件“/editor-support/cocostudio/WidgetReader/ImageViewReader/ImageViewReader.cpp”)
-  
   NodeReader.cpp
   PageViewReader.cpp
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305: “参数”: 从“double”到“T”截断
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         with
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         [
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:             T=float
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         ]
+  (编译源文件“/editor-support/cocostudio/WidgetReader/ImageViewReader/ImageViewReader.cpp”)
+  
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305: “参数”: 从“double”到“T”截断
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         with
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         [
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:             T=float
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         ]
+  (编译源文件“/editor-support/cocostudio/WidgetReader/ImageViewReader/ImageViewReader.cpp”)
+  
   ParticleReader.cpp
 C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305: “参数”: 从“double”到“T”截断
 C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         with
 C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         [
 C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:             T=float
 C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         ]
-  (编译源文件“/editor-support/cocostudio/WidgetReader/ListViewReader/ListViewReader.cpp”)
+  (编译源文件“/editor-support/cocostudio/WidgetReader/LayoutReader/LayoutReader.cpp”)
   
 C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305: “参数”: 从“double”到“T”截断
 C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         with
 C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         [
 C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:             T=float
 C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         ]
-  (编译源文件“/editor-support/cocostudio/WidgetReader/ListViewReader/ListViewReader.cpp”)
+  (编译源文件“/editor-support/cocostudio/WidgetReader/LayoutReader/LayoutReader.cpp”)
+  
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305: “参数”: 从“double”到“T”截断
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         with
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         [
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:             T=float
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         ]
+  (编译源文件“/editor-support/cocostudio/FlatBuffersSerialize.cpp”)
   
   ProjectNodeReader.cpp
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305: “参数”: 从“double”到“T”截断
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         with
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         [
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:             T=float
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         ]
-  (编译源文件“/editor-support/cocostudio/FlatBuffersSerialize.cpp”)
-  
 C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305: “参数”: 从“double”到“T”截断
 C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         with
 C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         [
 C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:             T=float
 C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         ]
   (编译源文件“/editor-support/cocostudio/FlatBuffersSerialize.cpp”)
-  
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305: “参数”: 从“double”到“T”截断
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         with
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         [
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:             T=float
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         ]
-  (编译源文件“/editor-support/cocostudio/WidgetReader/LoadingBarReader/LoadingBarReader.cpp”)
-  
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305: “参数”: 从“double”到“T”截断
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         with
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         [
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:             T=float
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         ]
-  (编译源文件“/editor-support/cocostudio/WidgetReader/LoadingBarReader/LoadingBarReader.cpp”)
   
   ScrollViewReader.cpp
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305: “参数”: 从“double”到“T”截断
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         with
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         [
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:             T=float
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         ]
+  (编译源文件“/editor-support/cocostudio/WidgetReader/LoadingBarReader/LoadingBarReader.cpp”)
+  
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305: “参数”: 从“double”到“T”截断
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         with
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         [
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:             T=float
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         ]
+  (编译源文件“/editor-support/cocostudio/WidgetReader/LoadingBarReader/LoadingBarReader.cpp”)
+  
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305: “参数”: 从“double”到“T”截断
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         with
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         [
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:             T=float
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         ]
+  (编译源文件“/editor-support/cocostudio/WidgetReader/NodeReader/NodeReader.cpp”)
+  
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305: “参数”: 从“double”到“T”截断
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         with
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         [
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:             T=float
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         ]
+  (编译源文件“/editor-support/cocostudio/WidgetReader/NodeReader/NodeReader.cpp”)
+  
   SingleNodeReader.cpp
 C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305: “参数”: 从“double”到“T”截断
 C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         with
 C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         [
 C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:             T=float
 C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         ]
-  (编译源文件“/editor-support/cocostudio/WidgetReader/ParticleReader/ParticleReader.cpp”)
-  
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305: “参数”: 从“double”到“T”截断
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         with
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         [
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:             T=float
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         ]
-  (编译源文件“/editor-support/cocostudio/WidgetReader/ParticleReader/ParticleReader.cpp”)
-  
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305: “参数”: 从“double”到“T”截断
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         with
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         [
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:             T=float
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         ]
-  (编译源文件“/editor-support/cocostudio/WidgetReader/NodeReader/NodeReader.cpp”)
-  
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305: “参数”: 从“double”到“T”截断
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         with
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         [
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:             T=float
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         ]
-  (编译源文件“/editor-support/cocostudio/WidgetReader/NodeReader/NodeReader.cpp”)
+  (编译源文件“/editor-support/cocostudio/WidgetReader/ListViewReader/ListViewReader.cpp”)
   
 C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305: “参数”: 从“double”到“T”截断
 C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         with
@@ -647,6 +626,13 @@ C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio
 C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:             T=float
 C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         ]
   (编译源文件“/editor-support/cocostudio/WidgetReader/ProjectNodeReader/ProjectNodeReader.cpp”)
+  
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305: “参数”: 从“double”到“T”截断
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         with
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         [
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:             T=float
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         ]
+  (编译源文件“/editor-support/cocostudio/WidgetReader/ListViewReader/ListViewReader.cpp”)
   
 C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305: “参数”: 从“double”到“T”截断
 C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         with
@@ -656,82 +642,96 @@ C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio
   (编译源文件“/editor-support/cocostudio/WidgetReader/ProjectNodeReader/ProjectNodeReader.cpp”)
   
   BoneNodeReader.cpp
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305: “参数”: 从“double”到“T”截断
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         with
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         [
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:             T=float
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         ]
+  (编译源文件“/editor-support/cocostudio/WidgetReader/ParticleReader/ParticleReader.cpp”)
+  
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305: “参数”: 从“double”到“T”截断
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         with
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         [
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:             T=float
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         ]
+  (编译源文件“/editor-support/cocostudio/WidgetReader/ParticleReader/ParticleReader.cpp”)
+  
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305: “参数”: 从“double”到“T”截断
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         with
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         [
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:             T=float
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         ]
+  (编译源文件“/editor-support/cocostudio/WidgetReader/ScrollViewReader/ScrollViewReader.cpp”)
+  
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305: “参数”: 从“double”到“T”截断
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         with
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         [
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:             T=float
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         ]
+  (编译源文件“/editor-support/cocostudio/WidgetReader/ScrollViewReader/ScrollViewReader.cpp”)
+  
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305: “参数”: 从“double”到“T”截断
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         with
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         [
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:             T=float
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         ]
+  (编译源文件“/editor-support/cocostudio/WidgetReader/PageViewReader/PageViewReader.cpp”)
+  
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305: “参数”: 从“double”到“T”截断
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         with
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         [
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:             T=float
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         ]
+  (编译源文件“/editor-support/cocostudio/WidgetReader/PageViewReader/PageViewReader.cpp”)
+  
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305: “参数”: 从“double”到“T”截断
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         with
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         [
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:             T=float
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         ]
+  (编译源文件“/editor-support/cocostudio/WidgetReader/SingleNodeReader/SingleNodeReader.cpp”)
+  
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305: “参数”: 从“double”到“T”截断
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         with
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         [
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:             T=float
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         ]
+  (编译源文件“/editor-support/cocostudio/WidgetReader/SingleNodeReader/SingleNodeReader.cpp”)
+  
   SkeletonNodeReader.cpp
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305: “参数”: 从“double”到“T”截断
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         with
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         [
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:             T=float
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         ]
-  (编译源文件“/editor-support/cocostudio/WidgetReader/SingleNodeReader/SingleNodeReader.cpp”)
-  
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305: “参数”: 从“double”到“T”截断
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         with
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         [
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:             T=float
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         ]
-  (编译源文件“/editor-support/cocostudio/WidgetReader/SingleNodeReader/SingleNodeReader.cpp”)
-  
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305: “参数”: 从“double”到“T”截断
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         with
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         [
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:             T=float
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         ]
-  (编译源文件“/editor-support/cocostudio/WidgetReader/PageViewReader/PageViewReader.cpp”)
-  
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305: “参数”: 从“double”到“T”截断
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         with
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         [
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:             T=float
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         ]
-  (编译源文件“/editor-support/cocostudio/WidgetReader/PageViewReader/PageViewReader.cpp”)
-  
   SliderReader.cpp
   SpriteReader.cpp
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305: “参数”: 从“double”到“T”截断
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         with
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         [
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:             T=float
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         ]
+  (编译源文件“/editor-support/cocostudio/WidgetReader/SkeletonReader/BoneNodeReader.cpp”)
+  
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305: “参数”: 从“double”到“T”截断
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         with
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         [
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:             T=float
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         ]
+  (编译源文件“/editor-support/cocostudio/WidgetReader/SkeletonReader/BoneNodeReader.cpp”)
+  
   TabControlReader.cpp
   TextAtlasReader.cpp
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305: “参数”: 从“double”到“T”截断
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         with
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         [
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:             T=float
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         ]
-  (编译源文件“/editor-support/cocostudio/WidgetReader/ScrollViewReader/ScrollViewReader.cpp”)
-  
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305: “参数”: 从“double”到“T”截断
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         with
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         [
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:             T=float
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         ]
-  (编译源文件“/editor-support/cocostudio/WidgetReader/ScrollViewReader/ScrollViewReader.cpp”)
-  
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305: “参数”: 从“double”到“T”截断
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         with
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         [
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:             T=float
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         ]
-  (编译源文件“/editor-support/cocostudio/WidgetReader/SkeletonReader/BoneNodeReader.cpp”)
-  
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305: “参数”: 从“double”到“T”截断
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         with
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         [
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:             T=float
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         ]
-  (编译源文件“/editor-support/cocostudio/WidgetReader/SkeletonReader/SkeletonNodeReader.cpp”)
-  
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305: “参数”: 从“double”到“T”截断
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         with
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         [
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:             T=float
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         ]
-  (编译源文件“/editor-support/cocostudio/WidgetReader/SkeletonReader/BoneNodeReader.cpp”)
-  
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305: “参数”: 从“double”到“T”截断
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         with
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         [
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:             T=float
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         ]
-  (编译源文件“/editor-support/cocostudio/WidgetReader/SkeletonReader/SkeletonNodeReader.cpp”)
-  
   TextBMFontReader.cpp
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305: “参数”: 从“double”到“T”截断
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         with
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         [
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:             T=float
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         ]
+  (编译源文件“/editor-support/cocostudio/WidgetReader/SkeletonReader/SkeletonNodeReader.cpp”)
+  
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305: “参数”: 从“double”到“T”截断
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         with
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         [
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:             T=float
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         ]
+  (编译源文件“/editor-support/cocostudio/WidgetReader/SkeletonReader/SkeletonNodeReader.cpp”)
+  
   TextFieldReader.cpp
 C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305: “参数”: 从“double”到“T”截断
 C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         with
@@ -749,20 +749,6 @@ C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio
   
   TextReader.cpp
   Node3DReader.cpp
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305: “参数”: 从“double”到“T”截断
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         with
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         [
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:             T=float
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         ]
-  (编译源文件“/editor-support/cocostudio/WidgetReader/SliderReader/SliderReader.cpp”)
-  
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305: “参数”: 从“double”到“T”截断
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         with
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         [
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:             T=float
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         ]
-  (编译源文件“/editor-support/cocostudio/WidgetReader/SliderReader/SliderReader.cpp”)
-  
   Sprite3DReader.cpp
   UserCameraReader.cpp
   Particle3DReader.cpp
@@ -771,70 +757,14 @@ C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio
 C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         [
 C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:             T=float
 C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         ]
-  (编译源文件“/editor-support/cocostudio/WidgetReader/TextAtlasReader/TextAtlasReader.cpp”)
+  (编译源文件“/editor-support/cocostudio/WidgetReader/SliderReader/SliderReader.cpp”)
   
 C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305: “参数”: 从“double”到“T”截断
 C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         with
 C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         [
 C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:             T=float
 C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         ]
-  (编译源文件“/editor-support/cocostudio/WidgetReader/TextAtlasReader/TextAtlasReader.cpp”)
-  
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305: “参数”: 从“double”到“T”截断
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         with
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         [
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:             T=float
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         ]
-  (编译源文件“/editor-support/cocostudio/WidgetReader/TextBMFontReader/TextBMFontReader.cpp”)
-  
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305: “参数”: 从“double”到“T”截断
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         with
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         [
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:             T=float
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         ]
-  (编译源文件“/editor-support/cocostudio/WidgetReader/TextBMFontReader/TextBMFontReader.cpp”)
-  
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305: “参数”: 从“double”到“T”截断
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         with
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         [
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:             T=float
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         ]
-  (编译源文件“/editor-support/cocostudio/WidgetReader/TabControlReader/TabControlReader.cpp”)
-  
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305: “参数”: 从“double”到“T”截断
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         with
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         [
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:             T=float
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         ]
-  (编译源文件“/editor-support/cocostudio/WidgetReader/TabControlReader/TabControlReader.cpp”)
-  
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305: “参数”: 从“double”到“T”截断
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         with
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         [
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:             T=float
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         ]
-  (编译源文件“/editor-support/cocostudio/WidgetReader/Sprite3DReader/Sprite3DReader.cpp”)
-  
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305: “参数”: 从“double”到“T”截断
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         with
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         [
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:             T=float
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         ]
-  (编译源文件“/editor-support/cocostudio/WidgetReader/Sprite3DReader/Sprite3DReader.cpp”)
-  
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305: “参数”: 从“double”到“T”截断
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         with
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         [
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:             T=float
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         ]
-  (编译源文件“/editor-support/cocostudio/WidgetReader/Node3DReader/Node3DReader.cpp”)
-  
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305: “参数”: 从“double”到“T”截断
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         with
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         [
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:             T=float
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         ]
-  (编译源文件“/editor-support/cocostudio/WidgetReader/Node3DReader/Node3DReader.cpp”)
+  (编译源文件“/editor-support/cocostudio/WidgetReader/SliderReader/SliderReader.cpp”)
   
   WidgetReader.cpp
 C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305: “参数”: 从“double”到“T”截断
@@ -842,14 +772,14 @@ C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio
 C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         [
 C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:             T=float
 C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         ]
-  (编译源文件“/editor-support/cocostudio/WidgetReader/TextFieldReader/TextFieldReader.cpp”)
+  (编译源文件“/editor-support/cocostudio/WidgetReader/TextAtlasReader/TextAtlasReader.cpp”)
   
 C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305: “参数”: 从“double”到“T”截断
 C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         with
 C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         [
 C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:             T=float
 C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         ]
-  (编译源文件“/editor-support/cocostudio/WidgetReader/TextFieldReader/TextFieldReader.cpp”)
+  (编译源文件“/editor-support/cocostudio/WidgetReader/TextAtlasReader/TextAtlasReader.cpp”)
   
   CCAffineTransform.cpp
 C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305: “参数”: 从“double”到“T”截断
@@ -857,14 +787,71 @@ C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio
 C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         [
 C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:             T=float
 C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         ]
-  (编译源文件“/editor-support/cocostudio/WidgetReader/Particle3DReader/Particle3DReader.cpp”)
+  (编译源文件“/editor-support/cocostudio/WidgetReader/TextFieldReader/TextFieldReader.cpp”)
   
 C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305: “参数”: 从“double”到“T”截断
 C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         with
 C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         [
 C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:             T=float
 C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         ]
-  (编译源文件“/editor-support/cocostudio/WidgetReader/Particle3DReader/Particle3DReader.cpp”)
+  (编译源文件“/editor-support/cocostudio/WidgetReader/TextFieldReader/TextFieldReader.cpp”)
+  
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305: “参数”: 从“double”到“T”截断
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         with
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         [
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:             T=float
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         ]
+  (编译源文件“/editor-support/cocostudio/WidgetReader/Node3DReader/Node3DReader.cpp”)
+  
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305: “参数”: 从“double”到“T”截断
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         with
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         [
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:             T=float
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         ]
+  (编译源文件“/editor-support/cocostudio/WidgetReader/Node3DReader/Node3DReader.cpp”)
+  
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305: “参数”: 从“double”到“T”截断
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         with
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         [
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:             T=float
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         ]
+  (编译源文件“/editor-support/cocostudio/WidgetReader/TabControlReader/TabControlReader.cpp”)
+  
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305: “参数”: 从“double”到“T”截断
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         with
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         [
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:             T=float
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         ]
+  (编译源文件“/editor-support/cocostudio/WidgetReader/Sprite3DReader/Sprite3DReader.cpp”)
+  
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305: “参数”: 从“double”到“T”截断
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         with
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         [
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:             T=float
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         ]
+  (编译源文件“/editor-support/cocostudio/WidgetReader/TabControlReader/TabControlReader.cpp”)
+  
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305: “参数”: 从“double”到“T”截断
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         with
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         [
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:             T=float
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         ]
+  (编译源文件“/editor-support/cocostudio/WidgetReader/Sprite3DReader/Sprite3DReader.cpp”)
+  
+  CCGeometry.cpp
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305: “参数”: 从“double”到“T”截断
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         with
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         [
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:             T=float
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         ]
+  (编译源文件“/editor-support/cocostudio/WidgetReader/TextBMFontReader/TextBMFontReader.cpp”)
+  
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305: “参数”: 从“double”到“T”截断
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         with
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         [
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:             T=float
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         ]
+  (编译源文件“/editor-support/cocostudio/WidgetReader/TextBMFontReader/TextBMFontReader.cpp”)
   
 C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305: “参数”: 从“double”到“T”截断
 C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         with
@@ -880,21 +867,34 @@ C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio
 C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         ]
   (编译源文件“/editor-support/cocostudio/WidgetReader/UserCameraReader/UserCameraReader.cpp”)
   
-  CCGeometry.cpp
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305: “参数”: 从“double”到“T”截断
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         with
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         [
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:             T=float
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         ]
+  (编译源文件“/editor-support/cocostudio/WidgetReader/TextReader/TextReader.cpp”)
+  
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305: “参数”: 从“double”到“T”截断
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         with
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         [
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:             T=float
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         ]
+  (编译源文件“/editor-support/cocostudio/WidgetReader/TextReader/TextReader.cpp”)
+  
   CCVertex.cpp
 C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305: “参数”: 从“double”到“T”截断
 C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         with
 C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         [
 C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:             T=float
 C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         ]
-  (编译源文件“/editor-support/cocostudio/WidgetReader/TextReader/TextReader.cpp”)
+  (编译源文件“/editor-support/cocostudio/WidgetReader/Particle3DReader/Particle3DReader.cpp”)
   
 C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305: “参数”: 从“double”到“T”截断
 C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         with
 C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         [
 C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:             T=float
 C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         ]
-  (编译源文件“/editor-support/cocostudio/WidgetReader/TextReader/TextReader.cpp”)
+  (编译源文件“/editor-support/cocostudio/WidgetReader/Particle3DReader/Particle3DReader.cpp”)
   
   Mat4.cpp
   MathUtil.cpp
@@ -904,6 +904,20 @@ C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio
   Vec3.cpp
   Vec4.cpp
   CCNavMesh.cpp
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305: “参数”: 从“double”到“T”截断
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         with
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         [
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:             T=float
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         ]
+  (编译源文件“/editor-support/cocostudio/WidgetReader/WidgetReader.cpp”)
+  
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305: “参数”: 从“double”到“T”截断
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         with
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         [
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:             T=float
+C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         ]
+  (编译源文件“/editor-support/cocostudio/WidgetReader/WidgetReader.cpp”)
+  
   CCNavMeshAgent.cpp
   CCNavMeshDebugDraw.cpp
   CCNavMeshObstacle.cpp
@@ -916,20 +930,6 @@ C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio
   WebSocket.cpp
   CCPhysics3D.cpp
   CCPhysics3DComponent.cpp
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305: “参数”: 从“double”到“T”截断
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         with
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         [
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:             T=float
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1546,68): warning C4305:         ]
-  (编译源文件“/editor-support/cocostudio/WidgetReader/WidgetReader.cpp”)
-  
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305: “参数”: 从“double”到“T”截断
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         with
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         [
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:             T=float
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio\CSParseBinary_generated.h(1593,115): warning C4305:         ]
-  (编译源文件“/editor-support/cocostudio/WidgetReader/WidgetReader.cpp”)
-  
   CCPhysics3DConstraint.cpp
   CCPhysics3DDebugDrawer.cpp
   CCPhysics3DObject.cpp
@@ -944,12 +944,12 @@ C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\cocostudio
   CCFileUtils.cpp
   CCGLView.cpp
   CCImage.cpp
+  CCSAXParser.cpp
 C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\external\unzip\unzip.h(47,9): warning C4005: “CC_DLL”: 宏重定义
   (编译源文件“/platform/CCFileUtils.cpp”)
       C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\platform\win32\CCPlatformDefine-win32.h(40,13):
       参见“CC_DLL”的前一个定义
   
-  CCSAXParser.cpp
   CCThread.cpp
   CCGLViewImpl-desktop.cpp
   CCApplication-win32.cpp
@@ -970,9 +970,6 @@ C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\external\unzip\unzip.h(47,9): w
   CCMaterial.cpp
   CCMeshCommand.cpp
   CCPass.cpp
-  CCPrimitive.cpp
-  CCPrimitiveCommand.cpp
-  CCQuadCommand.cpp
 C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\renderer\CCGLProgramState.cpp(920,16): warning C4996: 'cocos2d::UniformValue::setTexture': 被声明为已否决
   (编译源文件“/renderer/CCGLProgramState.cpp”)
   
@@ -985,6 +982,9 @@ C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\renderer\CCGLProgramState
 C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\renderer\CCGLProgramState.cpp(945,16): warning C4996: 'cocos2d::UniformValue::setTexture': 被声明为已否决
   (编译源文件“/renderer/CCGLProgramState.cpp”)
   
+  CCPrimitive.cpp
+  CCPrimitiveCommand.cpp
+  CCQuadCommand.cpp
   CCRenderCommand.cpp
   CCRenderer.cpp
   CCRenderState.cpp
