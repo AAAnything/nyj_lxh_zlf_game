@@ -50,10 +50,15 @@ endif()
 list(APPEND GAME_SOURCE
      Classes/Core/AppDelegate.cpp
      Classes/Core/MainMenuScene.cpp
+     Classes/Core/GameScene.cpp
+     Classes/Core/MenuManager.cpp
+     Classes/Core/GameManager.cpp
      )
 list(APPEND GAME_HEADER
      Classes/Core/AppDelegate.h
      Classes/Core/MainMenuScene.h
+     Classes/Core/GameScene.h
+     Classes/Core/MenuManager.h
      )
 
 if(ANDROID)
@@ -112,9 +117,9 @@ endif()
 set(all_code_files
     ${GAME_HEADER}
     ${GAME_SOURCE}
-     "Classes/Core/GameScene.h")
+    )
 if(NOT ANDROID)
-    add_executable(${APP_NAME} ${all_code_files} "Classes/Core/GameManager.cpp" "Classes/Core/GameScene.h")
+    add_executable(${APP_NAME} ${all_code_files})
 else()
     add_library(${APP_NAME} SHARED ${all_code_files})
     add_subdirectory(${COCOS2DX_ROOT_PATH}/cocos/platform/android ${ENGINE_BINARY_PATH}/cocos/platform)
@@ -126,6 +131,12 @@ target_include_directories(${APP_NAME}
         PRIVATE Classes
         PRIVATE ${COCOS2DX_ROOT_PATH}/cocos/audio/include/
 )
+
+# 添加编译选项以解决标准库冲突问题
+if(MSVC)
+    target_compile_options(${APP_NAME} PRIVATE /MD)
+    target_link_options(${APP_NAME} PRIVATE /NODEFAULTLIB:LIBCMT /NODEFAULTLIB:MSVCRT)
+endif()
 
 # mark app resources
 setup_cocos_app_config(${APP_NAME})
@@ -149,4 +160,7 @@ if(LINUX OR WINDOWS)
     set(APP_RES_DIR "$<TARGET_FILE_DIR:${APP_NAME}>/Resources")
     cocos_copy_target_res(${APP_NAME} COPY_TO ${APP_RES_DIR} FOLDERS ${GAME_RES_FOLDER})
 endif()
+
+
+
 

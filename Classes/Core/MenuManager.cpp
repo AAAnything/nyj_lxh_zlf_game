@@ -1,4 +1,4 @@
-﻿#include "MenuManager.h"
+#include "MenuManager.h"
 #include "MainMenuScene.h"
 #include "GameScene.h"
 
@@ -58,7 +58,7 @@ void MenuManager::goToMainMenu()
     switchScene(scene);
 }
 
-void MenuManager::goToGameScMenuManager::goToGameSceneene()
+void MenuManager::goToGameScene()
 {
     auto scene = GameScene::createScene();
     switchScene(scene);
