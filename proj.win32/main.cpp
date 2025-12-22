@@ -23,8 +23,8 @@
  ****************************************************************************/
 
 #include "main.h"
-#include "Core/AppDelegate.h"
-#include "cocos2d.h" // cocos��׼ͷ�ļ�
+#include "Core\AppDelegate.h"
+#include "cocos2d.h" // cocos��׼ͷ�ļ�
 
 USING_NS_CC; // ʹ��cocos2d�����ռ䣬== using namespace cocos2d;
 
