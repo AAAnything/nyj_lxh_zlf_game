@@ -1,5 +1,6 @@
-#include "MenuManager.h"
-#include "MenuScene.h"
+﻿#include "MenuManager.h"
+#include "MainMenuScene.h"
+#include "GameScene.h"
 
 // 初始化静态成员变量
 MenuManager* MenuManager::_instance = nullptr;
@@ -53,15 +54,13 @@ void MenuManager::switchScene(cocos2d::Scene* scene)
 void MenuManager::goToMainMenu()
 {
     // 创建主菜单场景并切换
-    auto scene = HelloWorld::createScene();
+    auto scene = MainMenu::createScene();
     switchScene(scene);
 }
 
-void MenuManager::goToGameScene()
+void MenuManager::goToGameScMenuManager::goToGameSceneene()
 {
-    // 这里可以创建游戏场景并切换
-    // 由于当前项目中没有游戏场景类，暂时先创建一个空场景
-    auto scene = cocos2d::Scene::create();
+    auto scene = GameScene::createScene();
     switchScene(scene);
 }
 

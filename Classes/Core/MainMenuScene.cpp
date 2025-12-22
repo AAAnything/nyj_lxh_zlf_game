@@ -1,5 +1,6 @@
-#include "MainMenuScene.h"
+ï»¿#include "MainMenuScene.h"
 #include "SimpleAudioEngine.h"
+#include "MenuManager.h"
 
 USING_NS_CC;
 
@@ -8,6 +9,12 @@ Scene* MainMenu::createScene()
     return MainMenu::create();
 }
 
+// æ–°æ¸¸æˆæŒ‰é’®å›è°ƒå‡½æ•°
+void MainMenu::menuNewGameCallback(cocos2d::Ref* pSender)
+{
+    // é€šè¿‡MenuManageråˆ‡æ¢åˆ°æ¸¸æˆä¸»åœºæ™¯
+    MenuManager::getInstance()->goToGameScene();
+}
 
 bool MainMenu::init()
 {
@@ -18,95 +25,94 @@ bool MainMenu::init()
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
 
-    // SpriteÊÇCocos2d-xÓÎÏ·ÒıÇæÖĞµÄÒ»¸öºËĞÄÀà£¬ÓÃÀ´±íÊ¾2DÍ¼Ïñ/¾«Áé¡£
-    // Ìí¼Ó³õÊ¼»¯±³¾°
+    // Spriteæ˜¯Cocos2d-xæ¸¸æˆå¼•æ“ä¸­çš„ä¸€ä¸ªæ ¸å¿ƒç±»ï¼Œç”¨æ¥è¡¨ç¤º2Då›¾åƒ/ç²¾çµã€‚
+    // æ·»åŠ åˆå§‹åŒ–èƒŒæ™¯
     auto initialBackground = Sprite::create("background.png");
-    // ÖÃÓÚÆÁÄ»ÖĞ¼ä
+    // ç½®äºå±å¹•ä¸­é—´
     initialBackground->setPosition(Vec2(
         visibleSize.width / 2 + origin.x, 
         visibleSize.height / 2 + origin.y));
-    // ÖÃÓÚµ×²ã
+    // ç½®äºåº•å±‚
     this->addChild(initialBackground, 0);
 
     
 
-    // 1.´´½¨ÓÎÏ·±êÌâ
+    // 1.åˆ›å»ºæ¸¸æˆæ ‡é¢˜
     auto titleBtn = Sprite::create("icon/title.png");
-    // ÖÃÓÚÆÁÄ»ÖĞ¼ä
+    // ç½®äºå±å¹•ä¸­é—´
     titleBtn->setPosition(Vec2(
         origin.x + visibleSize.width / 2,
         origin.y + visibleSize.height - titleBtn->getContentSize().height / 2 - 50));
-    // ÖÃÓÚ±³¾°ÉÏ²ã
+    // ç½®äºèƒŒæ™¯ä¸Šå±‚
     this->addChild(titleBtn, 1);
 
     
-
-    // 2. ´´½¨ĞÂÓÎÏ·°´Å¥
+    // 2. åˆ›å»ºæ–°æ¸¸æˆæŒ‰é’®
     auto newGameBtn = MenuItemImage::create(
         "icon/newGameButton.png",
         "icon/newGameButtonOn.png",
-        CC_CALLBACK_1(MainMenu::menuCloseCallback, this));  // ½¨ÒéÓÃ²»Í¬»Øµ÷º¯Êı
+        CC_CALLBACK_1(MainMenu::menuNewGameCallback, this));
 
-    // ÉèÖÃĞÂÓÎÏ·°´Å¥Î»ÖÃ
+    // è®¾ç½®æ–°æ¸¸æˆæŒ‰é’®ä½ç½®
     float newGameX = origin.x + newGameBtn->getContentSize().width / 2 + 40;  
     float newGameY = origin.y + newGameBtn->getContentSize().height / 2 + 20;  
     newGameBtn->setPosition(Vec2(newGameX, newGameY));
 
 
 
-    // 3. ´´½¨¼ÓÔØ°´Å¥
+    // 3. åˆ›å»ºåŠ è½½æŒ‰é’®
     auto loadBtn = MenuItemImage::create(
         "icon/loadGameButton.png",
         "icon/loadGameButtonOn.png",
-        CC_CALLBACK_1(MainMenu::menuCloseCallback, this));  // ½¨ÒéÓÃ²»Í¬»Øµ÷º¯Êı
+        CC_CALLBACK_1(MainMenu::menuCloseCallback, this));  // å»ºè®®ç”¨ä¸åŒå›è°ƒå‡½æ•°
 
-    // ÉèÖÃ¼ÓÔØ°´Å¥Î»ÖÃ
+    // è®¾ç½®åŠ è½½æŒ‰é’®ä½ç½®
     float loadX = newGameX + visibleSize.width/4;  
     float loadY = newGameY;  
     loadBtn->setPosition(Vec2(loadX, loadY));
 
 
 
-    // 4. ´´½¨ºÏ×÷°´Å¥
+    // 4. åˆ›å»ºåˆä½œæŒ‰é’®
     auto coopBtn = MenuItemImage::create(
         "icon/cooperationButton.png",
         "icon/cooperationButtonOn.png",
-        CC_CALLBACK_1(MainMenu::menuCloseCallback, this));  // ½¨ÒéÓÃ²»Í¬»Øµ÷º¯Êı
+        CC_CALLBACK_1(MainMenu::menuCloseCallback, this));  // å»ºè®®ç”¨ä¸åŒå›è°ƒå‡½æ•°
 
-    // ÉèÖÃºÏ×÷°´Å¥Î»ÖÃ
+    // è®¾ç½®åˆä½œæŒ‰é’®ä½ç½®
     float coopX = loadX + visibleSize.width/4;  
     float coopY = newGameY; 
     coopBtn->setPosition(Vec2(coopX, coopY));
 
 
 
-    // 5. ´´½¨ÍË³ö°´Å¥
+    // 5. åˆ›å»ºé€€å‡ºæŒ‰é’®
     auto exitBtn = MenuItemImage::create(
         "icon/exitButton.png",
         "icon/exitButtonOn.png",
-        CC_CALLBACK_1(MainMenu::menuCloseCallback, this));  // ½¨ÒéÓÃ²»Í¬»Øµ÷º¯Êı
+        CC_CALLBACK_1(MainMenu::menuCloseCallback, this));  // å»ºè®®ç”¨ä¸åŒå›è°ƒå‡½æ•°
 
-    // ÉèÖÃÍË³ö°´Å¥Î»ÖÃ
+    // è®¾ç½®é€€å‡ºæŒ‰é’®ä½ç½®
     float exitX = coopX + visibleSize.width / 4;  
     float exitY = newGameY; 
     exitBtn->setPosition(Vec2(exitX, exitY));
 
 
 
-    // 6. ´´½¨¿ª·¢ÈËÔ±ĞÅÏ¢
+    // 6. åˆ›å»ºå¼€å‘äººå‘˜ä¿¡æ¯
     auto developerBtn = MenuItemImage::create(
         "icon/versionButton.png",
         "icon/versionButtonOn.png",
-        CC_CALLBACK_1(MainMenu::menuCloseCallback, this));  // ½¨ÒéÓÃ²»Í¬»Øµ÷º¯Êı
+        CC_CALLBACK_1(MainMenu::menuCloseCallback, this));  // å»ºè®®ç”¨ä¸åŒå›è°ƒå‡½æ•°
 
-    // ÉèÖÃ¿ª·¢ÈËÔ±ĞÅÏ¢Î»ÖÃ
+    // è®¾ç½®å¼€å‘äººå‘˜ä¿¡æ¯ä½ç½®
     float developerX = exitX + (exitBtn->getContentSize().width - developerBtn->getContentSize().width) / 2;
     float developerY = newGameY+200;
     developerBtn->setPosition(Vec2(developerX, developerY));
 
 
 
-    // 7. ´´½¨²Ëµ¥²¢Ìí¼ÓËùÓĞ°´Å¥
+    // 7. åˆ›å»ºèœå•å¹¶æ·»åŠ æ‰€æœ‰æŒ‰é’®
     auto menu = Menu::create(newGameBtn, loadBtn, coopBtn, exitBtn, developerBtn, nullptr);
     menu->setPosition(Vec2::ZERO);
     this->addChild(menu, 1);
@@ -116,7 +122,7 @@ bool MainMenu::init()
 }
 
 
-// ÓÃÒÔÍË³öÓÎÏ·
+// ç”¨ä»¥é€€å‡ºæ¸¸æˆ
 void MainMenu::menuCloseCallback(Ref* pSender)
 {
     Director::getInstance()->end();
