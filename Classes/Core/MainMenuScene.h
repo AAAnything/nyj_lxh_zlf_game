@@ -1,4 +1,4 @@
-
+﻿
 #ifndef __MAINMENU_SCENE_H__
 #define __MAINMENU_SCENE_H__
 
@@ -13,6 +13,9 @@ public:
         
     // a selector callback
     void menuCloseCallback(cocos2d::Ref* pSender);
+
+    // 新游戏按钮回调函数
+    void menuNewGameCallback(cocos2d::Ref* pSender);
 
     // implement the "static create()" method manually
     CREATE_FUNC(MainMenu);

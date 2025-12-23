@@ -1,4 +1,4 @@
-#ifndef __MENU_MANAGER_H__
+﻿#ifndef __MENU_MANAGER_H__
 #define __MENU_MANAGER_H__
 
 #include "cocos2d.h"
