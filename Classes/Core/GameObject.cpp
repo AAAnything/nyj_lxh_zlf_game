@@ -1,1140 +1,596 @@
 // 文件名：GameObject.cpp
-// 功能： 游戏对象基类，定义游戏中所有对象的通用属性和方法
-// 作者： Niu
-// GameManager.cpp
-#include "GameManager.h"
-#include "Farmland/FarmlandTile.h"
-#include "Animal/Animal.h"
-#include "Crop/Crop.h"
-#include "Items/Inventory.h"
-#include "Player/Player.h"
-#include "NPC/NPC.h"
-#include "Quests/Quest.h"
-#include "Events/GameEvent.h"
+// 功能：  游戏对象的实现文件，定义了游戏中各种对象的基础行为和属性。
+// 作者：  Niu
 
-#include <algorithm>
-#include <fstream>
-#include <iomanip>
+#include "GameObject.h"
 #include <sstream>
+#include <iomanip>
+#include <ctime>
+#include <cstdlib>
 
 USING_NS_CC;
 
-// 初始化静态成员
-GameManager* GameManager::instance = nullptr;
-
-// GameTime方法实现
-std::string GameTime::toString() const {
-    std::stringstream ss;
-    ss << "Year " << year << ", ";
-
-    std::string seasonStr;
-    switch (season) {
-        case 0: seasonStr = "Spring"; break;
-        case 1: seasonStr = "Summer"; break;
-        case 2: seasonStr = "Autumn"; break;
-        case 3: seasonStr = "Winter"; break;
-        default: seasonStr = "Unknown";
-    }
-
-    ss << seasonStr << " Day " << day << ", ";
-    ss << std::setw(2) << std::setfill('0') << hour << ":";
-    ss << std::setw(2) << std::setfill('0') << minute;
-
-    return ss.str();
-}
-
-bool GameTime::isDaytime() const {
-    return hour >= 6 && hour < 22;
-}
-
-bool GameTime::isNight() const {
-    return !isDaytime();
-}
-
 // 构造函数
-GameManager::GameManager()
-    : currentTime()
-    , timeScale(1.0f)
-    , realSecondsPerGameMinute(0.5f) // 现实0.5秒 = 游戏1分钟
-    , accumulatedTime(0.0f)
-    , gameState(GameState::TITLE_SCREEN)
-    , isInitialized(false)
-    , isGameOver(false)
-    , player(nullptr)
-    , playerInventory(nullptr)
-    , money(500) // 初始资金
-    , playerEnergy(100)
-    , maxPlayerEnergy(100)
-    , currentWeather("Sunny")
-    , tomorrowWeather("Sunny")
-    , temperature(20.0f)
-    , saveFileName("save1.dat") {
+GameObject::GameObject()
+    : id("")
+    , name("Unnamed")
+    , description("")
+    , objectType(Type::UNDEFINED)
+    , isActive(true)
+    , isInteractable(true)
+    , position(Vec2::ZERO)
+    , size(Size(32, 32))
+    , rotation(0.0f)
+    , scale(1.0f)
+    , level(1)
+    , experience(0)
+    , maxExperience(100)
+    , durability(100)
+    , maxDurability(100)
+    , objectSprite(nullptr)
+    , currentAction(nullptr) {
 
-    initializeDefaultSkills();
-    initializeDefaultFestivals();
+    generateId();
 }
 
-GameManager::~GameManager() {
-    shutdown();
+GameObject::GameObject(const std::string& objName, Type type)
+    : id("")
+    , name(objName)
+    , description("")
+    , objectType(type)
+    , isActive(true)
+    , isInteractable(true)
+    , position(Vec2::ZERO)
+    , size(Size(32, 32))
+    , rotation(0.0f)
+    , scale(1.0f)
+    , level(1)
+    , experience(0)
+    , maxExperience(100)
+    , durability(100)
+    , maxDurability(100)
+    , objectSprite(nullptr)
+    , currentAction(nullptr) {
+
+    generateId();
 }
 
-// 获取单例
-GameManager* GameManager::getInstance() {
-    if (!instance) {
-        instance = new (std::nothrow) GameManager();
-        CCASSERT(instance, "FATAL: Not enough memory for GameManager");
+GameObject::~GameObject() {
+    if (currentAction) {
+        this->stopAction(currentAction);
+        currentAction = nullptr;
     }
-    return instance;
-}
 
-void GameManager::destroyInstance() {
-    if (instance) {
-        delete instance;
-        instance = nullptr;
+    if (objectSprite) {
+        objectSprite->removeFromParent();
+        objectSprite = nullptr;
     }
 }
 
 // 初始化
-bool GameManager::initialize() {
-    if (isInitialized) {
-        return true;
+bool GameObject::init() {
+    if (!Node::init()) {
+        return false;
     }
 
-    CCLOG("Initializing GameManager...");
+    setupDefaultSprite();
+    updateTransform();
 
-    // 初始化随机种子
-    srand(static_cast<unsigned int>(time(nullptr)));
-
-    // 设置默认值
-    gameState = GameState::TITLE_SCREEN;
-    isGameOver = false;
-
-    // 生成明天天气
-    generateTomorrowWeather();
-
-    isInitialized = true;
-    CCLOG("GameManager initialized successfully");
+    // 启用触摸（如果需要）
+    this->setTouchEnabled(false);
 
     return true;
 }
 
-void GameManager::shutdown() {
-    if (!isInitialized) {
-        return;
+bool GameObject::init(const std::string& objName, Type type) {
+    if (!init()) {
+        return false;
     }
 
-    CCLOG("Shutting down GameManager...");
+    name = objName;
+    objectType = type;
 
-    // 保存游戏
-    autoSave();
+    return true;
+}
 
-    // 清理内存
-    clearAllData();
+// 创建工厂方法
+GameObject* GameObject::create() {
+    GameObject* obj = new (std::nothrow) GameObject();
+    if (obj && obj->init()) {
+        obj->autorelease();
+        return obj;
+    }
+    CC_SAFE_DELETE(obj);
+    return nullptr;
+}
 
-    isInitialized = false;
-    CCLOG("GameManager shut down");
+GameObject* GameObject::create(const std::string& objName, Type type) {
+    GameObject* obj = new (std::nothrow) GameObject(objName, type);
+    if (obj && obj->init(objName, type)) {
+        obj->autorelease();
+        return obj;
+    }
+    CC_SAFE_DELETE(obj);
+    return nullptr;
+}
+
+// 生成唯一ID
+void GameObject::generateId() {
+    std::stringstream ss;
+    ss << "obj_";
+    ss << std::hex << std::setfill('0');
+
+    // 使用时间戳和随机数生成ID
+    auto now = std::chrono::system_clock::now();
+    auto duration = now.time_since_epoch();
+    auto millis = std::chrono::duration_cast<std::chrono::milliseconds>(duration).count();
+
+    ss << millis << "_";
+    ss << std::setw(4) << (rand() % 0x10000);
+
+    id = ss.str();
+}
+
+// 设置世界位置
+void GameObject::setWorldPosition(const Vec2& pos) {
+    position = pos;
+    updateTransform();
+}
+
+// 设置位置（重写Node的方法）
+void GameObject::setPosition(const Vec2& pos) {
+    Node::setPosition(pos);
+    position = pos;
+
+    if (objectSprite) {
+        objectSprite->setPosition(Vec2::ZERO);
+    }
+}
+
+// 设置大小
+void GameObject::setSize(const Size& newSize) {
+    size = newSize;
+    if (objectSprite) {
+        objectSprite->setContentSize(size);
+    }
+}
+
+// 设置旋转（重写Node的方法）
+void GameObject::setRotation(float rot) {
+    Node::setRotation(rot);
+    rotation = rot;
+
+    if (objectSprite) {
+        objectSprite->setRotation(0); // 精灵相对于父节点不旋转
+    }
+}
+
+// 设置缩放（重写Node的方法）
+void GameObject::setScale(float s) {
+    Node::setScale(s);
+    scale = s;
+
+    if (objectSprite) {
+        objectSprite->setScale(1.0f); // 精灵使用统一的缩放
+    }
+}
+
+// 设置活跃状态
+void GameObject::setActive(bool active) {
+    isActive = active;
+    this->setVisible(active);
+
+    if (objectSprite) {
+        objectSprite->setVisible(active);
+    }
+}
+
+// 设置可交互状态
+void GameObject::setInteractable(bool interactable) {
+    isInteractable = interactable;
+}
+
+// 设置等级
+void GameObject::setLevel(int lvl) {
+    if (lvl < 1) lvl = 1;
+    level = lvl;
+
+    // 每升一级，需要更多经验
+    maxExperience = 100 * level;
+
+    // 升级时恢复耐久度
+    if (lvl > 1) {
+        durability = maxDurability;
+    }
+}
+
+// 添加经验
+void GameObject::addExperience(int exp) {
+    if (exp <= 0) return;
+
+    experience += exp;
+
+    // 检查是否可以升级
+    while (canLevelUp()) {
+        levelUp();
+    }
+}
+
+// 检查是否可以升级
+bool GameObject::canLevelUp() const {
+    return experience >= maxExperience;
+}
+
+// 升级
+void GameObject::levelUp() {
+    level++;
+    experience -= maxExperience;
+    maxExperience = 100 * level;
+
+    // 每级增加最大耐久度
+    maxDurability += 20;
+    durability = maxDurability;
+
+    CCLOG("GameObject %s leveled up to level %d", name.c_str(), level);
+}
+
+// 设置耐久度
+void GameObject::setDurability(int dur) {
+    durability = std::max(0, std::min(maxDurability, dur));
+}
+
+// 设置最大耐久度
+void GameObject::setMaxDurability(int maxDur) {
+    maxDurability = std::max(1, maxDur);
+    if (durability > maxDurability) {
+        durability = maxDurability;
+    }
+}
+
+// 减少耐久度
+void GameObject::reduceDurability(int amount) {
+    if (amount <= 0) return;
+
+    durability = std::max(0, durability - amount);
+
+    if (isBroken()) {
+        CCLOG("GameObject %s is broken!", name.c_str());
+        // 可以触发破坏事件
+    }
+}
+
+// 修复耐久度
+void GameObject::repairDurability(int amount) {
+    if (amount <= 0) return;
+
+    durability = std::min(maxDurability, durability + amount);
+}
+
+// 设置精灵
+void GameObject::setSprite(Sprite* sprite) {
+    if (objectSprite) {
+        objectSprite->removeFromParent();
+    }
+
+    objectSprite = sprite;
+    if (objectSprite) {
+        this->addChild(objectSprite);
+        objectSprite->setPosition(Vec2::ZERO);
+        objectSprite->setContentSize(size);
+        objectSprite->setVisible(isActive);
+    }
+}
+
+// 使用文件设置精灵
+void GameObject::setSpriteWithFile(const std::string& filename) {
+    if (filename.empty()) return;
+
+    Sprite* sprite = Sprite::create(filename);
+    if (sprite) {
+        setSprite(sprite);
+    }
+    else {
+        CCLOG("Failed to create sprite from file: %s", filename.c_str());
+    }
+}
+
+// 移除精灵
+void GameObject::removeSprite() {
+    if (objectSprite) {
+        objectSprite->removeFromParent();
+        objectSprite = nullptr;
+    }
+}
+
+// 播放动画
+void GameObject::playAnimation(Action* action) {
+    if (!action) return;
+
+    stopAnimation();
+    currentAction = action;
+    this->runAction(action);
+}
+
+// 停止动画
+void GameObject::stopAnimation() {
+    if (currentAction) {
+        this->stopAction(currentAction);
+        currentAction = nullptr;
+    }
+}
+
+// 是否在动画中
+bool GameObject::isAnimating() const {
+    return currentAction != nullptr && !currentAction->isDone();
+}
+
+// 交互
+void GameObject::onInteract(GameObject* interactor) {
+    if (!isInteractable || !isActive) return;
+
+    CCLOG("GameObject %s interacted with by %s",
+        name.c_str(), interactor ? interactor->getName().c_str() : "unknown");
+
+    if (onInteractCallback) {
+        onInteractCallback(this);
+    }
+}
+
+// 点击
+void GameObject::onClick() {
+    if (!isInteractable || !isActive) return;
+
+    CCLOG("GameObject %s clicked", name.c_str());
+
+    if (onClickCallback) {
+        onClickCallback(this);
+    }
+}
+
+// 鼠标悬停进入
+void GameObject::onHoverEnter() {
+    if (!isInteractable || !isActive) return;
+
+    // 可以高亮显示
+    if (objectSprite) {
+        objectSprite->setColor(Color3B::YELLOW);
+    }
+}
+
+// 鼠标悬停离开
+void GameObject::onHoverExit() {
+    if (!isInteractable || !isActive) return;
+
+    // 恢复颜色
+    if (objectSprite) {
+        objectSprite->setColor(Color3B::WHITE);
+    }
 }
 
 // 更新
-void GameManager::update(float deltaTime) {
-    if (gameState != GameState::PLAYING || isGameOver) {
-        return;
+void GameObject::update(float delta) {
+    Node::update(delta);
+
+    // 可以在这里添加每帧的逻辑
+}
+
+// 进入场景
+void GameObject::onEnter() {
+    Node::onEnter();
+
+    // 激活物理（如果需要）
+    applyPhysicsIfNeeded();
+}
+
+// 退出场景
+void GameObject::onExit() {
+    Node::onExit();
+
+    // 停止动画
+    stopAnimation();
+}
+
+// 碰撞检测 - 是否包含点
+bool GameObject::containsPoint(const Vec2& point) const {
+    Rect bbox = getBoundingBox();
+    return bbox.containsPoint(point);
+}
+
+// 碰撞检测 - 是否与其他对象相交
+bool GameObject::intersects(const GameObject* other) const {
+    if (!other) return false;
+
+    Rect myBox = getBoundingBox();
+    Rect otherBox = other->getBoundingBox();
+
+    return myBox.intersectsRect(otherBox);
+}
+
+// 获取边界框
+Rect GameObject::getBoundingBox() const {
+    Vec2 worldPos = this->convertToWorldSpace(Vec2::ZERO);
+    return Rect(worldPos.x, worldPos.y, size.width * scale, size.height * scale);
+}
+
+// 序列化
+ValueMap GameObject::toValueMap() const {
+    ValueMap map;
+
+    map["id"] = id;
+    map["name"] = name;
+    map["description"] = description;
+    map["type"] = static_cast<int>(objectType);
+    map["isActive"] = isActive;
+    map["isInteractable"] = isInteractable;
+
+    map["positionX"] = position.x;
+    map["positionY"] = position.y;
+    map["sizeWidth"] = size.width;
+    map["sizeHeight"] = size.height;
+    map["rotation"] = rotation;
+    map["scale"] = scale;
+
+    map["level"] = level;
+    map["experience"] = experience;
+    map["maxExperience"] = maxExperience;
+    map["durability"] = durability;
+    map["maxDurability"] = maxDurability;
+
+    return map;
+}
+
+// 反序列化
+bool GameObject::fromValueMap(const ValueMap& map) {
+    // 读取基础属性
+    if (map.find("id") != map.end()) {
+        id = map.at("id").asString();
     }
 
-    // 更新时间
-    accumulatedTime += deltaTime * timeScale;
-    float gameMinutesPassed = accumulatedTime / realSecondsPerGameMinute;
-
-    if (gameMinutesPassed >= 1.0f) {
-        int minutes = static_cast<int>(gameMinutesPassed);
-        advanceTime(minutes);
-        accumulatedTime -= minutes * realSecondsPerGameMinute;
+    if (map.find("name") != map.end()) {
+        name = map.at("name").asString();
     }
 
-    // 检查事件
-    for (auto it = scheduledEvents.begin(); it != scheduledEvents.end();) {
-        GameEvent* event = *it;
-        if (event->shouldTrigger(currentTime)) {
-            event->trigger();
-            delete event;
-            it = scheduledEvents.erase(it);
-        }
-        else {
-            ++it;
-        }
-    }
-}
-
-// 推进时间
-void GameManager::advanceTime(int minutes) {
-    if (minutes <= 0) return;
-
-    int oldHour = currentTime.hour;
-    int oldDay = currentTime.day;
-    Season oldSeason = getCurrentSeason();
-
-    // 增加时间
-    currentTime.minute += minutes;
-    while (currentTime.minute >= 60) {
-        currentTime.minute -= 60;
-        currentTime.hour++;
-
-        // 每小时事件
-        processHourlyEvents();
+    if (map.find("description") != map.end()) {
+        description = map.at("description").asString();
     }
 
-    while (currentTime.hour >= 24) {
-        currentTime.hour -= 24;
-        currentTime.day++;
-
-        // 每天事件
-        processDailyEvents();
+    if (map.find("type") != map.end()) {
+        objectType = static_cast<Type>(map.at("type").asInt());
     }
 
-    while (currentTime.day > 30) {
-        currentTime.day -= 30;
-        currentTime.season++;
+    if (map.find("isActive") != map.end()) {
+        isActive = map.at("isActive").asBool();
     }
 
-    while (currentTime.season > 3) {
-        currentTime.season -= 4;
-        currentTime.year++;
+    if (map.find("isInteractable") != map.end()) {
+        isInteractable = map.at("isInteractable").asBool();
     }
 
-    // 通知时间变化
-    if (oldHour != currentTime.hour) {
-        notifyTimeChanged();
+    // 读取变换属性
+    if (map.find("positionX") != map.end() && map.find("positionY") != map.end()) {
+        position.x = map.at("positionX").asFloat();
+        position.y = map.at("positionY").asFloat();
     }
 
-    // 检查新的一天
-    if (oldDay != currentTime.day) {
-        checkForNewDay();
+    if (map.find("sizeWidth") != map.end() && map.find("sizeHeight") != map.end()) {
+        size.width = map.at("sizeWidth").asFloat();
+        size.height = map.at("sizeHeight").asFloat();
     }
 
-    // 检查新季节
-    if (oldSeason != getCurrentSeason()) {
-        checkForNewSeason();
+    if (map.find("rotation") != map.end()) {
+        rotation = map.at("rotation").asFloat();
     }
 
-    CCLOG("Time advanced to: %s", getTimeString().c_str());
-}
-
-// 推进到下一天
-void GameManager::advanceToNextDay() {
-    int hoursToAdd = 24 - currentTime.hour;
-    advanceTime(hoursToAdd * 60);
-}
-
-// 改变季节
-void GameManager::changeSeason(Season newSeason) {
-    Season oldSeason = getCurrentSeason();
-    if (oldSeason == newSeason) return;
-
-    currentTime.season = static_cast<int>(newSeason);
-
-    // 重置天数（可选）
-    currentTime.day = 1;
-
-    notifySeasonChanged(newSeason);
-
-    CCLOG("Season changed to: %s", seasonToString(newSeason).c_str());
-}
-
-// 获取时间字符串
-std::string GameManager::getTimeString() const {
-    return currentTime.toString();
-}
-
-// 获取日期字符串
-std::string GameManager::getDateString() const {
-    std::stringstream ss;
-    ss << "Year " << currentTime.year << ", ";
-    ss << seasonToString(getCurrentSeason()) << " Day " << currentTime.day;
-    return ss.str();
-}
-
-// 设置时间比例
-void GameManager::setTimeScale(float scale) {
-    timeScale = std::max(0.0f, std::min(10.0f, scale)); // 限制在0-10倍
-}
-
-// 设置游戏速度
-void GameManager::setGameSpeed(float speed) {
-    // speed: 0.5, 1.0, 2.0 等
-    setTimeScale(speed);
-}
-
-// 设置游戏状态
-void GameManager::setGameState(GameState newState) {
-    if (gameState == newState) return;
-
-    GameState oldState = gameState;
-    gameState = newState;
-
-    notifyStateChanged(oldState, newState);
-
-    CCLOG("Game state changed: %s -> %s",
-        gameStateToString(oldState).c_str(),
-        gameStateToString(newState).c_str());
-}
-
-// 玩家管理
-void GameManager::setPlayer(Player* p) {
-    if (player) {
-        // 注销旧的玩家对象
-        unregisterGameObject(player);
+    if (map.find("scale") != map.end()) {
+        scale = map.at("scale").asFloat();
     }
 
-    player = p;
-    if (player) {
-        registerGameObject(player);
-    }
-}
-
-void GameManager::setPlayerInventory(Inventory* inv) {
-    playerInventory = inv;
-}
-
-// 添加金钱
-void GameManager::addMoney(int amount) {
-    if (amount <= 0) return;
-
-    money += amount;
-    CCLOG("Money added: %d. Total: %d", amount, money);
-}
-
-// 花费金钱
-bool GameManager::spendMoney(int amount) {
-    if (amount <= 0) return true;
-
-    if (money >= amount) {
-        money -= amount;
-        CCLOG("Money spent: %d. Remaining: %d", amount, money);
-        return true;
+    // 读取游戏逻辑属性
+    if (map.find("level") != map.end()) {
+        level = map.at("level").asInt();
     }
 
-    CCLOG("Not enough money! Need: %d, Have: %d", amount, money);
-    return false;
-}
-
-// 设置金钱
-void GameManager::setMoney(int amount) {
-    money = std::max(0, amount);
-    CCLOG("Money set to: %d", money);
-}
-
-// 消耗体力
-void GameManager::consumeEnergy(int amount) {
-    if (amount <= 0) return;
-
-    playerEnergy = std::max(0, playerEnergy - amount);
-    CCLOG("Energy consumed: %d. Remaining: %d/%d", amount, playerEnergy, maxPlayerEnergy);
-
-    if (playerEnergy <= 0) {
-        CCLOG("Player is exhausted!");
-        // 可以触发疲劳事件
-    }
-}
-
-// 恢复体力
-void GameManager::restoreEnergy(int amount) {
-    if (amount <= 0) return;
-
-    playerEnergy = std::min(maxPlayerEnergy, playerEnergy + amount);
-    CCLOG("Energy restored: %d. Now: %d/%d", amount, playerEnergy, maxPlayerEnergy);
-}
-
-// 设置最大体力
-void GameManager::setMaxEnergy(int max) {
-    maxPlayerEnergy = std::max(1, max);
-    if (playerEnergy > maxPlayerEnergy) {
-        playerEnergy = maxPlayerEnergy;
-    }
-}
-
-// 农场管理
-void GameManager::addFarmTile(FarmlandTile* tile) {
-    if (!tile) return;
-
-    auto it = std::find(farmTiles.begin(), farmTiles.end(), tile);
-    if (it == farmTiles.end()) {
-        farmTiles.push_back(tile);
-        registerGameObject(tile);
-        CCLOG("Farm tile added. Total tiles: %d", (int)farmTiles.size());
-    }
-}
-
-void GameManager::removeFarmTile(FarmlandTile* tile) {
-    if (!tile) return;
-
-    auto it = std::find(farmTiles.begin(), farmTiles.end(), tile);
-    if (it != farmTiles.end()) {
-        farmTiles.erase(it);
-        unregisterGameObject(tile);
-        CCLOG("Farm tile removed. Total tiles: %d", (int)farmTiles.size());
-    }
-}
-
-FarmlandTile* GameManager::getFarmTileAtPosition(const Vec2& pos) const {
-    for (auto tile : farmTiles) {
-        if (tile->containsPoint(pos)) {
-            return tile;
-        }
-    }
-    return nullptr;
-}
-
-// 更新农场地块（每日）
-void GameManager::updateFarmTiles() {
-    CCLOG("Updating farm tiles...");
-
-    for (auto tile : farmTiles) {
-        tile->onDayPassed();
+    if (map.find("experience") != map.end()) {
+        experience = map.at("experience").asInt();
     }
 
-    CCLOG("Farm tiles updated");
-}
-
-// 动物管理
-void GameManager::addAnimal(Animal* animal) {
-    if (!animal) return;
-
-    auto it = std::find(animals.begin(), animals.end(), animal);
-    if (it == animals.end()) {
-        animals.push_back(animal);
-        registerGameObject(animal);
-        CCLOG("Animal added: %s. Total animals: %d",
-            animal->getName().c_str(), (int)animals.size());
-    }
-}
-
-void GameManager::removeAnimal(Animal* animal) {
-    if (!animal) return;
-
-    auto it = std::find(animals.begin(), animals.end(), animal);
-    if (it != animals.end()) {
-        animals.erase(it);
-        unregisterGameObject(animal);
-        CCLOG("Animal removed: %s. Total animals: %d",
-            animal->getName().c_str(), (int)animals.size());
-    }
-}
-
-// 更新动物（每日）
-void GameManager::updateAnimals() {
-    CCLOG("Updating animals...");
-
-    for (auto animal : animals) {
-        animal->update();
+    if (map.find("maxExperience") != map.end()) {
+        maxExperience = map.at("maxExperience").asInt();
     }
 
-    CCLOG("Animals updated");
-}
-
-// NPC管理
-void GameManager::addNPC(NPC* npc) {
-    if (!npc) return;
-
-    auto it = std::find(npcs.begin(), npcs.end(), npc);
-    if (it == npcs.end()) {
-        npcs.push_back(npc);
-        registerGameObject(npc);
-        CCLOG("NPC added: %s. Total NPCs: %d",
-            npc->getName().c_str(), (int)npcs.size());
-    }
-}
-
-NPC* GameManager::getNPCByName(const std::string& name) const {
-    for (auto npc : npcs) {
-        if (npc->getName() == name) {
-            return npc;
-        }
-    }
-    return nullptr;
-}
-
-// 游戏对象管理
-void GameManager::registerGameObject(GameObject* obj) {
-    if (!obj) return;
-
-    std::string id = obj->getId();
-    if (gameObjects.find(id) == gameObjects.end()) {
-        gameObjects[id] = obj;
-        CCLOG("GameObject registered: %s (%s)",
-            obj->getName().c_str(), id.c_str());
-    }
-}
-
-void GameManager::unregisterGameObject(GameObject* obj) {
-    if (!obj) return;
-
-    std::string id = obj->getId();
-    auto it = gameObjects.find(id);
-    if (it != gameObjects.end()) {
-        gameObjects.erase(it);
-        CCLOG("GameObject unregistered: %s (%s)",
-            obj->getName().c_str(), id.c_str());
-    }
-}
-
-GameObject* GameManager::getGameObjectById(const std::string& id) const {
-    auto it = gameObjects.find(id);
-    if (it != gameObjects.end()) {
-        return it->second;
-    }
-    return nullptr;
-}
-
-GameObject* GameManager::findGameObjectByName(const std::string& name) const {
-    for (auto& pair : gameObjects) {
-        if (pair.second->getName() == name) {
-            return pair.second;
-        }
-    }
-    return nullptr;
-}
-
-// 技能系统
-void GameManager::addSkillExperience(const std::string& skill, int exp) {
-    if (exp <= 0) return;
-
-    skillExp[skill] += exp;
-
-    // 检查升级
-    int currentLevel = getSkillLevel(skill);
-    int expForNextLevel = currentLevel * 100;
-
-    if (skillExp[skill] >= expForNextLevel) {
-        skills[skill] = currentLevel + 1;
-        skillExp[skill] -= expForNextLevel;
-
-        CCLOG("Skill %s leveled up to %d!", skill.c_str(), skills[skill]);
-    }
-}
-
-int GameManager::getSkillLevel(const std::string& skill) const {
-    auto it = skills.find(skill);
-    if (it != skills.end()) {
-        return it->second;
-    }
-    return 0;
-}
-
-int GameManager::getSkillExperience(const std::string& skill) const {
-    auto it = skillExp.find(skill);
-    if (it != skillExp.end()) {
-        return it->second;
-    }
-    return 0;
-}
-
-void GameManager::setSkillLevel(const std::string& skill, int level) {
-    if (level < 0) level = 0;
-    skills[skill] = level;
-    skillExp[skill] = 0;
-}
-
-bool GameManager::hasSkill(const std::string& skill) const {
-    return skills.find(skill) != skills.end();
-}
-
-// 任务系统
-void GameManager::addQuest(Quest* quest) {
-    if (!quest) return;
-
-    // 检查是否已经存在
-    for (auto q : activeQuests) {
-        if (q->getId() == quest->getId()) {
-            return;
-        }
+    if (map.find("durability") != map.end()) {
+        durability = map.at("durability").asInt();
     }
 
-    activeQuests.push_back(quest);
-    CCLOG("Quest added: %s", quest->getTitle().c_str());
-}
-
-void GameManager::completeQuest(const std::string& questId) {
-    for (auto it = activeQuests.begin(); it != activeQuests.end(); ++it) {
-        if ((*it)->getId() == questId) {
-            Quest* quest = *it;
-            quest->complete();
-            completedQuests.push_back(quest);
-            activeQuests.erase(it);
-
-            CCLOG("Quest completed: %s", quest->getTitle().c_str());
-
-            // 给予奖励
-            quest->giveRewards();
-
-            return;
-        }
-    }
-}
-
-bool GameManager::isQuestActive(const std::string& questId) const {
-    for (auto quest : activeQuests) {
-        if (quest->getId() == questId) {
-            return true;
-        }
-    }
-    return false;
-}
-
-bool GameManager::isQuestCompleted(const std::string& questId) const {
-    for (auto quest : completedQuests) {
-        if (quest->getId() == questId) {
-            return true;
-        }
-    }
-    return false;
-}
-
-// 节日和事件
-void GameManager::scheduleEvent(GameEvent* event) {
-    if (!event) return;
-
-    scheduledEvents.push_back(event);
-    CCLOG("Event scheduled: %s", event->getName().c_str());
-}
-
-void GameManager::triggerFestival(const std::string& festivalName) {
-    festivalFlags[festivalName] = true;
-    CCLOG("Festival triggered: %s", festivalName.c_str());
-
-    // 可以在这里添加节日特定的逻辑
-}
-
-bool GameManager::isFestivalActive(const std::string& festivalName) const {
-    auto it = festivalFlags.find(festivalName);
-    if (it != festivalFlags.end()) {
-        return it->second;
-    }
-    return false;
-}
-
-void GameManager::endFestival(const std::string& festivalName) {
-    festivalFlags[festivalName] = false;
-    CCLOG("Festival ended: %s", festivalName.c_str());
-}
-
-// 天气系统
-void GameManager::setWeather(const std::string& weather) {
-    currentWeather = weather;
-    CCLOG("Weather changed to: %s", weather.c_str());
-
-    // 根据天气调整温度
-    if (weather == "Sunny") {
-        temperature = 25.0f;
-    }
-    else if (weather == "Rainy") {
-        temperature = 18.0f;
-    }
-    else if (weather == "Snowy") {
-        temperature = -5.0f;
-    }
-    else if (weather == "Stormy") {
-        temperature = 15.0f;
-    }
-}
-
-void GameManager::generateTomorrowWeather() {
-    // 简单的随机天气生成
-    const std::vector<std::string> possibleWeathers = {
-        "Sunny", "Sunny", "Sunny", "Cloudy", "Rainy", "Stormy"
-    };
-
-    // 根据季节调整概率
-    int randomIndex = rand() % possibleWeathers.size();
-    tomorrowWeather = possibleWeathers[randomIndex];
-
-    CCLOG("Tomorrow's weather will be: %s", tomorrowWeather.c_str());
-}
-
-// 经济系统
-int GameManager::calculateSellPrice(Item* item) const {
-    if (!item) return 0;
-
-    int basePrice = item->getSellPrice();
-    float multiplier = 1.0f;
-
-    // 技能加成
-    if (item->getType() == GameObject::Type::CROP) {
-        multiplier += getSkillLevel("Farming") * 0.05f; // 每级农业技能+5%
+    if (map.find("maxDurability") != map.end()) {
+        maxDurability = map.at("maxDurability").asInt();
     }
 
-    // 品质加成（如果有）
-    // multiplier += item->getQuality() * 0.1f;
+    // 更新显示
+    updateTransform();
+    setActive(isActive);
 
-    // 节日加成（如果有）
-    if (isFestivalActive("HarvestFestival")) {
-        multiplier += 0.2f; // 丰收节期间+20%
-    }
-
-    return static_cast<int>(basePrice * multiplier);
-}
-
-void GameManager::sellItem(Item* item, int quantity) {
-    if (!item || quantity <= 0) return;
-
-    int price = calculateSellPrice(item) * quantity;
-    addMoney(price);
-
-    CCLOG("Sold %d x %s for %d gold", quantity, item->getName().c_str(), price);
-}
-
-void GameManager::processShippingBox() {
-    // 处理出货箱中的物品
-    // 这里需要与Inventory系统集成
-    CCLOG("Processing shipping box...");
-
-    // 在实际实现中，这里会遍历出货箱中的所有物品并出售
-}
-
-// 保存游戏
-bool GameManager::saveGame(const std::string& filename) {
-    std::string saveFile = filename.empty() ? saveFileName : filename;
-
-    CCLOG("Saving game to: %s", saveFile.c_str());
-
-    ValueMap gameData = serializeGameData();
-
-    // 使用UserDefault保存（Cocos2d-x的简单保存方式）
-    auto userDefault = UserDefault::getInstance();
-
-    // 保存基本数据
-    userDefault->setIntegerForKey("year", currentTime.year);
-    userDefault->setIntegerForKey("season", currentTime.season);
-    userDefault->setIntegerForKey("day", currentTime.day);
-    userDefault->setIntegerForKey("hour", currentTime.hour);
-    userDefault->setIntegerForKey("minute", currentTime.minute);
-
-    userDefault->setIntegerForKey("money", money);
-    userDefault->setIntegerForKey("energy", playerEnergy);
-    userDefault->setIntegerForKey("maxEnergy", maxPlayerEnergy);
-
-    // 保存技能
-    for (auto& skill : skills) {
-        std::string key = "skill_" + skill.first;
-        userDefault->setIntegerForKey(key.c_str(), skill.second);
-    }
-
-    userDefault->flush();
-
-    CCLOG("Game saved successfully");
     return true;
 }
 
-// 加载游戏
-bool GameManager::loadGame(const std::string& filename) {
-    std::string loadFile = filename.empty() ? saveFileName : filename;
-
-    CCLOG("Loading game from: %s", loadFile.c_str());
-
-    auto userDefault = UserDefault::getInstance();
-
-    // 加载基本数据
-    currentTime.year = userDefault->getIntegerForKey("year", 1);
-    currentTime.season = userDefault->getIntegerForKey("season", 0);
-    currentTime.day = userDefault->getIntegerForKey("day", 1);
-    currentTime.hour = userDefault->getIntegerForKey("hour", 6);
-    currentTime.minute = userDefault->getIntegerForKey("minute", 0);
-
-    money = userDefault->getIntegerForKey("money", 500);
-    playerEnergy = userDefault->getIntegerForKey("energy", 100);
-    maxPlayerEnergy = userDefault->getIntegerForKey("maxEnergy", 100);
-
-    CCLOG("Game loaded successfully. Current time: %s", getTimeString().c_str());
-    return true;
-}
-
-// 自动保存
-void GameManager::autoSave() {
-    CCLOG("Auto-saving game...");
-    saveGame("autosave.dat");
-}
-
-// 获取保存文件列表
-std::vector<std::string> GameManager::getSaveFiles() const {
-    std::vector<std::string> saveFiles;
-
-    // 在实际实现中，这里会扫描保存目录
-    saveFiles.push_back("save1.dat");
-    saveFiles.push_back("save2.dat");
-    saveFiles.push_back("save3.dat");
-    saveFiles.push_back("autosave.dat");
-
-    return saveFiles;
-}
-
-// 注册回调
-void GameManager::registerTimeCallback(const TimeChangeCallback& callback) {
-    timeCallbacks.push_back(callback);
-}
-
-void GameManager::registerSeasonCallback(const SeasonChangeCallback& callback) {
-    seasonCallbacks.push_back(callback);
-}
-
-void GameManager::registerStateCallback(const GameStateChangeCallback& callback) {
-    stateCallbacks.push_back(callback);
-}
-
-// 季节转字符串
-std::string GameManager::seasonToString(Season season) {
-    switch (season) {
-        case Season::SPRING: return "Spring";
-        case Season::SUMMER: return "Summer";
-        case Season::AUTUMN: return "Autumn";
-        case Season::WINTER: return "Winter";
+// 类型转字符串
+std::string GameObject::typeToString(Type type) {
+    switch (type) {
+        case Type::UNDEFINED: return "Undefined";
+        case Type::ITEM: return "Item";
+        case Type::CROP: return "Crop";
+        case Type::ANIMAL: return "Animal";
+        case Type::FARM_TILE: return "FarmTile";
+        case Type::NPC: return "NPC";
+        case Type::PLAYER: return "Player";
+        case Type::BUILDING: return "Building";
+        case Type::TOOL: return "Tool";
         default: return "Unknown";
     }
 }
 
-// 字符串转季节
-Season GameManager::stringToSeason(const std::string& seasonStr) {
-    if (seasonStr == "Spring") return Season::SPRING;
-    if (seasonStr == "Summer") return Season::SUMMER;
-    if (seasonStr == "Autumn") return Season::AUTUMN;
-    if (seasonStr == "Winter") return Season::WINTER;
-    return Season::SPRING; // 默认
+// 字符串转类型
+GameObject::Type GameObject::stringToType(const std::string& typeStr) {
+    if (typeStr == "Item") return Type::ITEM;
+    if (typeStr == "Crop") return Type::CROP;
+    if (typeStr == "Animal") return Type::ANIMAL;
+    if (typeStr == "FarmTile") return Type::FARM_TILE;
+    if (typeStr == "NPC") return Type::NPC;
+    if (typeStr == "Player") return Type::PLAYER;
+    if (typeStr == "Building") return Type::BUILDING;
+    if (typeStr == "Tool") return Type::TOOL;
+    return Type::UNDEFINED;
 }
 
-// 游戏状态转字符串
-std::string GameManager::gameStateToString(GameState state) {
-    switch (state) {
-        case GameState::TITLE_SCREEN: return "Title Screen";
-        case GameState::PLAYING: return "Playing";
-        case GameState::PAUSED: return "Paused";
-        case GameState::DIALOGUE: return "Dialogue";
-        case GameState::MENU: return "Menu";
-        case GameState::GAME_OVER: return "Game Over";
-        case GameState::SAVING: return "Saving";
-        case GameState::LOADING: return "Loading";
-        default: return "Unknown";
+// 设置交互回调
+void GameObject::setOnInteractCallback(const GameObjectCallback& callback) {
+    onInteractCallback = callback;
+}
+
+// 设置点击回调
+void GameObject::setOnClickCallback(const GameObjectCallback& callback) {
+    onClickCallback = callback;
+}
+
+// 设置默认精灵
+void GameObject::setupDefaultSprite() {
+    if (objectSprite) return;
+
+    // 根据类型创建不同的默认精灵
+    std::string filename;
+    switch (objectType) {
+        case Type::ITEM:
+            filename = "icon/allScreenButton.png";
+            break;
+        case Type::CROP:
+            filename = "plants/grass.png";
+            break;
+        case Type::ANIMAL:
+            filename = "Animal/Chicken.png";
+            break;
+        case Type::FARM_TILE:
+            filename = "plants/grass.png";
+            break;
+        default:
+            filename = "icon/allScreenButton.png";
     }
+
+    setSpriteWithFile(filename);
 }
 
-// 调试功能
-void GameManager::debugPrintStatus() const {
-    CCLOG("=== GAME STATUS ===");
-    CCLOG("Time: %s", getTimeString().c_str());
-    CCLOG("Money: %d", money);
-    CCLOG("Energy: %d/%d", playerEnergy, maxPlayerEnergy);
-    CCLOG("Farm Tiles: %d", (int)farmTiles.size());
-    CCLOG("Animals: %d", (int)animals.size());
-    CCLOG("NPCs: %d", (int)npcs.size());
-    CCLOG("Active Quests: %d", (int)activeQuests.size());
-    CCLOG("===================");
-}
+// 更新变换
+void GameObject::updateTransform() {
+    this->Node::setPosition(position);
+    this->Node::setRotation(rotation);
+    this->Node::setScale(scale);
 
-void GameManager::cheatAddMoney(int amount) {
-    addMoney(amount);
-    CCLOG("CHEAT: Added %d money", amount);
-}
-
-void GameManager::cheatSetTime(int hour, int minute) {
-    currentTime.hour = hour % 24;
-    currentTime.minute = minute % 60;
-    CCLOG("CHEAT: Time set to %02d:%02d", hour, minute);
-}
-
-// 私有方法实现
-void GameManager::notifyTimeChanged() {
-    for (auto& callback : timeCallbacks) {
-        callback(currentTime);
-    }
-}
-
-void GameManager::notifySeasonChanged(Season newSeason) {
-    for (auto& callback : seasonCallbacks) {
-        callback(newSeason);
-    }
-}
-
-void GameManager::notifyStateChanged(GameState oldState, GameState newState) {
-    for (auto& callback : stateCallbacks) {
-        callback(oldState, newState);
+    if (objectSprite) {
+        objectSprite->setContentSize(size);
     }
 }
 
-// 处理每日事件
-void GameManager::processDailyEvents() {
-    CCLOG("Processing daily events...");
-
-    // 更新农场
-    updateFarmTiles();
-
-    // 更新动物
-    updateAnimals();
-
-    // 恢复玩家体力
-    restoreEnergy(maxPlayerEnergy);
-
-    // 处理出货箱
-    processShippingBox();
-
-    // 更新天气
-    currentWeather = tomorrowWeather;
-    generateTomorrowWeather();
-
-    // 检查节日
-    checkForFestivals();
-
-    CCLOG("Daily events processed");
-}
-
-// 处理每小时事件
-void GameManager::processHourlyEvents() {
-    // 每小时恢复少量体力
-    if (playerEnergy < maxPlayerEnergy) {
-        restoreEnergy(5);
-    }
-
-    // 可以在这里添加其他每小时逻辑
-}
-
-// 更新天气
-void GameManager::updateWeather() {
-    // 简单的天气变化逻辑
-    int random = rand() % 100;
-
-    if (random < 5) { // 5% chance to change weather
-        std::vector<std::string> weathers = { "Sunny", "Cloudy", "Rainy", "Stormy" };
-        int index = rand() % weathers.size();
-        setWeather(weathers[index]);
-    }
-}
-
-// 初始化默认技能
-void GameManager::initializeDefaultSkills() {
-    skills["Farming"] = 1;
-    skills["Mining"] = 1;
-    skills["Fishing"] = 1;
-    skills["Foraging"] = 1;
-    skills["Combat"] = 1;
-
-    skillExp["Farming"] = 0;
-    skillExp["Mining"] = 0;
-    skillExp["Fishing"] = 0;
-    skillExp["Foraging"] = 0;
-    skillExp["Combat"] = 0;
-}
-
-// 初始化默认节日
-void GameManager::initializeDefaultFestivals() {
-    festivalFlags["SpringFestival"] = false;
-    festivalFlags["HarvestFestival"] = false;
-    festivalFlags["WinterStar"] = false;
-}
-
-// 清空所有数据
-void GameManager::clearAllData() {
-    // 清理农场地块
-    for (auto tile : farmTiles) {
-        delete tile;
-    }
-    farmTiles.clear();
-
-    // 清理动物
-    for (auto animal : animals) {
-        delete animal;
-    }
-    animals.clear();
-
-    // 清理NPC
-    for (auto npc : npcs) {
-        delete npc;
-    }
-    npcs.clear();
-
-    // 清理任务
-    for (auto quest : activeQuests) {
-        delete quest;
-    }
-    activeQuests.clear();
-
-    for (auto quest : completedQuests) {
-        delete quest;
-    }
-    completedQuests.clear();
-
-    // 清理事件
-    for (auto event : scheduledEvents) {
-        delete event;
-    }
-    scheduledEvents.clear();
-
-    // 清空游戏对象映射（不删除，因为它们可能已被删除）
-    gameObjects.clear();
-
-    // 重置玩家引用
-    player = nullptr;
-    playerInventory = nullptr;
-}
-
-// 重置游戏
-void GameManager::resetGame() {
-    CCLOG("Resetting game...");
-
-    clearAllData();
-
-    // 重置时间
-    currentTime = GameTime();
-
-    // 重置玩家数据
-    money = 500;
-    playerEnergy = 100;
-    maxPlayerEnergy = 100;
-
-    // 重置技能
-    initializeDefaultSkills();
-
-    // 重置节日
-    initializeDefaultFestivals();
-
-    // 重置天气
-    currentWeather = "Sunny";
-    generateTomorrowWeather();
-
-    // 重置状态
-    gameState = GameState::TITLE_SCREEN;
-    isGameOver = false;
-
-    CCLOG("Game reset complete");
-}
-
-// 序列化游戏数据
-ValueMap GameManager::serializeGameData() const {
-    ValueMap data;
-
-    // 时间数据
-    ValueMap timeData;
-    timeData["year"] = currentTime.year;
-    timeData["season"] = currentTime.season;
-    timeData["day"] = currentTime.day;
-    timeData["hour"] = currentTime.hour;
-    timeData["minute"] = currentTime.minute;
-    data["time"] = timeData;
-
-    // 玩家数据
-    data["money"] = money;
-    data["energy"] = playerEnergy;
-    data["maxEnergy"] = maxPlayerEnergy;
-
-    // 技能数据
-    ValueMap skillData;
-    for (auto& skill : skills) {
-        skillData[skill.first] = skill.second;
-    }
-    data["skills"] = skillData;
-
-    // 技能经验数据
-    ValueMap expData;
-    for (auto& exp : skillExp) {
-        expData[exp.first] = exp.second;
-    }
-    data["skillExperience"] = expData;
-
-    // 节日数据
-    ValueMap festivalData;
-    for (auto& festival : festivalFlags) {
-        festivalData[festival.first] = festival.second;
-    }
-    data["festivals"] = festivalData;
-
-    return data;
-}
-
-// 反序列化游戏数据
-bool GameManager::deserializeGameData(const ValueMap& data) {
-    // 时间数据
-    if (data.find("time") != data.end()) {
-        ValueMap timeData = data.at("time").asValueMap();
-        currentTime.year = timeData["year"].asInt();
-        currentTime.season = timeData["season"].asInt();
-        currentTime.day = timeData["day"].asInt();
-        currentTime.hour = timeData["hour"].asInt();
-        currentTime.minute = timeData["minute"].asInt();
-    }
-
-    // 玩家数据
-    if (data.find("money") != data.end()) {
-        money = data.at("money").asInt();
-    }
-
-    if (data.find("energy") != data.end()) {
-        playerEnergy = data.at("energy").asInt();
-    }
-
-    if (data.find("maxEnergy") != data.end()) {
-        maxPlayerEnergy = data.at("maxEnergy").asInt();
-    }
-
-    // 技能数据
-    if (data.find("skills") != data.end()) {
-        ValueMap skillData = data.at("skills").asValueMap();
-        for (auto& pair : skillData) {
-            skills[pair.first] = pair.second.asInt();
-        }
-    }
-
-    // 技能经验数据
-    if (data.find("skillExperience") != data.end()) {
-        ValueMap expData = data.at("skillExperience").asValueMap();
-        for (auto& pair : expData) {
-            skillExp[pair.first] = pair.second.asInt();
-        }
-    }
-
-    // 节日数据
-    if (data.find("festivals") != data.end()) {
-        ValueMap festivalData = data.at("festivals").asValueMap();
-        for (auto& pair : festivalData) {
-            festivalFlags[pair.first] = pair.second.asBool();
-        }
-    }
-
-    return true;
-}
-
-// 检查新的一天
-void GameManager::checkForNewDay() {
-    CCLOG("New day: %s", getDateString().c_str());
-
-    // 每日自动保存
-    if (currentTime.day % 5 == 0) { // 每5天自动保存一次
-        autoSave();
-    }
-}
-
-// 检查新季节
-void GameManager::checkForNewSeason() {
-    CCLOG("New season: %s", seasonToString(getCurrentSeason()).c_str());
-
-    // 季节变化时重置一些东西
-    generateTomorrowWeather();
-
-    // 检查季节特定的节日
-    Season current = getCurrentSeason();
-    if (current == Season::SPRING && currentTime.day == 15) {
-        triggerFestival("SpringFestival");
-    }
-    else if (current == Season::AUTUMN && currentTime.day == 25) {
-        triggerFestival("HarvestFestival");
-    }
-    else if (current == Season::WINTER && currentTime.day == 25) {
-        triggerFestival("WinterStar");
-    }
-}
-
-// 检查节日
-void GameManager::checkForFestivals() {
-    // 在实际实现中，这里会根据日期检查是否有节日
-    // 并触发相应的节日事件
-}
-
-// 计算技能价格加成
-int GameManager::calculateSkillPriceBonus(const std::string& relevantSkill) const {
-    int level = getSkillLevel(relevantSkill);
-    return level * 5; // 每级技能+5%价格
+// 应用物理（如果需要）
+void GameObject::applyPhysicsIfNeeded() {
+    // 这里可以添加物理引擎的集成
+    // 例如：if (needsPhysics) { addPhysicsBody(); }
 }
