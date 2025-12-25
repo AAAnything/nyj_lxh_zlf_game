@@ -48,12 +48,12 @@ endif()
 
 # add cross-platforms source files and header files 
 list(APPEND GAME_SOURCE
-     Classes/AppDelegate.cpp
-     Classes/HelloWorldScene.cpp
+     Classes/Core/AppDelegate.cpp
+     Classes/Core/MainMenuScene.cpp
      )
 list(APPEND GAME_HEADER
-     Classes/AppDelegate.h
-     Classes/HelloWorldScene.h
+     Classes/Core/AppDelegate.h
+     Classes/Core/MainMenuScene.h
      )
 
 if(ANDROID)
@@ -114,7 +114,7 @@ set(all_code_files
     ${GAME_SOURCE}
     )
 if(NOT ANDROID)
-    add_executable(${APP_NAME} ${all_code_files})
+    add_executable(${APP_NAME} ${all_code_files} "Classes/Core/GameManager.cpp" "Classes/Crop/Դ1.cpp")
 else()
     add_library(${APP_NAME} SHARED ${all_code_files})
     add_subdirectory(${COCOS2DX_ROOT_PATH}/cocos/platform/android ${ENGINE_BINARY_PATH}/cocos/platform)
@@ -149,3 +149,4 @@ if(LINUX OR WINDOWS)
     set(APP_RES_DIR "$<TARGET_FILE_DIR:${APP_NAME}>/Resources")
     cocos_copy_target_res(${APP_NAME} COPY_TO ${APP_RES_DIR} FOLDERS ${GAME_RES_FOLDER})
 endif()
+

@@ -1,1 +1,3 @@
 D:\AAAschool\coding\craft\ProgrammingParadigm\nyj_lxh_zlf_game\proj.win32\Debug.win32\nyj_lxh_zlf_game.exe
+D:\NewTryGame\proj.win32\Debug.win32\nyj_lxh_zlf_game.exe
+C:\Users\emma\Documents\nyj_lxh_zlf_game\proj.win32\Debug.win32\nyj_lxh_zlf_game.exe
