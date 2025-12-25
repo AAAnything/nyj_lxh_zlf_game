@@ -1,5 +1,7 @@
 #include "MainMenuScene.h"
 #include "SimpleAudioEngine.h"
+#include "NPC\NPCTestScene.h"
+#include "NPC\NPC.h"
 
 USING_NS_CC;
 
@@ -106,8 +108,23 @@ bool MainMenu::init()
 
 
 
+   
+   
+
+    // 这个是测试，待会儿要删掉
+    // 在init()函数中添加NPC测试按钮
+    auto npcTestButton = MenuItemImage::create(
+        "icon/versionButton.png",
+        "icon/versionButtonOn.png",
+        CC_CALLBACK_1(MainMenu::goToNPCTestScene, this));
+
+    npcTestButton->setPosition(Vec2(developerX, developerY+200));
+
+   
+
+
     // 7. 创建菜单并添加所有按钮
-    auto menu = Menu::create(newGameBtn, loadBtn, coopBtn, exitBtn, developerBtn, nullptr);
+    auto menu = Menu::create(newGameBtn, loadBtn, coopBtn, exitBtn, developerBtn, npcTestButton, nullptr);
     menu->setPosition(Vec2::ZERO);
     this->addChild(menu, 1);
    
@@ -120,5 +137,19 @@ bool MainMenu::init()
 void MainMenu::menuCloseCallback(Ref* pSender)
 {
     Director::getInstance()->end();
+}
+
+
+
+// 测试：NPC交互的可视化输出
+//             Director::getInstance()：获取游戏导演实例（单例）,导演控制整个游戏的场景切换、渲染等
+//                      replaceScene()：替换当前场景为新场景
+// TransitionFade::create(0.5f, scene)：创建一个淡入淡出的过渡效果参数 
+//                                      0.5f = 过渡时间0.5秒参数 
+//                                      scene = 要切换到的新场景
+void MainMenu::goToNPCTestScene(Ref* pSender)
+{
+    auto scene = NPCTestScene::createScene();
+    Director::getInstance()->replaceScene(TransitionFade::create(0.5f, scene));
 }
 

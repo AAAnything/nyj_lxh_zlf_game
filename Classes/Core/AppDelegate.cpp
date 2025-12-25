@@ -1,7 +1,6 @@
 #include "AppDelegate.h"
 #include "MainMenuScene.h"
 
-// 用于音频引擎选择
 // #define USE_AUDIO_ENGINE 1
 // #define USE_SIMPLE_AUDIO_ENGINE 1
 
@@ -19,7 +18,7 @@ using namespace CocosDenshion;
 
 USING_NS_CC;
 
-static cocos2d::Size designResolutionSize = cocos2d::Size(1280, 720); // 设计分辨率，窗口大小
+static cocos2d::Size designResolutionSize = cocos2d::Size(1280, 720); // ?????????????С
 static cocos2d::Size smallResolutionSize = cocos2d::Size(480, 320);
 static cocos2d::Size mediumResolutionSize = cocos2d::Size(1024, 768);
 static cocos2d::Size largeResolutionSize = cocos2d::Size(2048, 1536);
@@ -37,7 +36,7 @@ AppDelegate::~AppDelegate()
 #endif
 }
 
-// 如果你想使用包管理器安装更多的包，请不要修改或删除此函数
+
 void AppDelegate::initGLContextAttrs()
 {
     // set OpenGL context attributes: red,green,blue,alpha,depth,stencil,multisamplesCount
@@ -66,29 +65,29 @@ bool AppDelegate::applicationDidFinishLaunching() {
         director->setOpenGLView(glview);
     }
 
-	// 显示每秒帧数
-	director->setDisplayStats(true); // false 不显示，true 显示
+	
+	director->setDisplayStats(true); 
 
-	// 设置每秒帧数。如果你不调用此函数，默认值是1.0/60。
+	
     director->setAnimationInterval(1.0f / 60);
 
-	// 设置设计分辨率
+	
     glview->setDesignResolutionSize(designResolutionSize.width, 
         designResolutionSize.height, ResolutionPolicy::SHOW_ALL);
     
 #if 0
     auto frameSize = glview->getFrameSize();
-	// 如果帧的高度大于中等大小的高度
+	
     if (frameSize.height > mediumResolutionSize.height)
     {        
         director->setContentScaleFactor(MIN(largeResolutionSize.height/designResolutionSize.height, largeResolutionSize.width/designResolutionSize.width));
     }
-	// 如果帧的高度大于小尺寸的高度。
+	
     else if (frameSize.height > smallResolutionSize.height)
     {        
         director->setContentScaleFactor(MIN(mediumResolutionSize.height/designResolutionSize.height, mediumResolutionSize.width/designResolutionSize.width));
     }
-	// 如果帧的高度小于中等大小的高度。
+	
     else
     {        
         director->setContentScaleFactor(MIN(smallResolutionSize.height/designResolutionSize.height, smallResolutionSize.width/designResolutionSize.width));
