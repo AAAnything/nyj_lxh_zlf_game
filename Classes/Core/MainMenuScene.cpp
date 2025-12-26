@@ -119,7 +119,7 @@ bool MainMenu::init()
     auto npcBtn = MenuItemImage::create(
         "icon/versionButton.png",
         "icon/versionButtonOn.png",
-        CC_CALLBACK_1(MainMenu::menuCloseCallback, this));  // 建议用不同回调函数
+        CC_CALLBACK_1(MainMenu::menuNPCTestCallback, this));  // 建议用不同回调函数
     npcBtn->setPosition(Vec2(developerX, developerY+200));
 
 
@@ -139,5 +139,24 @@ bool MainMenu::init()
 void MainMenu::menuCloseCallback(Ref* pSender)
 {
     Director::getInstance()->end();
+}
+
+
+
+// NPC测试按钮回调函数
+void MainMenu::menuNPCTestCallback(cocos2d::Ref* pSender)
+{
+    CCLOG("切换到NPC测试场景");
+
+    // 切换到NPCTestScene
+    auto scene = NPCTestScene::createScene();
+    if (scene)
+    {
+        Director::getInstance()->replaceScene(TransitionFade::create(0.5f, scene));
+    }
+    else
+    {
+        CCLOG("错误：无法创建NPC测试场景");
+    }
 }
 
