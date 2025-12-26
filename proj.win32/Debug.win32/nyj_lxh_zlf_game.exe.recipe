@@ -2,10 +2,10 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>D:\AAAschool\coding\craft\ProgrammingParadigm\nyj_lxh_zlf_game\proj.win32\Debug.win32\libcocos2d.dll</FullPath>
+      <FullPath>D:\NewTryGame\proj.win32\Debug.win32\libcocos2d.dll</FullPath>
     </ProjectOutput>
     <ProjectOutput>
-      <FullPath>D:\AAAschool\coding\craft\ProgrammingParadigm\nyj_lxh_zlf_game\proj.win32\Debug.win32\nyj_lxh_zlf_game.exe</FullPath>
+      <FullPath>D:\NewTryGame\proj.win32\Debug.win32\nyj_lxh_zlf_game.exe</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />
