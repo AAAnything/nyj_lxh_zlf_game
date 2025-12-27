@@ -19,12 +19,64 @@ void MainMenu::menuNewGameCallback(cocos2d::Ref* pSender)
     // 播放按钮点击音效
     AudioManager::getInstance()->playButtonClickSound();
 
-    // 播放主菜单背景音乐
+    // 播放游戏界面背景音乐
     AudioManager::getInstance()->playGameMusic();
 
 
     // 通过MenuManager切换到游戏主场景
     MenuManager::getInstance()->goToGameScene();
+}
+
+
+
+// 加载按钮回调函数
+void MainMenu::menuLoadGameCallback(cocos2d::Ref* pSender)
+{
+    // 播放按钮点击音效
+    AudioManager::getInstance()->playButtonClickSound();
+
+    // 播放游戏界面背景音乐
+    AudioManager::getInstance()->playGameMusic();
+
+    // 这里调用你的存储加载逻辑
+    // CollectSaveManager::getInstance()->loadFromFile();
+
+    // 切换到游戏场景
+    MenuManager::getInstance()->goToGameScene();
+}
+
+
+
+// 退出按钮回调函数
+void MainMenu::menuCloseCallback(Ref* pSender)
+{
+    // 播放按钮点击音效
+    AudioManager::getInstance()->playButtonClickSound();
+
+    Sleep(500);
+
+    Director::getInstance()->end();
+}
+
+
+
+// NPC测试按钮回调函数
+void MainMenu::menuNPCTestCallback(cocos2d::Ref* pSender)
+{
+    // 播放按钮点击音效
+    AudioManager::getInstance()->playButtonClickSound();
+
+
+    // 切换到NPCTestScene
+    auto scene = NPCTestScene::createScene();
+    if (scene)
+    {
+        Director::getInstance()->replaceScene(TransitionFade::create(0.5f, scene));
+    }
+    else
+    {
+        CCLOG("错误：无法创建NPC测试场景");
+    }
 }
 
 
@@ -81,7 +133,7 @@ bool MainMenu::init()
     auto loadBtn = MenuItemImage::create(
         "icon/loadGameButton.png",
         "icon/loadGameButtonOn.png",
-        CC_CALLBACK_1(MainMenu::menuCloseCallback, this));  // 建议用不同回调函数
+        CC_CALLBACK_1(MainMenu::menuLoadGameCallback, this));  // 建议用不同回调函数
 
     // 设置加载按钮位置
     float loadX = newGameX + visibleSize.width/4;  
@@ -149,36 +201,4 @@ bool MainMenu::init()
     return true;
 }
 
-
-// 用以退出游戏
-void MainMenu::menuCloseCallback(Ref* pSender)
-{
-    // 播放按钮点击音效
-    AudioManager::getInstance()->playButtonClickSound();
-
-    Sleep(500);
-
-    Director::getInstance()->end();
-}
-
-
-
-// NPC测试按钮回调函数
-void MainMenu::menuNPCTestCallback(cocos2d::Ref* pSender)
-{
-    // 播放按钮点击音效
-    AudioManager::getInstance()->playButtonClickSound();
-
-
-    // 切换到NPCTestScene
-    auto scene = NPCTestScene::createScene();
-    if (scene)
-    {
-        Director::getInstance()->replaceScene(TransitionFade::create(0.5f, scene));
-    }
-    else
-    {
-        CCLOG("错误：无法创建NPC测试场景");
-    }
-}
 

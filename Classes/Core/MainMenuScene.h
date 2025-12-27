@@ -20,7 +20,8 @@ public:
     // NPC测试
     void MainMenu::menuNPCTestCallback(cocos2d::Ref* pSender);
 
-
+    // 加载函数按钮回调函数
+    void menuLoadGameCallback(cocos2d::Ref* pSender);
 
     // implement the "static create()" method manually
     CREATE_FUNC(MainMenu);
