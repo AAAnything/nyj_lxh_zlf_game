@@ -52,13 +52,14 @@ list(APPEND GAME_SOURCE
      Classes/Core/MainMenuScene.cpp
      Classes/Core/GameScene.cpp
      Classes/Core/MenuManager.cpp
-     Classes/Core/GameManager.cpp
+     Classes/Core/Player.cpp
      )
 list(APPEND GAME_HEADER
      Classes/Core/AppDelegate.h
      Classes/Core/MainMenuScene.h
      Classes/Core/GameScene.h
      Classes/Core/MenuManager.h
+     Classes/Core/Player.h
      )
 
 if(ANDROID)
@@ -163,6 +164,8 @@ if(LINUX OR WINDOWS)
     set(APP_RES_DIR "$<TARGET_FILE_DIR:${APP_NAME}>/Resources")
     cocos_copy_target_res(${APP_NAME} COPY_TO ${APP_RES_DIR} FOLDERS ${GAME_RES_FOLDER})
 endif()
+
+
 
 
 

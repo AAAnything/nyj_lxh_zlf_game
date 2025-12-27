@@ -155,6 +155,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)\Resources\" /D /E /I /F /Y
 	<ClCompile Include="..\Classes\Core\MenuManager.cpp" />
 	<ClCompile Include="..\Classes\Core\GameScene.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="..\Classes\Core\Player.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Classes\Core\AppDelegate.h" />
@@ -162,6 +163,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)\Resources\" /D /E /I /F /Y
 	<ClInclude Include="..\Classes\Core\MenuManager.h" />
 	<ClInclude Include="..\Classes\Core\GameScene.h" />
     <ClInclude Include="main.h" />
+    <ClInclude Include="..\Classes\Core\Player.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\cocos2d\cocos\2d\libcocos2d.vcxproj">
