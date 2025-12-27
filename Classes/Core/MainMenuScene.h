@@ -20,6 +20,8 @@ public:
     // NPC测试
     void MainMenu::menuNPCTestCallback(cocos2d::Ref* pSender);
 
+
+
     // implement the "static create()" method manually
     CREATE_FUNC(MainMenu);
 };

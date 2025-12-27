@@ -3,6 +3,7 @@
 #include "MenuManager.h"
 #include "NPC\NPC.h"
 #include "NPC\NPCTestScene.h"
+#include "Audio\AudioManager.h"
 
 USING_NS_CC;
 
@@ -11,17 +12,30 @@ Scene* MainMenu::createScene()
     return MainMenu::create();
 }
 
+
 // 新游戏按钮回调函数
 void MainMenu::menuNewGameCallback(cocos2d::Ref* pSender)
 {
+    // 播放按钮点击音效
+    AudioManager::getInstance()->playButtonClickSound();
+
+    // 播放主菜单背景音乐
+    AudioManager::getInstance()->playGameMusic();
+
+
     // 通过MenuManager切换到游戏主场景
     MenuManager::getInstance()->goToGameScene();
 }
+
+
 
 bool MainMenu::init()
 {
     if (!Scene::init())
         return false;
+
+    // 播放主菜单背景音乐
+    AudioManager::getInstance()->playMainMenuMusic();
 
     auto visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
@@ -49,6 +63,7 @@ bool MainMenu::init()
     this->addChild(titleBtn, 1);
 
     
+
     // 2. 创建新游戏按钮
     auto newGameBtn = MenuItemImage::create(
         "icon/newGameButton.png",
@@ -138,6 +153,11 @@ bool MainMenu::init()
 // 用以退出游戏
 void MainMenu::menuCloseCallback(Ref* pSender)
 {
+    // 播放按钮点击音效
+    AudioManager::getInstance()->playButtonClickSound();
+
+    Sleep(500);
+
     Director::getInstance()->end();
 }
 
@@ -146,7 +166,9 @@ void MainMenu::menuCloseCallback(Ref* pSender)
 // NPC测试按钮回调函数
 void MainMenu::menuNPCTestCallback(cocos2d::Ref* pSender)
 {
-    CCLOG("切换到NPC测试场景");
+    // 播放按钮点击音效
+    AudioManager::getInstance()->playButtonClickSound();
+
 
     // 切换到NPCTestScene
     auto scene = NPCTestScene::createScene();
