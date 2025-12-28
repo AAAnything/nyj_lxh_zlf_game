@@ -65,6 +65,17 @@ bool GameScene::init()
 
         CCLOG("Tile map added successfully with scale: %f", desiredScale);
         CCLOG("Map initialized with anchor point: (%f, %f)", tileMap->getAnchorPoint().x, tileMap->getAnchorPoint().y);
+
+        // 可以在这里获取特定的图层和瓦片，用于实现交互功能
+        // 例如：auto groundLayer = tileMap->getLayer("Ground");
+        // auto tileGID = groundLayer->getTileGIDAt(Vec2(tileX, tileY));
+        // auto properties = tileMap->getPropertiesForGID(tileGID).asValueMap();
+
+
+         // 2. 初始化采集管理器
+         //    设置可以采集的物品
+        CollectManager::getInstance()->initialize(tileMap);
+        CCLOG("CollectManager 初始化完成");
     }
     else
     {
@@ -78,6 +89,38 @@ bool GameScene::init()
         this->addChild(placeholder, 1);
 
         CCLOG("Added red placeholder sprite");
+    }
+
+
+    // 3. 创建NPC
+    _npc = NPC::create("npcImages/Haley.png");
+    if (_npc)
+    {
+        _npc->setName("Haley");
+
+        // 设置NPC对话
+        std::vector<std::string> dialogue = {
+            "Hello, welcome to our farm!",
+            "Be careful, there are monsters nearby.",
+            "You can harvest crops by pressing E.",
+            "Good luck!"
+        };
+        _npc->setDialogue(dialogue);
+
+        // 设置NPC初始位置（地图坐标，可根据需要调整）
+        // 这里以地图中心偏移(0, 100)为例，可根据实际地图修改
+        Vec2 npcMapPos = Vec2(mapSize.width / 2, mapSize.height / 2 + 100);
+        // 将地图坐标转换为场景坐标（考虑地图缩放和锚点）
+        Vec2 npcScenePos = tileMap->convertToNodeSpace(npcMapPos);
+        _npc->setPosition(npcScenePos);
+
+        // 添加到地图图层（确保显示在地图上方）
+        tileMap->addChild(_npc, 10);
+
+        // 设置对话结束回调
+        _npc->setDialogueEndCallback([]() {
+            CCLOG("NPC dialogue ended");
+            });
     }
 
     // 创建玩家角色
@@ -115,6 +158,12 @@ bool GameScene::init()
     keyboardListener->onKeyReleased = CC_CALLBACK_2(GameScene::onKeyReleased, this);
     _eventDispatcher->addEventListenerWithSceneGraphPriority(keyboardListener, this);
 
+    // 添加鼠标事件监听器（NPC调用）
+    auto mouseListener = EventListenerMouse::create();
+    mouseListener->onMouseDown = CC_CALLBACK_1(GameScene::onMouseDown, this);
+    _eventDispatcher->addEventListenerWithSceneGraphPriority(mouseListener, this);
+
+
     // 开启更新
     scheduleUpdate();
 
@@ -138,6 +187,15 @@ void GameScene::onKeyReleased(EventKeyboard::KeyCode keyCode, Event* event)
     if (player && player->getParent())
     {
         player->onKeyReleased(keyCode);
+    }
+}
+
+// 处理鼠标点击事件（与NPC有关）
+void GameScene::onMouseDown(cocos2d::Event* event)
+{
+    if (_npc)
+    {
+        _npc->onMouseDown(event);  // 将事件传递给NPC处理
     }
 }
 
