@@ -16,7 +16,6 @@ NPC* NPC::create(const std::string& npcImage)
 }
 
 
-
 // 初始化
 bool NPC::init(const std::string& npcImage)
 {
@@ -32,7 +31,7 @@ bool NPC::init(const std::string& npcImage)
     }
 
     // 初始化变量
-    _name = "NPC";
+    _name = "Haley";
     _currentDialogueIndex = 0;
     _isTalking = false;
 
@@ -68,7 +67,7 @@ void NPC::createUI()
     this->addChild(_dialogueBubble, 3);
 
 
-   
+
     // 2. 创建头像（初始隐藏）
     _headSprite = Sprite::create("npcImages/Haley Talk.png"); 
     float headSpriteX = dialogueBubbleX+373;

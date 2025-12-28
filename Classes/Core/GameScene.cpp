@@ -4,8 +4,6 @@
 #include "Collect/CollectSpot.h"
 
 
-
-
 USING_NS_CC;
 
 Scene* GameScene::createScene()
@@ -98,8 +96,6 @@ bool GameScene::init()
     }
 
 
-
-
     // 3. 创建NPC
     _npc = NPC::create("npcImages/Haley.png");  
     if (_npc)
@@ -130,10 +126,6 @@ bool GameScene::init()
             CCLOG("NPC dialogue ended");
             });
     }
-
-
-
-
 
 
     // 设置移动速度
