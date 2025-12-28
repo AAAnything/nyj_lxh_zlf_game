@@ -5,6 +5,7 @@
 
 
 
+
 USING_NS_CC;
 
 Scene* GameScene::createScene()
@@ -96,6 +97,45 @@ bool GameScene::init()
         CCLOG("Added red placeholder sprite");
     }
 
+
+
+
+    // 3. 创建NPC
+    _npc = NPC::create("npcImages/Haley.png");  
+    if (_npc)
+    {
+        _npc->setName("Haley");
+
+        // 设置NPC对话
+        std::vector<std::string> dialogue = {
+            "Hello, welcome to our farm!",
+            "Be careful, there are monsters nearby.",
+            "You can harvest crops by pressing E.",
+            "Good luck!"
+        };
+        _npc->setDialogue(dialogue);
+
+        // 设置NPC初始位置（地图坐标，可根据需要调整）
+        // 这里以地图中心偏移(0, 100)为例，可根据实际地图修改
+        Vec2 npcMapPos = Vec2(mapSize.width / 2, mapSize.height / 2 + 100);
+        // 将地图坐标转换为场景坐标（考虑地图缩放和锚点）
+        Vec2 npcScenePos = tileMap->convertToNodeSpace(npcMapPos);
+        _npc->setPosition(npcScenePos);
+
+        // 添加到地图图层（确保显示在地图上方）
+        tileMap->addChild(_npc, 10);
+
+        // 设置对话结束回调
+        _npc->setDialogueEndCallback([]() {
+            CCLOG("NPC dialogue ended");
+            });
+    }
+
+
+
+
+
+
     // 设置移动速度
     moveSpeed = 200.0f;
 
@@ -107,6 +147,13 @@ bool GameScene::init()
     keyboardListener->onKeyPressed = CC_CALLBACK_2(GameScene::onKeyPressed, this);
     keyboardListener->onKeyReleased = CC_CALLBACK_2(GameScene::onKeyReleased, this);
     _eventDispatcher->addEventListenerWithSceneGraphPriority(keyboardListener, this);
+
+
+    // 新增：添加鼠标事件监听器（与NPCTestScene相同）
+    auto mouseListener = EventListenerMouse::create();
+    mouseListener->onMouseDown = CC_CALLBACK_1(GameScene::onMouseDown, this);
+    _eventDispatcher->addEventListenerWithSceneGraphPriority(mouseListener, this);
+
 
     // 开启更新
     scheduleUpdate();
@@ -125,6 +172,17 @@ void GameScene::onKeyReleased(EventKeyboard::KeyCode keyCode, Event* event)
     // 记录按键释放状态，将KeyCode转换为整数
     keys[static_cast<int>(keyCode)] = false;
 }
+
+
+// 新增：处理鼠标点击事件（与NPCTestScene相同逻辑）
+void GameScene::onMouseDown(cocos2d::Event* event)
+{
+    if (_npc)
+    {
+        _npc->onMouseDown(event);  // 将事件传递给NPC处理
+    }
+}
+
 
 void GameScene::update(float delta)
 {

@@ -6,12 +6,16 @@ USING_NS_CC;
 // 静态成员初始化
 CollectManager* CollectManager::instance = nullptr;
 
+
+
 CollectManager* CollectManager::getInstance() {
     if (!instance) {
         instance = new CollectManager();
     }
     return instance;
 }
+
+
 
 void CollectManager::destroyInstance() {
     if (instance) {
@@ -20,11 +24,15 @@ void CollectManager::destroyInstance() {
     }
 }
 
+
+
 CollectManager::CollectManager()
     : inventorySystem(nullptr)
     , currentTilemap(nullptr) {
     initializeItemDatabase();
 }
+
+
 
 CollectManager::~CollectManager() {
     for (auto spot : collectSpots) {
@@ -38,37 +46,41 @@ CollectManager::~CollectManager() {
     itemDB.clear();
 }
 
+
+
 void CollectManager::initializeItemDatabase() {
     // 木头
     CollectItem* wood = CollectItem::create("Wood", "items/wood.png", CollectType::WOOD, 10);
     wood->setRequiredTool("axe");
-    wood->setRequiredClicks(3);
+    wood->setRequiredClicks(1);
     itemDB["wood"] = wood;
 
     // 石头
     CollectItem* stone = CollectItem::create("Stone", "collect/stone.png", CollectType::STONE, 15);
     stone->setRequiredTool("pickaxe");
-    stone->setRequiredClicks(5);
+    stone->setRequiredClicks(1);
     itemDB["stone"] = stone;
 
     // 草
     CollectItem* grass = CollectItem::create("Grass", "items/grass.png", CollectType::GRASS, 5);
     grass->setRequiredTool("sickle");
-    grass->setRequiredClicks(2);
+    grass->setRequiredClicks(1);
     itemDB["grass"] = grass;
 
     // 树
     CollectItem* tree = CollectItem::create("Hardwood", "items/hardwood.png", CollectType::TREE, 25);
     tree->setRequiredTool("axe");
-    tree->setRequiredClicks(8);
+    tree->setRequiredClicks(5);
     itemDB["tree"] = tree;
 }
 
+
+// 处理瓦片地图的采集点
 void CollectManager::spawnCollectFromTilemap(TMXTiledMap* tilemap) {
     CCLOG("CollectManager: 开始从多个图层生成采集点...");
 
-    // 处理tree图层
-    /*processCollectSingleByGID(tilemap, "plant", 609, 609, "tree");*/
+    // 处理tree图层(下移200像素)
+    processCollectTreeByGID(tilemap, "plant", 178, 697, "tree", 200);
     // 处理stone图层
     processCollectSingleByGID(tilemap, "stone", 89, 89, "rock");
     // 处理shrub图层，以及stone上的一个小问题
@@ -77,22 +89,14 @@ void CollectManager::spawnCollectFromTilemap(TMXTiledMap* tilemap) {
     // 处理grass图层
     processCollectSingleByGID(tilemap, "plant", 177, 177, "grass");
 
-
-    // 2. 新增：整棵树（178-697，plant图层，下移30像素）
-   processCollectTreeByGID(tilemap, "plant", 178, 697, "tree", 200);
-
     CCLOG("CollectManager: 采集点生成完成，总数: %d", (int)collectSpots.size());
 }
-
-
-
-
 
 
 // tilemap：瓦片地图对象
 // layerName：要处理的图层名称（如"tree"、"stone"）
 // minGID / maxGID：瓦片ID的范围（如90 - 90）
-// collectType：采集点类型标识（如"tree"）
+// collectType：采集点类型标识（如"grass"）
 void CollectManager::processCollectSingleByGID(TMXTiledMap* tilemap,
     const std::string& layerName,
     int minGID, int maxGID,
@@ -153,7 +157,7 @@ void CollectManager::processCollectSingleByGID(TMXTiledMap* tilemap,
 
 
 
-// ------------- 新增：处理连续GID区间（整棵树） -------------
+// 处理连续GID区间（整棵树）
 void CollectManager::processCollectTreeByGID(TMXTiledMap* tilemap,
     const std::string& layerName,
     int treeMinGID, int treeMaxGID,
@@ -241,7 +245,6 @@ void CollectManager::processCollectTreeByGID(TMXTiledMap* tilemap,
 
 
 
-
 void CollectManager::initialize(TMXTiledMap* tilemap) {
     if (!tilemap) return;
 
@@ -250,13 +253,53 @@ void CollectManager::initialize(TMXTiledMap* tilemap) {
     CCLOG("CollectManager: 初始化完成，生成 %d 个采集点", (int)collectSpots.size());
 }
 
+
+
 void CollectManager::setInventorySystem(IInventorySystem* inventory) {
     this->inventorySystem = inventory;
     CCLOG("CollectManager: 背包系统接口已连接");
 }
 
 
-// 需要确保所有方法都有正确的返回值和参数
+// 新增的触摸事件处理方法
+void CollectManager::handleTouchEvent(Vec2 touchPos) {
+    CCLOG("CollectManager: 处理触摸事件 (%.0f, %.0f)", touchPos.x, touchPos.y);
+
+    for (auto spot : collectSpots) {
+        if (spot && !spot->isCollected()) {
+            // 检查点击是否在采集点范围内
+            Vec2 spotPos = spot->getPosition();
+            float distance = touchPos.distance(spotPos);
+
+            CCLOG("检查采集点: %s 位置(%.0f,%.0f) 距离: %.0f 范围: %.0f",
+                spot->getTileType().c_str(), spotPos.x, spotPos.y, distance, spot->getCollectRange());
+
+            if (distance <= spot->getCollectRange()) {
+                // 检查工具
+                std::string currentTool = "";
+                if (inventorySystem) { // 先判断背包系统是否已连接（避免空指针）
+                    currentTool = inventorySystem->getCurrentTool(); // 正确调用方式
+                }
+                if (spot->canCollectWithTool(currentTool)) {
+                    bool completed = spot->collect();
+                    if (completed && inventorySystem) {
+                        CollectItem* collectedItem = spot->getCollectItem();
+                        if (collectedItem) {
+                            inventorySystem->addItem(collectedItem);
+                            CCLOG("采集完成: %s 已添加到背包", collectedItem->getName().c_str());
+                        }
+                    }
+                }
+                else {
+                    CCLOG("工具不匹配，无法采集 %s", spot->getTileType().c_str());
+                }
+                break; // 只处理一个采集点
+            }
+        }
+    }
+}
+
+
 
 CollectItem* CollectManager::getCollectItemById(const std::string& itemId) {
     auto it = itemDB.find(itemId);
@@ -270,6 +313,8 @@ CollectItem* CollectManager::getCollectItemById(const std::string& itemId) {
     return nullptr;
 }
 
+
+
 std::string CollectManager::getCollectIdFromTileType(const std::string& tileType) {
     if (tileType == "tree") return "tree";
     if (tileType == "wood") return "wood";
@@ -277,6 +322,8 @@ std::string CollectManager::getCollectIdFromTileType(const std::string& tileType
     if (tileType == "grass") return "grass";
     return "wood";
 }
+
+
 
 void CollectManager::update(float dt) {
     // 简单的更新逻辑

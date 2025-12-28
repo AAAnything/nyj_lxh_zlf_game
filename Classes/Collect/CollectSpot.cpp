@@ -55,7 +55,7 @@ bool CollectSpot::init(const std::string& itemId, const std::string& tileType) {
             // 设置锚点在底部中心，这样抖动效果更自然
             sprite->setAnchorPoint(Vec2(0.5f, 0));
 
-            // ===== 修改调试框代码 =====
+            // ===== 调试框代码 =====
             // 根据精灵实际大小绘制边框
             Size spriteSize = sprite->getContentSize();
 
@@ -73,6 +73,15 @@ bool CollectSpot::init(const std::string& itemId, const std::string& tileType) {
                 Color4F::RED
             );
             this->addChild(debugBox, 100);
+
+            // 添加调试输出
+            auto label = Label::createWithSystemFont(
+                StringUtils::format("%s\nsize:%.0fx%.0f",
+                    tileType.c_str(), spriteSize.width, spriteSize.height),
+                "Arial", 20);
+            label->setPosition(Vec2(0, spriteSize.height + 20));
+            label->setTextColor(Color4B::YELLOW);
+            this->addChild(label, 101);
             // =======================
         }
     }
@@ -83,21 +92,77 @@ bool CollectSpot::init(const std::string& itemId, const std::string& tileType) {
         this->addChild(debugBox, 100);
     }
 
+
+
+
+    // ==============================================
+    // 添加触摸事件监听器
+    auto listener = EventListenerTouchOneByOne::create();
+    listener->setSwallowTouches(true);
+    listener->onTouchBegan = [this](Touch* touch, Event* event) -> bool {
+        if (collected) return false;
+
+        // 获取触摸坐标
+        Vec2 touchPos = touch->getLocation();
+
+        // 检查是否点击在采集点范围内
+        // 方法1：使用简单的距离判断
+        // float distance = touchPos.distance(this->getPosition());
+        // if (distance <= collectRange) {
+        //     return true; // 触摸事件被此节点消费
+        // }
+
+        // 方法2：使用边界框检测（更精确）
+        Rect bbox = this->getBoundingBox();
+        // 注意：需要转换为世界坐标
+        bbox.origin = this->getParent()->convertToWorldSpace(bbox.origin);
+
+        if (bbox.containsPoint(touchPos)) {
+            return true;
+        }
+
+        return false;
+        };
+
+    listener->onTouchEnded = [this](Touch* touch, Event* event) {
+        // 执行采集逻辑
+        bool completed = this->collect();
+        if (completed) {
+            // 采集完成，可以通知背包系统
+            if (auto manager = CollectManager::getInstance()) {
+                // 可能需要添加接口方法
+                // manager->onCollectCompleted(this, item);
+            }
+        }
+        };
+
+    _eventDispatcher->addEventListenerWithSceneGraphPriority(listener, this);
+    this->touchListener = listener; // 需要定义成员变量保存引用
+    // ==============================================
+
+
+
+
     return true;
 }
 // 功能2：判断玩家是否在采集范围内
 bool CollectSpot::isPlayerInRange(Vec2 playerPos) const {
     if (collected) return false;  // 已采集的物品不在范围内
 
-    float distance = playerPos.distance(getPosition());
-    return distance <= collectRange;
+    // 先注释掉，进行调试
+    /*float distance = playerPos.distance(getPosition());
+    return distance <= collectRange;*/
+
+    return true;
 }
 
 // 功能4：检查工具是否匹配
 bool CollectSpot::canCollectWithTool(const std::string& currentTool) const {
     if (!item || collected) return false;
 
-    std::string requiredTool = item->getRequiredTool();
+
+    // 先注释掉，进行调试
+    /*std::string requiredTool = item->getRequiredTool();
 
     // 特殊处理：草可以用镰刀或斧子（功能5）
     if (tileType == "grass") {
@@ -105,7 +170,10 @@ bool CollectSpot::canCollectWithTool(const std::string& currentTool) const {
     }
 
     // 其他物品需要精确匹配工具
-    return currentTool == requiredTool;
+    return currentTool == requiredTool;*/
+
+
+    return true;
 }
 
 // 采集操作（每次点击调用）

@@ -2,7 +2,6 @@
 #include "SimpleAudioEngine.h"
 #include "MenuManager.h"
 #include "NPC\NPC.h"
-#include "NPC\NPCTestScene.h"
 #include "Audio\AudioManager.h"
 
 USING_NS_CC;
@@ -60,24 +59,6 @@ void MainMenu::menuCloseCallback(Ref* pSender)
 
 
 
-// NPC测试按钮回调函数
-void MainMenu::menuNPCTestCallback(cocos2d::Ref* pSender)
-{
-    // 播放按钮点击音效
-    AudioManager::getInstance()->playButtonClickSound();
-
-
-    // 切换到NPCTestScene
-    auto scene = NPCTestScene::createScene();
-    if (scene)
-    {
-        Director::getInstance()->replaceScene(TransitionFade::create(0.5f, scene));
-    }
-    else
-    {
-        CCLOG("错误：无法创建NPC测试场景");
-    }
-}
 
 
 
@@ -181,19 +162,8 @@ bool MainMenu::init()
 
 
 
-    // 测试
-    // 创建NPC信息
-    auto npcBtn = MenuItemImage::create(
-        "icon/versionButton.png",
-        "icon/versionButtonOn.png",
-        CC_CALLBACK_1(MainMenu::menuNPCTestCallback, this));  // 建议用不同回调函数
-    npcBtn->setPosition(Vec2(developerX, developerY+200));
-
-
-
-
     // 7. 创建菜单并添加所有按钮
-    auto menu = Menu::create(newGameBtn, loadBtn, coopBtn, exitBtn, developerBtn, npcBtn,nullptr);
+    auto menu = Menu::create(newGameBtn, loadBtn, coopBtn, exitBtn, developerBtn, nullptr);
     menu->setPosition(Vec2::ZERO);
     this->addChild(menu, 1);
    

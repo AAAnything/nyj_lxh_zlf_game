@@ -13,6 +13,13 @@ public:
 
     virtual bool init(const std::string& itemId, const std::string& tileType);
 
+
+    // 添加触摸相关方法
+    void enableTouch(bool enable = true);
+    void disableTouch() { enableTouch(false); }
+    void removeTouchListener();
+
+
     // 核心方法
     bool isPlayerInRange(Vec2 playerPos) const;
     bool canCollectWithTool(const std::string& currentTool) const;
@@ -28,6 +35,15 @@ public:
     std::string getTileType() const { return tileType; }
     CollectItem* getItem() const { return item; }
 
+    // 新增的接口方法（供 CollectManager 使用）
+    bool isCollected() const { return collected; }
+    float getCollectRange() const { return collectRange; }
+    std::string getRequiredTool() const {
+        return item ? item->getRequiredTool() : "";
+    }
+    CollectItem* getCollectItem() const { return item; }
+
+
 private:
     CollectItem* item;
     bool collected;
@@ -36,6 +52,9 @@ private:
     float collectRange;
     std::string tileType;
     Sprite* sprite;
+
+    // 新增：触摸事件监听器成员变量
+    EventListenerTouchOneByOne* touchListener;
 };
 
 #endif // __COLLECT_SPOT_H__

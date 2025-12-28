@@ -156,7 +156,6 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)\Resources\" /D /E /I /F /Y
 	<ClCompile Include="..\Classes\Core\GameScene.cpp" />
 	<ClCompile Include="..\Classes\Core\Item.cpp" />
 	<ClCompile Include="..\Classes\NPC\NPC.cpp" />
-	<ClCompile Include="..\Classes\NPC\NPCTestScene.cpp" />
 	<ClCompile Include="..\Classes\Audio\AudioManager.cpp" />
     <ClCompile Include="..\Classes\SaveSystem\CollectSaveData.cpp" />
 	<ClCompile Include="..\Classes\SaveSystem\SaveManager.cpp" />
@@ -172,7 +171,6 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)\Resources\" /D /E /I /F /Y
 	<ClInclude Include="..\Classes\Core\GameScene.h" />
 	<ClInclude Include="..\Classes\Core\Item.h" />
 	<ClInclude Include="..\Classes\NPC\NPC.h" />
-	<ClInclude Include="..\Classes\NPC\NPCTestScene.h" />
 	<ClInclude Include="..\Classes\Audio\AudioManager.h" />
 	<ClInclude Include="..\Classes\SaveSystem\CollectSaveData.h" />
 	<ClInclude Include="..\Classes\SaveSystem\SaveManager.h" />

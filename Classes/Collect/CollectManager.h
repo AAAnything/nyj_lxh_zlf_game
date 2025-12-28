@@ -33,6 +33,9 @@ public:
     // 交互处理
     bool handleCollectInteraction(Vec2 touchPos, Vec2 playerPos);
 
+    // 鼠标有关
+    void handleTouchEvent(Vec2 touchPos);
+
     // 获取物品
     CollectItem* getCollectItemById(const std::string& itemId);
 

@@ -2,6 +2,7 @@
 #define __GAME_SCENE_H__
 
 #include "cocos2d.h"
+#include "NPC/NPC.h" 
 
 class GameScene : public cocos2d::Scene
 {
@@ -16,6 +17,10 @@ public:
 
     // 每帧更新
     void update(float delta);
+
+
+    // 鼠标/触摸事件
+    void onMouseDown(cocos2d::Event* event); // 鼠标右键点击
 
     // implement the "static create()" method manually
     CREATE_FUNC(GameScene);
@@ -40,6 +45,11 @@ private:
 
     // 键盘按键状态
     bool keys[256];
+
+    // NPC 相关
+    NPC* _npc;
+
+
 };
 
 #endif // __GAME_SCENE_H__
