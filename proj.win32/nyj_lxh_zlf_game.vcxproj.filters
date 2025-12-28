@@ -21,6 +21,20 @@
     <ClCompile Include="..\Classes\Core\MainMenuScene.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Core\MenuManager.cpp" />
+    <ClCompile Include="..\Classes\Core\GameScene.cpp" />
+    <ClCompile Include="..\Classes\Item\Item.cpp" />
+    <ClCompile Include="..\Classes\NPC\NPC.cpp" />
+    <ClCompile Include="..\Classes\NPC\NPCTestScene.cpp" />
+    <ClCompile Include="..\Classes\Animal\Animal.cpp" />
+    <ClCompile Include="..\Classes\Audio\AudioManager.cpp" />
+    <ClCompile Include="..\Classes\SaveSystem\CollectSaveData.cpp" />
+    <ClCompile Include="..\Classes\SaveSystem\SaveManager.cpp" />
+    <ClCompile Include="..\Classes\Animal\AnimalItem.cpp" />
+    <ClCompile Include="..\Classes\Animal\AnimalManager.cpp" />
+    <ClCompile Include="..\Classes\Animal\Chicken.cpp" />
+    <ClCompile Include="..\Classes\Animal\Cow.cpp" />
+    <ClCompile Include="..\Classes\Animal\Sheep.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -32,6 +46,20 @@
     <ClInclude Include="..\Classes\Core\MainMenuScene.h">
       <Filter>src</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\Core\MenuManager.h" />
+    <ClInclude Include="..\Classes\Core\GameScene.h" />
+    <ClInclude Include="..\Classes\Animal\Animal.h" />
+    <ClInclude Include="..\Classes\Item\Item.h" />
+    <ClInclude Include="..\Classes\NPC\NPC.h" />
+    <ClInclude Include="..\Classes\NPC\NPCTestScene.h" />
+    <ClInclude Include="..\Classes\Audio\AudioManager.h" />
+    <ClInclude Include="..\Classes\SaveSystem\CollectSaveData.h" />
+    <ClInclude Include="..\Classes\SaveSystem\SaveManager.h" />
+    <ClInclude Include="..\Classes\Animal\AnimalItem.h" />
+    <ClInclude Include="..\Classes\Animal\AnimalManager.h" />
+    <ClInclude Include="..\Classes\Animal\Chicken.h" />
+    <ClInclude Include="..\Classes\Animal\Cow.h" />
+    <ClInclude Include="..\Classes\Animal\Sheep.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="game.rc">

@@ -1,11 +1,11 @@
-// ÎÄ¼şÃû: NPC.cpp
-// ¹¦ÄÜ:  NPCÀàµÄÊµÏÖÎÄ¼ş£¬¸ºÔğNPCµÄ´´½¨¡¢¶Ô»°ºÍ½»»¥Âß¼­¡£
+ï»¿// æ–‡ä»¶å: NPC.cpp
+// åŠŸèƒ½:  NPCç±»çš„å®ç°æ–‡ä»¶ï¼Œè´Ÿè´£NPCçš„åˆ›å»ºã€å¯¹è¯å’Œäº¤äº’é€»è¾‘ã€‚
 // Author: Shu
 #include "NPC.h"
 
 USING_NS_CC;
 
-// ´´½¨NPC
+// åˆ›å»ºNPC
 NPC* NPC::create(const std::string& npcImage)
 {
     NPC* npc = new (std::nothrow) NPC();
@@ -20,59 +20,59 @@ NPC* NPC::create(const std::string& npcImage)
 
 
 
-// ³õÊ¼»¯
+// åˆå§‹åŒ–
 bool NPC::init(const std::string& npcImage)
 {
-    // µ÷ÓÃ¸¸ÀàSpriteµÄinit
+    // è°ƒç”¨çˆ¶ç±»Spriteçš„init
     if (!Sprite::initWithFile(npcImage))
     {
-        // Èç¹ûÍ¼Æ¬¼ÓÔØÊ§°Ü£¬Ê¹ÓÃÄ¬ÈÏÍ¼Æ¬
+        // å¦‚æœå›¾ç‰‡åŠ è½½å¤±è´¥ï¼Œä½¿ç”¨é»˜è®¤å›¾ç‰‡
         if (!Sprite::initWithFile("npcImages/cleaner.png"))
         {
-            CCLOG("´íÎó£ºÎŞ·¨¼ÓÔØNPCÍ¼Æ¬: %s", npcImage.c_str());
+            CCLOG("é”™è¯¯ï¼šæ— æ³•åŠ è½½NPCå›¾ç‰‡: %s", npcImage.c_str());
             return false;
         }
     }
 
-    // ³õÊ¼»¯±äÁ¿
+    // åˆå§‹åŒ–å˜é‡
     _name = "NPC";
     _currentDialogueIndex = 0;
     _isTalking = false;
 
-    // Ä¬ÈÏ¶Ô»°
+    // é»˜è®¤å¯¹è¯
     _dialogueList.push_back("How are you?");
     _dialogueList.push_back("What can I help you?");
    
 
-    // ´´½¨UIÔªËØ
+    // åˆ›å»ºUIå…ƒç´ 
     createUI();
 
-    // ÆôÓÃ´¥Ãş/Êó±êÊÂ¼ş
-    this->setUserObject(this);  // ±£´æ×ÔÉíÒıÓÃ
+    // å¯ç”¨è§¦æ‘¸/é¼ æ ‡äº‹ä»¶
+    this->setUserObject(this);  // ä¿å­˜è‡ªèº«å¼•ç”¨
     return true;
 }
 
-// ´´½¨UIÔªËØ
+// åˆ›å»ºUIå…ƒç´ 
 void NPC::createUI()
 {
     auto visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
 
-    // 1. ´´½¨¶Ô»°¿ò£¨³õÊ¼Òş²Ø£©
+    // 1. åˆ›å»ºå¯¹è¯æ¡†ï¼ˆåˆå§‹éšè—ï¼‰
     _dialogueBubble = Sprite::create("npcImages/dialogueBox.png");
     float dialogueBubbleX = origin.x + 35;
     float dialogueBubbleY = origin.y - visibleSize.height / 2 + _dialogueBubble->getContentSize().height / 2-20;
     _dialogueBubble->setPosition(Vec2(
         dialogueBubbleX, 
         dialogueBubbleY));
-    // ³õÊ¼Òş²Ø
+    // åˆå§‹éšè—
     _dialogueBubble->setVisible(false);
     this->addChild(_dialogueBubble, 3);
 
 
    
-    // 2. ´´½¨Í·Ïñ£¨³õÊ¼Òş²Ø£©
+    // 2. åˆ›å»ºå¤´åƒï¼ˆåˆå§‹éšè—ï¼‰
     _headSprite = Sprite::create("npcImages/Haley Talk.png"); 
     float headSpriteX = dialogueBubbleX+373;
     float headSpriteY = dialogueBubbleY+40;
@@ -80,13 +80,13 @@ void NPC::createUI()
         headSpriteX,
         headSpriteY
     ));
-    // ³õÊ¼Òş²Ø
+    // åˆå§‹éšè—
     _headSprite->setVisible(false); 
-    this->addChild(_headSprite, 4);  // ±È¶Ô»°¿ò¸ßÒ»¼¶
+    this->addChild(_headSprite, 4);  // æ¯”å¯¹è¯æ¡†é«˜ä¸€çº§
 
 
 
-    // 3. ´´½¨Ãû×Ö±êÇ©
+    // 3. åˆ›å»ºåå­—æ ‡ç­¾
     _nameLabel = Label::createWithTTF(_name, "fonts/Marker Felt.ttf", 48);
     float nameLabelX = headSpriteX;
     float nameLabelY = headSpriteY - 185;
@@ -95,26 +95,26 @@ void NPC::createUI()
     _nameLabel->setPosition(Vec2(
         nameLabelX,
         nameLabelY));
-    // ³õÊ¼Òş²Ø
+    // åˆå§‹éšè—
     _nameLabel->setVisible(false);
-    this->addChild(_nameLabel, 4);   // ±È¶Ô»°¿ò¸ßÒ»¼¶
+    this->addChild(_nameLabel, 4);   // æ¯”å¯¹è¯æ¡†é«˜ä¸€çº§
 
     
 
 
-    // 4. ´´½¨¶Ô»°ÎÄ±¾±êÇ©
+    // 4. åˆ›å»ºå¯¹è¯æ–‡æœ¬æ ‡ç­¾
     _dialogueLabel = Label::createWithTTF("  ", "fonts/Marker Felt.ttf", 48);
-    _dialogueLabel->setDimensions(730, 0);  // ¿í¶ÈÏŞÖÆ£¬¸ß¶È×Ô¶¯À©Õ¹
+    _dialogueLabel->setDimensions(730, 0);  // å®½åº¦é™åˆ¶ï¼Œé«˜åº¦è‡ªåŠ¨æ‰©å±•
 
-    // ¹Ø¼ü£ºÖ»ÓÃË®Æ½×ó¶ÔÆë£¬´¹Ö±·½Ïò×ÔÈ»ÅÅÁĞ
-    _dialogueLabel->setAnchorPoint(Vec2(0, 1));      // ÃªµãÔÚ×óÉÏ½Ç
-    _dialogueLabel->setAlignment(TextHAlignment::LEFT);  // Ë®Æ½×ó¶ÔÆë
-    // ²»ÒªÉèÖÃ setVerticalAlignment! ÈÃÎÄ×Ö×ÔÈ»´ÓÉÏµ½ÏÂÅÅÁĞ
+    // å…³é”®ï¼šåªç”¨æ°´å¹³å·¦å¯¹é½ï¼Œå‚ç›´æ–¹å‘è‡ªç„¶æ’åˆ—
+    _dialogueLabel->setAnchorPoint(Vec2(0, 1));      // é”šç‚¹åœ¨å·¦ä¸Šè§’
+    _dialogueLabel->setAlignment(TextHAlignment::LEFT);  // æ°´å¹³å·¦å¯¹é½
+    // ä¸è¦è®¾ç½® setVerticalAlignment! è®©æ–‡å­—è‡ªç„¶ä»ä¸Šåˆ°ä¸‹æ’åˆ—
 
-    // »ñÈ¡¶Ô»°¿ò³ß´ç²¢ÉèÖÃÏà¶ÔÎ»ÖÃ
+    // è·å–å¯¹è¯æ¡†å°ºå¯¸å¹¶è®¾ç½®ç›¸å¯¹ä½ç½®
     Size bubbleSize = _dialogueBubble->getContentSize();
-    // ÉèÖÃµ½¶Ô»°¿ò×óÉÏ½Ç£¬µ«Áô³ö¸ü¶àÉÏ±ß¾à
-    _dialogueLabel->setPosition(Vec2(45, bubbleSize.height - 40)); // ÉÏ±ß¾à40ÏñËØ
+    // è®¾ç½®åˆ°å¯¹è¯æ¡†å·¦ä¸Šè§’ï¼Œä½†ç•™å‡ºæ›´å¤šä¸Šè¾¹è·
+    _dialogueLabel->setPosition(Vec2(45, bubbleSize.height - 40)); // ä¸Šè¾¹è·40åƒç´ 
 
     _dialogueLabel->setColor(Color3B::WHITE);
     _dialogueBubble->addChild(_dialogueLabel);
@@ -123,14 +123,14 @@ void NPC::createUI()
 
 
 
-// ÉèÖÃ¶Ô»°£¨¶à¾ä£©
+// è®¾ç½®å¯¹è¯ï¼ˆå¤šå¥ï¼‰
 void NPC::setDialogue(const std::vector<std::string>& dialogue)
 {
     _dialogueList = dialogue;
     _currentDialogueIndex = 0;
 }
 
-// ÉèÖÃ¶Ô»°£¨µ¥¾ä£©
+// è®¾ç½®å¯¹è¯ï¼ˆå•å¥ï¼‰
 void NPC::setDialogue(const std::string& dialogue)
 {
     _dialogueList.clear();
@@ -140,30 +140,30 @@ void NPC::setDialogue(const std::string& dialogue)
 
 
 
-// ¼ì²éÍæ¼ÒÊÇ·ñÔÚ½»»¥·¶Î§ÄÚ
+// æ£€æŸ¥ç©å®¶æ˜¯å¦åœ¨äº¤äº’èŒƒå›´å†…
 bool NPC::isInRange(cocos2d::Vec2 position)
 {
-    // ¼ÆËãÍæ¼ÒºÍNPCÖ®¼äµÄ¾àÀë
+    // è®¡ç®—ç©å®¶å’ŒNPCä¹‹é—´çš„è·ç¦»
     Vec2 npcWorldPos = this->getParent()->convertToWorldSpace(this->getPosition());
     float distance = position.distance(npcWorldPos);
 
-    // ½»»¥·¶Î§£º150ÏñËØ
+    // äº¤äº’èŒƒå›´ï¼š150åƒç´ 
     float interactionRange = 150.0f;
     return distance <= interactionRange;
 }
 
 
 
-// Êó±êÓÒ¼üµã»÷ÊÂ¼ş
+// é¼ æ ‡å³é”®ç‚¹å‡»äº‹ä»¶
 void NPC::onMouseDown(Event* event)
 {
     EventMouse* mouseEvent = dynamic_cast<EventMouse*>(event);
     if (mouseEvent && mouseEvent->getMouseButton() == EventMouse::MouseButton::BUTTON_RIGHT)
     {
-        // »ñÈ¡Êó±êÎ»ÖÃ
+        // è·å–é¼ æ ‡ä½ç½®
         Vec2 mousePos = Vec2(mouseEvent->getCursorX(), mouseEvent->getCursorY());
 
-        // ¼ì²éÊÇ·ñµã»÷µ½NPC
+        // æ£€æŸ¥æ˜¯å¦ç‚¹å‡»åˆ°NPC
         Rect npcRect = this->getBoundingBox();
         Vec2 npcWorldPos = this->getParent()->convertToWorldSpace(this->getPosition());
         npcRect.origin = npcWorldPos - Vec2(npcRect.size.width / 2, npcRect.size.height / 2);
@@ -177,7 +177,7 @@ void NPC::onMouseDown(Event* event)
 
 
 
-// ¿ªÊ¼¶Ô»°
+// å¼€å§‹å¯¹è¯
 void NPC::startDialogue()
 {
     if (_isTalking || _dialogueList.empty())
@@ -190,41 +190,41 @@ void NPC::startDialogue()
 
 
 
-    // ÏÔÊ¾¶Ô»°¿ò
+    // æ˜¾ç¤ºå¯¹è¯æ¡†
     _dialogueBubble->setVisible(true);
     _dialogueBubble->setScale(0.1f);
-    // Ëõ·Å¶¯»­
-	auto scaleIn = ScaleTo::create(0.2f, 1.0f);// 0.2Ãë·Å´óµ½Õı³£´óĞ¡
-	auto easeOut = EaseBackOut::create(scaleIn);// »Øµ¯Ğ§¹û
-	_dialogueBubble->runAction(easeOut); // Ö´ĞĞ¶¯»­
+    // ç¼©æ”¾åŠ¨ç”»
+	auto scaleIn = ScaleTo::create(0.2f, 1.0f);// 0.2ç§’æ”¾å¤§åˆ°æ­£å¸¸å¤§å°
+	auto easeOut = EaseBackOut::create(scaleIn);// å›å¼¹æ•ˆæœ
+	_dialogueBubble->runAction(easeOut); // æ‰§è¡ŒåŠ¨ç”»
 
 
 
-    // ÏÔÊ¾Í·Ïñ
+    // æ˜¾ç¤ºå¤´åƒ
     _headSprite->setVisible(true);
-    _headSprite->setScale(0.1f); // ³õÊ¼Ëõµ½0.1±¶£¨¼¸ºõ¿´²»¼û£©
-    // Í·Ïñ¶¯»­£ºÊ±³¤ºÍ¶Ô»°¿òÒ»ÖÂ£¬Íí0.05Ãë¿ªÊ¼£¨²ã´Î¸Ğ£©
+    _headSprite->setScale(0.1f); // åˆå§‹ç¼©åˆ°0.1å€ï¼ˆå‡ ä¹çœ‹ä¸è§ï¼‰
+    // å¤´åƒåŠ¨ç”»ï¼šæ—¶é•¿å’Œå¯¹è¯æ¡†ä¸€è‡´ï¼Œæ™š0.05ç§’å¼€å§‹ï¼ˆå±‚æ¬¡æ„Ÿï¼‰
     auto scaleInHead = ScaleTo::create(0.2f, 1.0f);
-	auto easeOutHead = EaseBackOut::create(scaleInHead); // »Øµ¯Ğ§¹û
-    auto delayHead = DelayTime::create(0.05f); // ÑÓ³Ù0.05Ãë
-    auto seqHead = Sequence::create(delayHead, easeOutHead, nullptr); // ÏÈÑÓ³ÙÔÙ·Å´ó
-	_headSprite->runAction(seqHead); // Ö´ĞĞ¶¯»­
-	//runActionÖ»ÄÜÖ´ĞĞÒ»¸ö¶¯×÷ĞòÁĞ£¬ËùÒÔÕâÀïÓÃseqHead
-	//ÆäËûµÄscaleInHeadµÈ±äÁ¿Ö»ÊÇÎªÁË¸üÇåÎúµØ±í´ïÂß¼­
+	auto easeOutHead = EaseBackOut::create(scaleInHead); // å›å¼¹æ•ˆæœ
+    auto delayHead = DelayTime::create(0.05f); // å»¶è¿Ÿ0.05ç§’
+    auto seqHead = Sequence::create(delayHead, easeOutHead, nullptr); // å…ˆå»¶è¿Ÿå†æ”¾å¤§
+	_headSprite->runAction(seqHead); // æ‰§è¡ŒåŠ¨ç”»
+	//runActionåªèƒ½æ‰§è¡Œä¸€ä¸ªåŠ¨ä½œåºåˆ—ï¼Œæ‰€ä»¥è¿™é‡Œç”¨seqHead
+	//å…¶ä»–çš„scaleInHeadç­‰å˜é‡åªæ˜¯ä¸ºäº†æ›´æ¸…æ™°åœ°è¡¨è¾¾é€»è¾‘
 
 
-    // ÏÔÊ¾NPCÃû×Ö
+    // æ˜¾ç¤ºNPCåå­—
     _nameLabel->setVisible(true);
    
 
 
     
-    // ÏÔÊ¾µÚÒ»¾ä¶Ô»°
+    // æ˜¾ç¤ºç¬¬ä¸€å¥å¯¹è¯
     updateDialogueDisplay();
 
 
 
-    // Ìí¼Ó´¥Ãş¼àÌıÆ÷£¬µã»÷ÆÁÄ»ÏÔÊ¾ÏÂÒ»¾ä
+    // æ·»åŠ è§¦æ‘¸ç›‘å¬å™¨ï¼Œç‚¹å‡»å±å¹•æ˜¾ç¤ºä¸‹ä¸€å¥
     auto listener = EventListenerTouchOneByOne::create();
     listener->setSwallowTouches(true);
     listener->onTouchBegan = [this](Touch* touch, Event* event) {
@@ -241,18 +241,18 @@ void NPC::startDialogue()
 
 
 
-    // ±£´æ¼àÌıÆ÷ÒıÓÃ£¬¶Ô»°½áÊøºóÒÆ³ı
+    // ä¿å­˜ç›‘å¬å™¨å¼•ç”¨ï¼Œå¯¹è¯ç»“æŸåç§»é™¤
     this->setUserObject(listener);
 }
 
-// ¸üĞÂ¶Ô»°ÏÔÊ¾
+// æ›´æ–°å¯¹è¯æ˜¾ç¤º
 void NPC::updateDialogueDisplay()
 {
     if (_currentDialogueIndex < _dialogueList.size())
     {
         std::string currentText = _dialogueList[_currentDialogueIndex];
 
-        // 1. ÏÈÉèÖÃµÚÒ»¸ö×ÖÄ¸£¨¹Ì¶¨ÏÔÊ¾£©
+        // 1. å…ˆè®¾ç½®ç¬¬ä¸€ä¸ªå­—æ¯ï¼ˆå›ºå®šæ˜¾ç¤ºï¼‰
         if (!currentText.empty()) {
             std::string firstChar = currentText.substr(0, 1);
             _dialogueLabel->setString(firstChar);
@@ -261,45 +261,45 @@ void NPC::updateDialogueDisplay()
             _dialogueLabel->setString("");
         }
 
-        // 2. Í£Ö¹Ö®Ç°µÄ¶¯»­
+        // 2. åœæ­¢ä¹‹å‰çš„åŠ¨ç”»
         this->stopAllActions();
 
-        // 3. Èç¹ûÖ»ÓĞÒ»¸ö×Ö·û£¬Ö±½Ó·µ»Ø
+        // 3. å¦‚æœåªæœ‰ä¸€ä¸ªå­—ç¬¦ï¼Œç›´æ¥è¿”å›
         if (currentText.length() <= 1) {
             return;
         }
 
-        // 4. ´´½¨Ê£Óà×Ö·ûµÄ¶¯»­ĞòÁĞ
+        // 4. åˆ›å»ºå‰©ä½™å­—ç¬¦çš„åŠ¨ç”»åºåˆ—
         Vector<FiniteTimeAction*> actions;
 
-        // Ìí¼ÓÒ»¸ö³õÊ¼ÑÓ³Ù£¬ÈÃµÚÒ»¸ö×ÖÄ¸ÏÈÏÔÊ¾Ò»»á¶ù
+        // æ·»åŠ ä¸€ä¸ªåˆå§‹å»¶è¿Ÿï¼Œè®©ç¬¬ä¸€ä¸ªå­—æ¯å…ˆæ˜¾ç¤ºä¸€ä¼šå„¿
         actions.pushBack(DelayTime::create(0.1f));
 
-        // ´ÓµÚ¶ş¸ö×Ö·û¿ªÊ¼Öğ¸ö×·¼Ó£¨ÏÂ±ê i=1£©
+        // ä»ç¬¬äºŒä¸ªå­—ç¬¦å¼€å§‹é€ä¸ªè¿½åŠ ï¼ˆä¸‹æ ‡ i=1ï¼‰
         for (int i = 1; i < currentText.length(); i++)
         {
-            // ´´½¨×·¼Ó×Ö·ûµÄ»Øµ÷
+            // åˆ›å»ºè¿½åŠ å­—ç¬¦çš„å›è°ƒ
             auto appendChar = CallFunc::create([this, currentText, i]() {
-                // »ñÈ¡´ÓµÚÒ»¸öµ½µÚi¸ö×Ö·ûµÄ×Ó´®£¨0µ½i£¬°üº¬i£©
+                // è·å–ä»ç¬¬ä¸€ä¸ªåˆ°ç¬¬iä¸ªå­—ç¬¦çš„å­ä¸²ï¼ˆ0åˆ°iï¼ŒåŒ…å«iï¼‰
                 std::string partialText = currentText.substr(0, i + 1);
                 _dialogueLabel->setString(partialText);
                 });
 
             actions.pushBack(appendChar);
 
-            // Èç¹û²»ÊÇ×îºóÒ»¸ö×Ö·û£¬Ìí¼ÓÑÓ³Ù
+            // å¦‚æœä¸æ˜¯æœ€åä¸€ä¸ªå­—ç¬¦ï¼Œæ·»åŠ å»¶è¿Ÿ
             if (i < currentText.length() - 1) {
                 actions.pushBack(DelayTime::create(0.05f));
             }
         }
 
-        // Ö´ĞĞĞòÁĞ
+        // æ‰§è¡Œåºåˆ—
         auto sequence = Sequence::create(actions);
         this->runAction(sequence);
     }
 }
 
-// ÏÔÊ¾ÏÂÒ»¾ä¶Ô»°
+// æ˜¾ç¤ºä¸‹ä¸€å¥å¯¹è¯
 void NPC::showNextDialogue()
 {
     _currentDialogueIndex++;
@@ -315,14 +315,14 @@ void NPC::showNextDialogue()
 }
 
 
-// ½áÊø¶Ô»°
+// ç»“æŸå¯¹è¯
 void NPC::endDialogue()
 {
     _isTalking = false;
 
 
 
-    // µ­³ö¶Ô»°¿ò¡ª¡ª0.8Ãëµ­³ö
+    // æ·¡å‡ºå¯¹è¯æ¡†â€”â€”0.8ç§’æ·¡å‡º
     auto fadeOutDialogue = FadeOut::create(0.8f);
     auto removeDialogue = CallFunc::create([this]() {
         _dialogueBubble->setVisible(false);
@@ -333,7 +333,7 @@ void NPC::endDialogue()
 
 
 
-    // µ­³öÍ·Ïñ¡ª¡ª0.3Ãëµ­³ö
+    // æ·¡å‡ºå¤´åƒâ€”â€”0.3ç§’æ·¡å‡º
     auto fadeOutHead = FadeOut::create(0.3f);
     auto removeHead = CallFunc::create([this]() {
         _headSprite->setVisible(false);
@@ -344,7 +344,7 @@ void NPC::endDialogue()
 
 
 
-    // µ­³öÃû×Ö¡ª¡ª0.5Ãëµ­³ö
+    // æ·¡å‡ºåå­—â€”â€”0.5ç§’æ·¡å‡º
     auto fadeOutName = FadeOut::create(0.5f);
     auto removeName = CallFunc::create([this]() {
         _nameLabel->setVisible(false);
@@ -355,7 +355,7 @@ void NPC::endDialogue()
 
 
 
-    // ÒÆ³ı´¥Ãş¼àÌıÆ÷
+    // ç§»é™¤è§¦æ‘¸ç›‘å¬å™¨
     auto listener = dynamic_cast<EventListenerTouchOneByOne*>(this->getUserObject());
     if (listener)
     {
@@ -364,7 +364,7 @@ void NPC::endDialogue()
 
 
 
-    // µ÷ÓÃ¶Ô»°½áÊø»Øµ÷
+    // è°ƒç”¨å¯¹è¯ç»“æŸå›è°ƒ
     if (_dialogueEndCallback)
     {
         _dialogueEndCallback();

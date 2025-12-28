@@ -35,14 +35,14 @@
   TransformConstraint.c
   TransformConstraintData.c
   Triangulator.c
-D:\NewTryGame\cocos2d\cocos\editor-support\spine\SkeletonBinary.c(310,24): warning C4018: “<”: 有符号/无符号不匹配
   VertexAttachment.c
-D:\NewTryGame\cocos2d\cocos\editor-support\spine\SkeletonBinary.c(372,24): warning C4018: “<”: 有符号/无符号不匹配
-D:\NewTryGame\cocos2d\cocos\editor-support\spine\SkeletonBinary.c(484,26): warning C4018: “<”: 有符号/无符号不匹配
-D:\NewTryGame\cocos2d\cocos\editor-support\spine\SkeletonBinary.c(649,2): warning C4018: “<”: 有符号/无符号不匹配
-D:\NewTryGame\cocos2d\cocos\editor-support\spine\SkeletonBinary.c(652,2): warning C4018: “<”: 有符号/无符号不匹配
   VertexEffect.c
-D:\NewTryGame\cocos2d\cocos\editor-support\spine\SkeletonJson.c(97,12): warning C4018: “>=”: 有符号/无符号不匹配
+D:\AAAschool\coding\craft\ProgrammingParadigm\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\spine\SkeletonJson.c(97,12): warning C4018: “>=”: 有符号/无符号不匹配
+D:\AAAschool\coding\craft\ProgrammingParadigm\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\spine\SkeletonBinary.c(310,24): warning C4018: “<”: 有符号/无符号不匹配
+D:\AAAschool\coding\craft\ProgrammingParadigm\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\spine\SkeletonBinary.c(372,24): warning C4018: “<”: 有符号/无符号不匹配
+D:\AAAschool\coding\craft\ProgrammingParadigm\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\spine\SkeletonBinary.c(484,26): warning C4018: “<”: 有符号/无符号不匹配
+D:\AAAschool\coding\craft\ProgrammingParadigm\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\spine\SkeletonBinary.c(649,2): warning C4018: “<”: 有符号/无符号不匹配
+D:\AAAschool\coding\craft\ProgrammingParadigm\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\spine\SkeletonBinary.c(652,2): warning C4018: “<”: 有符号/无符号不匹配
   AttachmentVertices.cpp
   Cocos2dAttachmentLoader.cpp
   SkeletonAnimation.cpp
@@ -50,7 +50,7 @@ D:\NewTryGame\cocos2d\cocos\editor-support\spine\SkeletonJson.c(97,12): warning 
   SkeletonRenderer.cpp
   SkeletonTwoColorBatch.cpp
   spine-cocos2dx.cpp
-D:\NewTryGame\cocos2d\cocos\editor-support\spine\SkeletonBatch.cpp(110,42): warning C4018: “<”: 有符号/无符号不匹配
-D:\NewTryGame\cocos2d\cocos\editor-support\spine\SkeletonTwoColorBatch.cpp(237,42): warning C4018: “<”: 有符号/无符号不匹配
-D:\NewTryGame\cocos2d\cocos\editor-support\spine\SkeletonTwoColorBatch.cpp(274,37): warning C4018: “<”: 有符号/无符号不匹配
-  libSpine.vcxproj -> D:\NewTryGame\proj.win32\Debug.win32\libSpine.lib
+D:\AAAschool\coding\craft\ProgrammingParadigm\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\spine\SkeletonTwoColorBatch.cpp(237,42): warning C4018: “<”: 有符号/无符号不匹配
+D:\AAAschool\coding\craft\ProgrammingParadigm\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\spine\SkeletonTwoColorBatch.cpp(274,37): warning C4018: “<”: 有符号/无符号不匹配
+D:\AAAschool\coding\craft\ProgrammingParadigm\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\spine\SkeletonBatch.cpp(110,42): warning C4018: “<”: 有符号/无符号不匹配
+  libSpine.vcxproj -> D:\AAAschool\coding\craft\ProgrammingParadigm\nyj_lxh_zlf_game\proj.win32\Debug.win32\libSpine.lib

@@ -1,6 +1,6 @@
-// ÎÄ¼şÃû£º Animal.cpp
-// ¹¦ÄÜ£º  ¶¯ÎïÀàµÄÊµÏÖÎÄ¼ş£¬¸ºÔğ¶¯ÎïµÄÊôĞÔºÍĞĞÎªÂß¼­¡£
-// ×÷Õß£º  Niu
+ï»¿// æ–‡ä»¶åï¼š Animal.cpp
+// åŠŸèƒ½ï¼š  åŠ¨ç‰©ç±»çš„å®ç°æ–‡ä»¶ï¼Œè´Ÿè´£åŠ¨ç‰©çš„å±æ€§å’Œè¡Œä¸ºé€»è¾‘ã€‚
+// ä½œè€…ï¼š  Niu
 
 #include "Animal.h"
 #include "cocos2d.h"
@@ -9,7 +9,7 @@ USING_NS_CC;
 constexpr int ACTION_IDLE = 2001;
 
 
-// ´´½¨¶¯Îï
+// åˆ›å»ºåŠ¨ç‰©
 Animal* Animal::create(const std::string& animalImage)
 {
 	Animal* animal = new (std::nothrow) Animal();
@@ -22,30 +22,30 @@ Animal* Animal::create(const std::string& animalImage)
 	return nullptr;
 }
 
-// ³õÊ¼»¯
+// åˆå§‹åŒ–
 bool Animal::init(const std::string& animalImage)
 {
-	// µ÷ÓÃ¸¸ÀàSpriteµÄinit
+	// è°ƒç”¨çˆ¶ç±»Spriteçš„init
 	if (!Sprite::initWithFile(animalImage))
 	{
-		// Èç¹ûÍ¼Æ¬¼ÓÔØÊ§°Ü£¬Ê¹ÓÃÄ¬ÈÏÍ¼Æ¬
+		// å¦‚æœå›¾ç‰‡åŠ è½½å¤±è´¥ï¼Œä½¿ç”¨é»˜è®¤å›¾ç‰‡
 		if (!Sprite::initWithFile("Animal\Chicken.png"))
 		{
-			CCLOG("´íÎó£ºÎŞ·¨¼ÓÔØ¶¯ÎïÍ¼Æ¬: %s", animalImage.c_str());
+			CCLOG("Error : Loading pictures failed: %s", animalImage.c_str());
 			return false;
 		}
 	}
-	// ³õÊ¼»¯±äÁ¿
+	// åˆå§‹åŒ–å˜é‡
 	_name = "Animal";
-	// ÆôÓÃ¶¨Ê±¸üĞÂ×´Ì¬
-	this->schedule(CC_SCHEDULE_SELECTOR(Animal::updateStatus), 0.2f); // Ã¿0.2Ãë¸üĞÂÒ»´Î×´Ì¬
+	// å¯ç”¨å®šæ—¶æ›´æ–°çŠ¶æ€
+	this->schedule(CC_SCHEDULE_SELECTOR(Animal::updateStatus), 0.2f); // æ¯0.2ç§’æ›´æ–°ä¸€æ¬¡çŠ¶æ€
 	return true;
 }
 
-// ¿ªÆô/¹Ø±Õ×Ô¶¯ÒÆ¶¯
+// å¼€å¯/å…³é—­è‡ªåŠ¨ç§»åŠ¨
 void Animal::startIdleMove()
 {
-	// ·ÀÖ¹ÖØ¸´Ìí¼Ó
+	// é˜²æ­¢é‡å¤æ·»åŠ 
 	if (this->getActionByTag(ACTION_IDLE))
 		return;
 
@@ -64,15 +64,15 @@ void Animal::startIdleMove()
 void Animal::stopIdleMove()
 {
 	this->stopActionByTag(ACTION_IDLE);
-	this->setPositionX(roundf(this->getPositionX())); // ·ÀÖ¹¸¡µã²ĞÁô¶¶¶¯
+	this->setPositionX(roundf(this->getPositionX())); // é˜²æ­¢æµ®ç‚¹æ®‹ç•™æŠ–åŠ¨
 }
 
-// ÍæË£
+// ç©è€
 void Animal::play()
 {
-	// ¿¿½ü¶¯ÎïÊ±Êó±ê×ó¼üµã»÷´¥·¢£¬¶¯ÎïÏòÉÏÌøÁ½ÏÂ
-	// Êó±êÓÒ¼ü¼ì²âÂß¼­ÔÚ³¡¾°¹ÜÀíÀàÖĞÊµÏÖ£¬ÕâÀïÖ»ÊµÏÖÌøÔ¾¶¯×÷
-	// ´´½¨ÌøÔ¾¶¯×÷
+	// é è¿‘åŠ¨ç‰©æ—¶é¼ æ ‡å·¦é”®ç‚¹å‡»è§¦å‘ï¼ŒåŠ¨ç‰©å‘ä¸Šè·³ä¸¤ä¸‹
+	// é¼ æ ‡å³é”®æ£€æµ‹é€»è¾‘åœ¨åœºæ™¯ç®¡ç†ç±»ä¸­å®ç°ï¼Œè¿™é‡Œåªå®ç°è·³è·ƒåŠ¨ä½œ
+	// åˆ›å»ºè·³è·ƒåŠ¨ä½œ
 	auto jumpUp = MoveBy::create(0.2f, Vec2(0, 20));
 	auto jumpDown = MoveBy::create(0.2f, Vec2(0, -20));
 	auto jumpSequence = Sequence::create(jumpUp, jumpDown, jumpUp, jumpDown, nullptr);
@@ -84,32 +84,32 @@ void Animal::play()
 	startIdleMove();
 }
 
-// ÊÓ¾õĞ§¹û£ºÍ·¶¥Ã°°®ĞÄ
+// è§†è§‰æ•ˆæœï¼šå¤´é¡¶å†’çˆ±å¿ƒ
 void Animal::showHeart()
 {
 
-	// ·ÀÖ¹·è¿ñË¢°®ĞÄ
+	// é˜²æ­¢ç–¯ç‹‚åˆ·çˆ±å¿ƒ
 	if (this->getChildByName("pet_heart"))
 		return;
 
 	auto heart = Sprite::create("ui/heart.png");
 	heart->setName("pet_heart");
 
-	// Î»ÖÃ£º¶¯ÎïÍ·¶¥
+	// ä½ç½®ï¼šåŠ¨ç‰©å¤´é¡¶
 	heart->setPosition(Vec2(
 		this->getContentSize().width / 2,
 		this->getContentSize().height + 10
 	));
 
-	heart->setScale(0.04f); // ´óĞ¡ÉèÖÃÎªÔ­Í¼µÄ0.04±¶
+	heart->setScale(0.04f); // å¤§å°è®¾ç½®ä¸ºåŸå›¾çš„0.04å€
 	heart->setOpacity(0);
 
-	this->addChild(heart, 10); // ¶ÔÏó£¬Í¼²ã²ãÊı
+	this->addChild(heart, 10); // å¯¹è±¡ï¼Œå›¾å±‚å±‚æ•°
 
-	// ¶¯»­£ºÉÏ¸¡ + ½¥ÏÔ + ÏûÊ§
-	auto fadeIn = FadeIn::create(0.15f); // ½¥Èë
-	auto moveUp = MoveBy::create(0.6f, Vec2(0, 20)); // ÉÏÒÆ
-	auto fadeOut = FadeOut::create(0.3f); // µ­³ö
+	// åŠ¨ç”»ï¼šä¸Šæµ® + æ¸æ˜¾ + æ¶ˆå¤±
+	auto fadeIn = FadeIn::create(0.15f); // æ¸å…¥
+	auto moveUp = MoveBy::create(0.6f, Vec2(0, 20)); // ä¸Šç§»
+	auto fadeOut = FadeOut::create(0.3f); // æ·¡å‡º
 
 	auto seq = Sequence::create(
 		Spawn::create(fadeIn, moveUp, nullptr),
@@ -121,38 +121,38 @@ void Animal::showHeart()
 	heart->runAction(seq);
 }
 
-// Éú²úÊ±¸ü¸ÄÍâ¹Û
+// ç”Ÿäº§æ—¶æ›´æ”¹å¤–è§‚
 void Animal::updateAnimalAppearance()
 {
 	if (_productReady && _visualState != AnimalVisualState::ProductReady)
 	{
-		this->stopActionByTag(1001);// Í£Ö¹Ö®Ç°µÄ¶¯×÷
+		this->stopActionByTag(1001);// åœæ­¢ä¹‹å‰çš„åŠ¨ä½œ
 
-		// ´´½¨ÉÁË¸¶¯×÷
+		// åˆ›å»ºé—ªçƒåŠ¨ä½œ
 		auto tintToGold = TintTo::create(0.4f, 255, 200, 100);
 		auto tintBack = TintTo::create(0.4f, 255, 255, 255);
 		auto seq = Sequence::create(tintToGold, tintBack, nullptr);
-		// ÎŞÏŞÉÁË¸
+		// æ— é™é—ªçƒ
 		auto loop = RepeatForever::create(seq);
-		loop->setTag(1001); // ¸ø¡°²úÆ·×¼±¸ºÃÉÁË¸¡±´ò¸ö±êÇ©
-		// ÔËĞĞ¶¯×÷
+		loop->setTag(1001); // ç»™â€œäº§å“å‡†å¤‡å¥½é—ªçƒâ€æ‰“ä¸ªæ ‡ç­¾
+		// è¿è¡ŒåŠ¨ä½œ
 		this->runAction(loop);
-		_visualState = AnimalVisualState::ProductReady; // ¸üĞÂÊÓ¾õ×´Ì¬
+		_visualState = AnimalVisualState::ProductReady; // æ›´æ–°è§†è§‰çŠ¶æ€
 	}
 	else if (!_productReady && _visualState != AnimalVisualState::Normal)
 	{
-		this->stopActionByTag(1001);// Í£Ö¹Ö®Ç°µÄ¶¯×÷
-		this->setColor(Color3B::WHITE); // »Ö¸´Ô­É«
-		_visualState = AnimalVisualState::Normal; // ¸üĞÂÊÓ¾õ×´Ì¬
+		this->stopActionByTag(1001);// åœæ­¢ä¹‹å‰çš„åŠ¨ä½œ
+		this->setColor(Color3B::WHITE); // æ¢å¤åŸè‰²
+		_visualState = AnimalVisualState::Normal; // æ›´æ–°è§†è§‰çŠ¶æ€
 	}
 }
 
 void Animal::updateStatus(float dt)
 {
-	// Ê¾Àı£ºÔİÊ±ÓÃ²âÊÔÖµ
+	// ç¤ºä¾‹ï¼šæš‚æ—¶ç”¨æµ‹è¯•å€¼
 	if (!_productReady)
 	{
-		// ¾àÀëÉÏ´Î¸§Ãş³¬¹ı 2 Ãë
+		// è·ç¦»ä¸Šæ¬¡æŠšæ‘¸è¶…è¿‡ 2 ç§’
 		if (Director::getInstance()->getTotalFrames() - _lastPetTime > 120)
 		{
 			startIdleMove();
@@ -166,7 +166,7 @@ void Animal::updateStatus(float dt)
 	updateAnimalAppearance();
 }
 
-// ÊÕ»ñ²úÆ·
+// æ”¶è·äº§å“
 ItemType Animal::harvestProduct()
 {
 	if (!_productReady)
@@ -174,7 +174,7 @@ ItemType Animal::harvestProduct()
 
 	_productReady = false;
 
-	// ¸üĞÂÍâ¹Û»ò×´Ì¬
+	// æ›´æ–°å¤–è§‚æˆ–çŠ¶æ€
 	updateStatus(0);
 	updateAnimalAppearance();
 

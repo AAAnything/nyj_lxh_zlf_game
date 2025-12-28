@@ -1,13 +1,13 @@
-// ÎÄ¼şÃû£º Animal.h
-// ¹¦ÄÜ£º  ¶¯ÎïÀàµÄ¶¨ÒåÎÄ¼ş£¬¸ºÔğ¶¯ÎïµÄÊôĞÔºÍĞĞÎªÂß¼­¡£
-// ×÷Õß£º  Niu
+ï»¿// æ–‡ä»¶åï¼š Animal.h
+// åŠŸèƒ½ï¼š  åŠ¨ç‰©ç±»çš„å®šä¹‰æ–‡ä»¶ï¼Œè´Ÿè´£åŠ¨ç‰©çš„å±æ€§å’Œè¡Œä¸ºé€»è¾‘ã€‚
+// ä½œè€…ï¼š  Niu
 
 #pragma once
 #include "cocos2d.h"
 #include "Item/Item.h"
 USING_NS_CC;
 
-// ¶¯ÎïÊÓ¾õ×´Ì¬Ã¶¾Ù
+// åŠ¨ç‰©è§†è§‰çŠ¶æ€æšä¸¾
 enum class AnimalVisualState
 {
 	Normal,
@@ -17,31 +17,31 @@ enum class AnimalVisualState
 class Animal : public cocos2d::Sprite
 {
 public:
-	// ´´½¨¶¯ÎïµÄ¾²Ì¬·½·¨
+	// åˆ›å»ºåŠ¨ç‰©çš„é™æ€æ–¹æ³•
 	static Animal* create(const std::string& animalImage);
-	// ³õÊ¼»¯º¯Êı
+	// åˆå§‹åŒ–å‡½æ•°
 	virtual bool init(const std::string& animalImage);
-	// ÉèÖÃ¶¯ÎïÊôĞÔ
-	void setName(const std::string& name) { _name = name; } // ¶¯ÎïÃû×Ö
-	// ¶¯ÎïÊÓ¾õ×´Ì¬
+	// è®¾ç½®åŠ¨ç‰©å±æ€§
+	void setName(const std::string& name) { _name = name; } // åŠ¨ç‰©åå­—
+	// åŠ¨ç‰©è§†è§‰çŠ¶æ€
 	AnimalVisualState _visualState = AnimalVisualState::Normal;
-	// ¶¯ÎïĞĞÎª
-	void play();                            // ÍæË£
-	void updateStatus(float dt);            // ¸üĞÂ×´Ì¬
-	void Animal::showHeart(); // °®ĞÄ¶¯Ğ§
-	void Animal::startIdleMove(); // ¿ÕÏĞ×Ô¶¯ÒÆ¶¯
-	void Animal::stopIdleMove(); // ÖĞ¶ÏÒÆ¶¯
+	// åŠ¨ç‰©è¡Œä¸º
+	void play();                            // ç©è€
+	void updateStatus(float dt);            // æ›´æ–°çŠ¶æ€
+	void Animal::showHeart(); // çˆ±å¿ƒåŠ¨æ•ˆ
+	void Animal::startIdleMove(); // ç©ºé—²è‡ªåŠ¨ç§»åŠ¨
+	void Animal::stopIdleMove(); // ä¸­æ–­ç§»åŠ¨
 
-	// ÊÕ»ñ²úÆ·
+	// æ”¶è·äº§å“
 	ItemType harvestProduct();
 	
 private:
-	std::string _name;       // ¶¯ÎïÃû×Ö
-	float _lastPetTime = -100.f;  // ÉÏÒ»´Î±»¸§ÃşµÄÊ±¼ä
-	int harvestTime; // ÊÕ»ñÊ±¼ä¼ä¸ô£¨Ãë£©
-	int timeSinceLastHarvest; // ×ÔÉÏ´ÎÊÕ»ñÒÔÀ´µÄÊ±¼ä£¨Ãë£©
-	bool _productReady;	// ²úÆ·ÊÇ·ñ×¼±¸ºÃ
-	// ¸üĞÂ¶¯ÎïÍâ¹Û»ò×´Ì¬
+	std::string _name;       // åŠ¨ç‰©åå­—
+	float _lastPetTime = -100.f;  // ä¸Šä¸€æ¬¡è¢«æŠšæ‘¸çš„æ—¶é—´
+	int harvestTime; // æ”¶è·æ—¶é—´é—´éš”ï¼ˆç§’ï¼‰
+	int timeSinceLastHarvest; // è‡ªä¸Šæ¬¡æ”¶è·ä»¥æ¥çš„æ—¶é—´ï¼ˆç§’ï¼‰
+	bool _productReady;	// äº§å“æ˜¯å¦å‡†å¤‡å¥½
+	// æ›´æ–°åŠ¨ç‰©å¤–è§‚æˆ–çŠ¶æ€
 	void updateAnimalAppearance();
 protected:
 	ItemType _productType = ItemType::None;
