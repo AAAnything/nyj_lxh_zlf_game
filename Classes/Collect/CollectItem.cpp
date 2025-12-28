@@ -1,7 +1,4 @@
 #include "CollectItem.h"
-#include "cocos2d.h"
-
-USING_NS_CC;
 
 CollectItem* CollectItem::create(const std::string& name, const std::string& sprite,
     CollectType type, int baseValue) {
@@ -9,30 +6,37 @@ CollectItem* CollectItem::create(const std::string& name, const std::string& spr
     if (item && item->init(name, sprite)) {
         item->autorelease();
         item->collectType = type;
-        item->setSellPrice(baseValue);  // 设置基础价值
+        item->sellPrice = baseValue;
 
-        // 根据类型设置默认参数
+        // 根据类型设置默认工具和点击次数
         switch (type) {
             case CollectType::WOOD:
                 item->requiredTool = "axe";
-                item->requiredClicks = 1;  // 木头需要点击1次
+                item->requiredClicks = 3;
                 break;
             case CollectType::STONE:
                 item->requiredTool = "pickaxe";
-                item->requiredClicks = 1;  // 石头需要点击1次
+                item->requiredClicks = 5;
                 break;
             case CollectType::GRASS:
-                item->requiredTool = "sickle";  // 草可以用镰刀，但斧子也可以
-                item->requiredClicks = 1;       // 草需要点击1次
+                item->requiredTool = "sickle";
+                item->requiredClicks = 2;
                 break;
             case CollectType::TREE:
                 item->requiredTool = "axe";
-                item->requiredClicks = 5;       // 树需要点击5次
+                item->requiredClicks = 8;
                 break;
         }
 
         return item;
     }
-    CC_SAFE_DELETE(item);
+
+    delete item;
     return nullptr;
+}
+
+bool CollectItem::init(const std::string& name, const std::string& sprite) {
+    this->name = name;
+    this->spriteName = sprite;
+    return true;
 }

@@ -1,5 +1,5 @@
-#include "CollectSpot.h"
-#include "Core/GameManager.h"
+ï»¿#include "CollectSpot.h"
+#include "CollectManager.h"
 #include "cocos2d.h"
 
 USING_NS_CC;
@@ -8,7 +8,7 @@ CollectSpot* CollectSpot::create(const std::string& itemId, Vec2 position, const
     CollectSpot* spot = new CollectSpot();
     if (spot && spot->init(itemId, tileType)) {
         spot->autorelease();
-        spot->setPosition(position);  // ÉèÖÃÊÀ½ç×ø±ê
+        spot->setPosition(position);  // è®¾ç½®ä¸–ç•Œåæ ‡
         return spot;
     }
     CC_SAFE_DELETE(spot);
@@ -18,98 +18,120 @@ CollectSpot* CollectSpot::create(const std::string& itemId, Vec2 position, const
 bool CollectSpot::init(const std::string& itemId, const std::string& tileType) {
     if (!Node::init()) return false;
 
-    // ³õÊ¼»¯³ÉÔ±±äÁ¿
-    this->tileType = tileType;           // ±£´æÍßÆ¬ÀàĞÍ
+    // åˆå§‹åŒ–æˆå‘˜å˜é‡
+    this->tileType = tileType;           // ä¿å­˜ç“¦ç‰‡ç±»å‹
     collected = false;
     currentClicks = 0;
-    collectRange = 100.0f;               // ²É¼¯·¶Î§100ÏñËØ
+    collectRange = 200.0f;               // é‡‡é›†èŒƒå›´200åƒç´ 
 
-    // »ñÈ¡GameManagerÊµÀı
-    auto gm = GameManager::getInstance();
-
-    // Í¨¹ıCollectManager»ñÈ¡²É¼¯ÎïÆ·£¨ÕâÀï¼ÙÉèCollectManagerÓĞÕâ¸ö·½·¨£©
-    item = gm->getCollectItemById(itemId);
+    // é€šè¿‡CollectManagerè·å–é‡‡é›†ç‰©å“
+    item = CollectManager::getInstance()->getCollectItemById(itemId);
 
     if (item) {
         requiredClicks = item->getRequiredClicks();
 
-        // ¸ù¾İÍßÆ¬ÀàĞÍÉèÖÃ²»Í¬µÄ¾«Áé£¨¹¦ÄÜ1£ºÏÔÊ¾¶ÔÓ¦µÄÎïÌå£©
+        // æ ¹æ®ç“¦ç‰‡ç±»å‹è®¾ç½®ä¸åŒçš„ç²¾çµï¼ˆåŠŸèƒ½1ï¼šæ˜¾ç¤ºå¯¹åº”çš„ç‰©ä½“ï¼‰
         std::string spriteName;
         if (tileType == "tree") {
-            spriteName = "tiles/tree.png";        // Ê÷
+            spriteName = "collect/tree.png";        // æ ‘
         }
         else if (tileType == "rock") {
-            spriteName = "tiles/rock.png";        // Ê¯Í·
+            spriteName = "collect/stone.png";       // çŸ³å¤´
         }
         else if (tileType == "grass") {
-            spriteName = "tiles/grass.png";       // ²İ
+            spriteName = "collect/grass.png";       // è‰
         }
         else if (tileType == "wood") {
-            spriteName = "tiles/bush.png";        // ¹àÄ¾
+            spriteName = "collect/wood.png";        // æœ¨å¤´
         }
         else {
-            spriteName = "collect/default.png";    // Ä¬ÈÏ
+            spriteName = "collect/default.png";    // é»˜è®¤
         }
 
         sprite = Sprite::create(spriteName);
         if (sprite) {
             addChild(sprite, 0);
 
-            // ÉèÖÃÃªµãÔÚµ×²¿ÖĞĞÄ£¬ÕâÑù¶¶¶¯Ğ§¹û¸ü×ÔÈ»
+            // è®¾ç½®é”šç‚¹åœ¨åº•éƒ¨ä¸­å¿ƒï¼Œè¿™æ ·æŠ–åŠ¨æ•ˆæœæ›´è‡ªç„¶
             sprite->setAnchorPoint(Vec2(0.5f, 0));
+
+            // ===== ä¿®æ”¹è°ƒè¯•æ¡†ä»£ç  =====
+            // æ ¹æ®ç²¾çµå®é™…å¤§å°ç»˜åˆ¶è¾¹æ¡†
+            Size spriteSize = sprite->getContentSize();
+
+            // è°ƒè¯•è¾“å‡ºç²¾çµå¤§å°
+            CCLOG("CollectSpot: %s ç²¾çµå¤§å°: %.0f x %.0f",
+                tileType.c_str(), spriteSize.width, spriteSize.height);
+
+            auto debugBox = DrawNode::create();
+            // å› ä¸ºç²¾çµé”šç‚¹æ˜¯(0.5, 0)ï¼Œæ‰€ä»¥è¾¹æ¡†è¦å¯¹åº”è°ƒæ•´
+            // å·¦ä¸‹è§’: (-å®½åº¦/2, 0)
+            // å³ä¸Šè§’: (å®½åº¦/2, é«˜åº¦)
+            debugBox->drawRect(
+                Vec2(-spriteSize.width / 2, 0),                    // å·¦ä¸‹è§’
+                Vec2(spriteSize.width / 2, spriteSize.height),    // å³ä¸Šè§’
+                Color4F::RED
+            );
+            this->addChild(debugBox, 100);
+            // =======================
         }
+    }
+    else {
+        // å¦‚æœæ²¡æœ‰ç‰©å“ï¼Œåˆ›å»ºä¸€ä¸ªé»˜è®¤çš„è°ƒè¯•æ¡†
+        auto debugBox = DrawNode::create();
+        debugBox->drawRect(Vec2(-32, -32), Vec2(32, 32), Color4F::RED);
+        this->addChild(debugBox, 100);
     }
 
     return true;
 }
-
-// ¹¦ÄÜ2£ºÅĞ¶ÏÍæ¼ÒÊÇ·ñÔÚ²É¼¯·¶Î§ÄÚ
+// åŠŸèƒ½2ï¼šåˆ¤æ–­ç©å®¶æ˜¯å¦åœ¨é‡‡é›†èŒƒå›´å†…
 bool CollectSpot::isPlayerInRange(Vec2 playerPos) const {
-    if (collected) return false;  // ÒÑ²É¼¯µÄÎïÆ·²»ÔÚ·¶Î§ÄÚ
+    if (collected) return false;  // å·²é‡‡é›†çš„ç‰©å“ä¸åœ¨èŒƒå›´å†…
 
     float distance = playerPos.distance(getPosition());
     return distance <= collectRange;
 }
 
-// ¹¦ÄÜ4£º¼ì²é¹¤¾ßÊÇ·ñÆ¥Åä
+// åŠŸèƒ½4ï¼šæ£€æŸ¥å·¥å…·æ˜¯å¦åŒ¹é…
 bool CollectSpot::canCollectWithTool(const std::string& currentTool) const {
     if (!item || collected) return false;
 
     std::string requiredTool = item->getRequiredTool();
 
-    // ÌØÊâ´¦Àí£º²İ¿ÉÒÔÓÃÁ­µ¶»ò¸«×Ó£¨¹¦ÄÜ5£©
+    // ç‰¹æ®Šå¤„ç†ï¼šè‰å¯ä»¥ç”¨é•°åˆ€æˆ–æ–§å­ï¼ˆåŠŸèƒ½5ï¼‰
     if (tileType == "grass") {
         return currentTool == "sickle" || currentTool == "axe";
     }
 
-    // ÆäËûÎïÆ·ĞèÒª¾«È·Æ¥Åä¹¤¾ß
+    // å…¶ä»–ç‰©å“éœ€è¦ç²¾ç¡®åŒ¹é…å·¥å…·
     return currentTool == requiredTool;
 }
 
-// ²É¼¯²Ù×÷£¨Ã¿´Îµã»÷µ÷ÓÃ£©
+// é‡‡é›†æ“ä½œï¼ˆæ¯æ¬¡ç‚¹å‡»è°ƒç”¨ï¼‰
 bool CollectSpot::collect() {
     if (collected || !item) return false;
 
     currentClicks++;
 
-    // ¹¦ÄÜ3£º²¥·Å¶¶¶¯Ğ§¹û
+    // åŠŸèƒ½3ï¼šæ’­æ”¾æŠ–åŠ¨æ•ˆæœ
     playShakeEffect();
 
-    // ¼ì²éÊÇ·ñ´ïµ½µã»÷´ÎÊı
+    // æ£€æŸ¥æ˜¯å¦è¾¾åˆ°ç‚¹å‡»æ¬¡æ•°
     if (currentClicks >= requiredClicks) {
         collected = true;
-        playCollectCompleteEffect();  // ²¥·ÅÍê³ÉĞ§¹û
-        return true;  // ²É¼¯Íê³É
+        playCollectCompleteEffect();  // æ’­æ”¾å®Œæˆæ•ˆæœ
+        return true;  // é‡‡é›†å®Œæˆ
     }
 
-    return false;  // »¹ĞèÒª¼ÌĞøµã»÷
+    return false;  // è¿˜éœ€è¦ç»§ç»­ç‚¹å‡»
 }
 
-// ¹¦ÄÜ3£º¶¶¶¯Ğ§¹ûÊµÏÖ
+// åŠŸèƒ½3ï¼šæŠ–åŠ¨æ•ˆæœå®ç°
 void CollectSpot::playShakeEffect() {
     if (!sprite) return;
 
-    // ´´½¨¶¶¶¯¶¯»­ĞòÁĞ£ºÓÒ-×ó-ÓÒ-×ó-»Ö¸´
+    // åˆ›å»ºæŠ–åŠ¨åŠ¨ç”»åºåˆ—ï¼šå³-å·¦-å³-å·¦-æ¢å¤
     auto moveRight = MoveBy::create(0.05f, Vec2(3, 0));
     auto moveLeft = MoveBy::create(0.05f, Vec2(-3, 0));
     auto moveRight2 = MoveBy::create(0.05f, Vec2(2, 0));
@@ -123,7 +145,7 @@ void CollectSpot::playShakeEffect() {
         nullptr
     ));
 
-    // ¿ÉÑ¡£ºÌí¼ÓÁ£×ÓĞ§¹ûÔöÇ¿ÊÓ¾õ·´À¡
+    // å¯é€‰ï¼šæ·»åŠ ç²’å­æ•ˆæœå¢å¼ºè§†è§‰åé¦ˆ
     auto emitter = ParticleSystemQuad::create("particles/shake.plist");
     if (emitter) {
         emitter->setPosition(getPosition() + Vec2(0, 30));
@@ -132,17 +154,17 @@ void CollectSpot::playShakeEffect() {
     }
 }
 
-// ²É¼¯Íê³ÉĞ§¹û
+// é‡‡é›†å®Œæˆæ•ˆæœ
 void CollectSpot::playCollectCompleteEffect() {
     if (!sprite) return;
 
-    // Ëõ·ÅÏûÊ§Ğ§¹û
+    // ç¼©æ”¾æ¶ˆå¤±æ•ˆæœ
     auto scaleDown = ScaleTo::create(0.3f, 0.1f);
     auto fadeOut = FadeOut::create(0.3f);
     auto spawn = Spawn::create(scaleDown, fadeOut, nullptr);
 
 
-    // ÑÓ³ÙºóÒÆ³ı½Úµã
+    // å»¶è¿Ÿåç§»é™¤èŠ‚ç‚¹
     auto delay = DelayTime::create(0.5f);
     auto remove = RemoveSelf::create();
 

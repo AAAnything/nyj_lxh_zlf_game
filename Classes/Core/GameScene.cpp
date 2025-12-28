@@ -1,4 +1,9 @@
 ﻿#include "GameScene.h"
+#include "cocos2d.h"
+#include "Collect/CollectManager.h"
+#include "Collect/CollectSpot.h"
+
+
 
 USING_NS_CC;
 
@@ -70,6 +75,12 @@ bool GameScene::init()
         // 例如：auto groundLayer = tileMap->getLayer("Ground");
         // auto tileGID = groundLayer->getTileGIDAt(Vec2(tileX, tileY));
         // auto properties = tileMap->getPropertiesForGID(tileGID).asValueMap();
+
+
+         // 2. 初始化采集管理器
+        CollectManager::getInstance()->initialize(tileMap);
+        CCLOG("CollectManager 初始化完成");
+
     }
     else
     {
