@@ -69,4 +69,14 @@
       <Filter>resource</Filter>
     </ResourceCompile>
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\Resources\collect\beach.png" />
+    <Image Include="..\Resources\collect\grass.png" />
+    <Image Include="..\Resources\collect\ground.png" />
+    <Image Include="..\Resources\collect\groundTree.png" />
+    <Image Include="..\Resources\collect\shell.png" />
+    <Image Include="..\Resources\collect\stone.png" />
+    <Image Include="..\Resources\collect\tree.png" />
+    <Image Include="..\Resources\collect\wood.png" />
+  </ItemGroup>
 </Project>

@@ -70,7 +70,7 @@ void NPC::createUI()
 
    
     // 2. 创建头像（初始隐藏）
-    _headSprite = Sprite::create("npcImages/Haley Talk.png"); 
+    _headSprite = Sprite::create("npcImages/Haley Talk.png  "); 
     float headSpriteX = dialogueBubbleX+373;
     float headSpriteY = dialogueBubbleY+40;
     _headSprite->setPosition(Vec2(
