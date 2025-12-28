@@ -21,6 +21,21 @@
     <ClCompile Include="..\Classes\Core\MainMenuScene.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Core\MenuManager.cpp" />
+    <ClCompile Include="..\Classes\Core\GameScene.cpp" />
+    <ClCompile Include="..\Classes\Core\Player.cpp" />
+    <ClCompile Include="..\Classes\Audio\AudioManager.cpp" />
+    <ClCompile Include="..\Classes\Collect\CollectItem.cpp" />
+    <ClCompile Include="..\Classes\Collect\CollectManager.cpp" />
+    <ClCompile Include="..\Classes\Collect\CollectSpot.cpp" />
+    <ClCompile Include="..\Classes\Core\Item.cpp" />
+    <ClCompile Include="..\Classes\Crop\Carrot.cpp" />
+    <ClCompile Include="..\Classes\Crop\Crop.cpp" />
+    <ClCompile Include="..\Classes\Crop\FarmlandTile.cpp" />
+    <ClCompile Include="..\Classes\NPC\NPC.cpp" />
+    <ClCompile Include="..\Classes\NPC\NPCTestScene.cpp" />
+    <ClCompile Include="..\Classes\SaveSystem\CollectSaveData.cpp" />
+    <ClCompile Include="..\Classes\SaveSystem\SaveManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -32,6 +47,22 @@
     <ClInclude Include="..\Classes\Core\MainMenuScene.h">
       <Filter>src</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\Core\MenuManager.h" />
+    <ClInclude Include="..\Classes\Core\GameScene.h" />
+    <ClInclude Include="..\Classes\Core\Player.h" />
+    <ClInclude Include="..\Classes\Audio\AudioManager.h" />
+    <ClInclude Include="..\Classes\Collect\CollectItem.h" />
+    <ClInclude Include="..\Classes\Collect\CollectManager.h" />
+    <ClInclude Include="..\Classes\Collect\CollectSpot.h" />
+    <ClInclude Include="..\Classes\Core\GameManager.h" />
+    <ClInclude Include="..\Classes\Core\Item.h" />
+    <ClInclude Include="..\Classes\Crop\Carrot.h" />
+    <ClInclude Include="..\Classes\Crop\Crop.h" />
+    <ClInclude Include="..\Classes\Crop\FarmlandTile.h" />
+    <ClInclude Include="..\Classes\NPC\NPC.h" />
+    <ClInclude Include="..\Classes\NPC\NPCTestScene.h" />
+    <ClInclude Include="..\Classes\SaveSystem\CollectSaveData.h" />
+    <ClInclude Include="..\Classes\SaveSystem\SaveManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="game.rc">
