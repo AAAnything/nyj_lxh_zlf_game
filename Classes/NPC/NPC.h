@@ -31,7 +31,7 @@ public:
     void onMouseDown(cocos2d::Event* event); // 鼠标右键点击
 
     // 获取属性
-    std::string getNPCName() const { return _name; }
+    std::string getNPCName() const { return name; }
     bool isTalking() const { return _isTalking; }
 
     // 设置回调函数
@@ -40,7 +40,7 @@ public:
     }
 
 private:
-    std::string _name;                       // NPC名字
+    std::string name;                       // NPC名字
     std::vector<std::string> _dialogueList;  // 对话列表
     int _currentDialogueIndex;               // 当前对话索引
     bool _isTalking;                         // 是否正在对话

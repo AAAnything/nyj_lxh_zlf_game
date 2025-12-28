@@ -1,4 +1,4 @@
-/****************************************************************************
+﻿/****************************************************************************
  Copyright (c) 2017-2018 Xiamen Yaji Software Co., Ltd.
  
  http://www.cocos2d-x.org
@@ -24,11 +24,10 @@
 
 #include "main.h"
 #include "Core\AppDelegate.h"
-#include "cocos2d.h" // cocos��׼ͷ�ļ�
+#include "cocos2d.h" // cocos标准头文件
 
-USING_NS_CC; // ʹ��cocos2d�����ռ䣬== using namespace cocos2d;
+USING_NS_CC; 
 
-// Win32 Ӧ�ó�����ں���������main���� _tWinMain
 // int main
 int WINAPI _tWinMain(HINSTANCE hInstance,
                        HINSTANCE hPrevInstance,
@@ -38,7 +37,6 @@ int WINAPI _tWinMain(HINSTANCE hInstance,
     UNREFERENCED_PARAMETER(hPrevInstance); // 
     UNREFERENCED_PARAMETER(lpCmdLine);
 
-	// ����Ӧ�ó���ʵ��
     AppDelegate app;
     return Application::getInstance()->run();
 }

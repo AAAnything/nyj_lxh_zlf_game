@@ -1,14 +1,25 @@
-#pragma once
+ï»¿#pragma once
+
+enum class CropType {
+    Carrot,
+    Corn,
+    Parsnip
+};
 
 class Crop {
-protected:
-    int growDays;     // ³ÉÊìĞèÒªµÄÌìÊı
-    int currentDays; // ÒÑÉú³¤ÌìÊı
-
 public:
-    Crop(int growDays);
+    explicit Crop(int growDays);
     virtual ~Crop() = default;
 
-    virtual void OnDayPass();     // Ã¿¹ıÒ»Ììµ÷ÓÃ
-    virtual bool IsMature() const;
+    virtual void onDayPass();   // æ–°çš„ä¸€å¤©
+    virtual void water();       // æµ‡æ°´
+    virtual bool isMature() const;
+
+    // â­æ ¸å¿ƒï¼šè¿”å› TMX çš„ tile GID
+    virtual int getCurrentTileGID() const = 0;
+
+protected:
+    int growDays;
+    int currentDay;
+    bool wateredToday;
 };

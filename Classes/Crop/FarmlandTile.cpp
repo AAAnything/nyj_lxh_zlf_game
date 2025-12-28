@@ -1,11 +1,11 @@
-#include "FarmlandTile.h"
+ï»¿#include "FarmlandTile.h"
 
-// FarmlandTileÀàµÄÊµÏÖÎÄ¼ş
+// FarmlandTileç±»çš„å®ç°æ–‡ä»¶
 FarmlandTile::FarmlandTile()
     : state(TileState::Empty) {
 }
 
-// ¸ûµØ
+// è€•åœ°
 bool FarmlandTile::Till() {
     if (state != TileState::Empty)
         return false;
@@ -14,7 +14,7 @@ bool FarmlandTile::Till() {
     return true;
 }
 
-// ²¥ÖÖ
+// æ’­ç§
 bool FarmlandTile::Plant(std::unique_ptr<Crop> newCrop) {
     if (state != TileState::Tilled || !newCrop)
         return false;
@@ -24,17 +24,17 @@ bool FarmlandTile::Plant(std::unique_ptr<Crop> newCrop) {
     return true;
 }
 
-// Ê±¼äÍÆ½ø
+// æ—¶é—´æ¨è¿›
 void FarmlandTile::OnDayPass() {
     if (state == TileState::Seeded && crop) {
-        crop->OnDayPass();
-        if (crop->IsMature()) {
+        crop->onDayPass();
+        if (crop->isMature()) {
             state = TileState::Mature;
         }
     }
 }
 
-// ÊÕ»ñ
+// æ”¶è·
 bool FarmlandTile::Harvest() {
     if (state != TileState::Mature)
         return false;
@@ -44,7 +44,7 @@ bool FarmlandTile::Harvest() {
     return true;
 }
 
-// »ñÈ¡µ±Ç°×´Ì¬
+// è·å–å½“å‰çŠ¶æ€
 TileState FarmlandTile::GetState() const {
     return state;
 }

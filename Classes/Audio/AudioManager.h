@@ -1,60 +1,62 @@
+ï»¿#pragma once
 #include "cocos2d.h"
 #include "SimpleAudioEngine.h"
+USING_NS_CC;
 
 class AudioManager {
 public:
-    // µ¥ÀıÄ£Ê½»ñÈ¡ÊµÀı
+    // å•ä¾‹æ¨¡å¼è·å–å®ä¾‹
     static AudioManager* getInstance();
 
-    // Ïú»ÙÊµÀı
+    // é”€æ¯å®ä¾‹
     static void destroyInstance();
 
-    // ============= ±³¾°ÒôÀÖÏà¹Ø =============
+    // ============= èƒŒæ™¯éŸ³ä¹ç›¸å…³ =============
 
-    // ²¥·ÅÖ÷²Ëµ¥±³¾°ÒôÀÖ
+    // æ’­æ”¾ä¸»èœå•èƒŒæ™¯éŸ³ä¹
     void playMainMenuMusic();
 
-    // ²¥·ÅÓÎÏ·³¡¾°±³¾°ÒôÀÖ
+    // æ’­æ”¾æ¸¸æˆåœºæ™¯èƒŒæ™¯éŸ³ä¹
     void playGameMusic();
 
-    // Í£Ö¹µ±Ç°±³¾°ÒôÀÖ
+    // åœæ­¢å½“å‰èƒŒæ™¯éŸ³ä¹
     void stopBackgroundMusic();
 
-    // ÉèÖÃ±³¾°ÒôÀÖÒôÁ¿ (0.0 ~ 1.0)
+    // è®¾ç½®èƒŒæ™¯éŸ³ä¹éŸ³é‡ (0.0 ~ 1.0)
     void setBackgroundMusicVolume(float volume);
 
-    // ============= ÒôĞ§Ïà¹Ø =============
+    // ============= éŸ³æ•ˆç›¸å…³ =============
 
-    // ²¥·Å°´Å¥µã»÷ÒôĞ§£¨ËùÓĞ°´Å¥Í³Ò»Ê¹ÓÃ£©
+    // æ’­æ”¾æŒ‰é’®ç‚¹å‡»éŸ³æ•ˆï¼ˆæ‰€æœ‰æŒ‰é’®ç»Ÿä¸€ä½¿ç”¨ï¼‰
     void playButtonClickSound();
 
-    // ÉèÖÃÒôĞ§ÒôÁ¿ (0.0 ~ 1.0)
+    // è®¾ç½®éŸ³æ•ˆéŸ³é‡ (0.0 ~ 1.0)
     void setEffectsVolume(float volume);
 
 private:
-    // Ë½ÓĞ¹¹Ôìº¯Êı£¨µ¥ÀıÄ£Ê½£©
+    // ç§æœ‰æ„é€ å‡½æ•°ï¼ˆå•ä¾‹æ¨¡å¼ï¼‰
     AudioManager();
     ~AudioManager();
 
-    // ¾²Ì¬µ¥ÀıÊµÀı
+    // é™æ€å•ä¾‹å®ä¾‹
     static AudioManager* instance;
 
-    // ÒôÆµÎÄ¼şÂ·¾¶
+    // éŸ³é¢‘æ–‡ä»¶è·¯å¾„
     struct AudioPaths {
-        // ±³¾°ÒôÀÖ
+        // èƒŒæ™¯éŸ³ä¹
         std::string mainMenuMusic = "sound/welcome.wav";
         std::string gameMusic = "sound/game.wav";
 
-        // ÒôĞ§
+        // éŸ³æ•ˆ
         std::string buttonClick = "sound/button.wav";
     };
 
-    AudioPaths audioPaths;          // ÒôÆµÎÄ¼şÂ·¾¶ÅäÖÃ
+    AudioPaths audioPaths;          // éŸ³é¢‘æ–‡ä»¶è·¯å¾„é…ç½®
 
-    // ÒôÁ¿ÉèÖÃ
-    float backgroundMusicVolume = 1.0f;  // ±³¾°ÒôÀÖÄ¬ÈÏÒôÁ¿ 100%
-    float effectsVolume = 0.7f;          // ÒôĞ§Ä¬ÈÏÒôÁ¿ 70%
+    // éŸ³é‡è®¾ç½®
+    float backgroundMusicVolume = 1.0f;  // èƒŒæ™¯éŸ³ä¹é»˜è®¤éŸ³é‡ 100%
+    float effectsVolume = 0.7f;          // éŸ³æ•ˆé»˜è®¤éŸ³é‡ 70%
 
-    // µ±Ç°²¥·ÅµÄÒôÀÖÀàĞÍ
+    // å½“å‰æ’­æ”¾çš„éŸ³ä¹ç±»å‹
     std::string currentMusicType;   // "mainMenu", "game", "none"
 };

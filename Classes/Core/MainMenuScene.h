@@ -2,7 +2,15 @@
 #ifndef __MAINMENU_SCENE_H__
 #define __MAINMENU_SCENE_H__
 
+#include "SimpleAudioEngine.h"
+#include "MenuManager.h"
+#include "NPC\NPC.h"
+#include "NPC\NPCTestScene.h"
+#include "Audio\AudioManager.h"
+#include "Animal\Animal.h"
 #include "cocos2d.h"
+
+USING_NS_CC;
 
 class MainMenu : public cocos2d::Scene
 {
@@ -18,7 +26,7 @@ public:
     void menuNewGameCallback(cocos2d::Ref* pSender);
 
     // NPC测试
-    void MainMenu::menuNPCTestCallback(cocos2d::Ref* pSender);
+    void menuNPCTestCallback(cocos2d::Ref* pSender);
 
     // 加载函数按钮回调函数
     void menuLoadGameCallback(cocos2d::Ref* pSender);

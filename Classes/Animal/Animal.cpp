@@ -3,16 +3,13 @@
 // 作者：  Niu
 
 #include "Animal.h"
-#include "cocos2d.h"
-USING_NS_CC;
-
-constexpr int ACTION_IDLE = 2001;
 
 
 // 创建动物
-Animal* Animal::create(const std::string& animalImage)
+Animal* Animal::create(const std::string& animalImage, const AnimalType animalType)
 {
 	Animal* animal = new (std::nothrow) Animal();
+	animal->type = animalType;
 	if (animal && animal->init(animalImage))
 	{
 		animal->autorelease();
@@ -36,7 +33,7 @@ bool Animal::init(const std::string& animalImage)
 		}
 	}
 	// 初始化变量
-	_name = "Animal";
+	name = "Animal";
 	// 启用定时更新状态
 	this->schedule(CC_SCHEDULE_SELECTOR(Animal::updateStatus), 0.2f); // 每0.2秒更新一次状态
 	return true;
@@ -45,40 +42,36 @@ bool Animal::init(const std::string& animalImage)
 // 开启/关闭自动移动
 void Animal::startIdleMove()
 {
-	// 防止重复添加
-	if (this->getActionByTag(ACTION_IDLE))
-		return;
+	if (productReady) return;              // 可收获时禁止踱步
+	if (getActionByTag(IDLE_MOVE_TAG)) return;
 
-	auto moveForward = MoveBy::create(2.0f, Vec2(10, 0));
-	auto moveBack = MoveBy::create(2.0f, Vec2(-10, 0));
+	auto moveLeft = MoveBy::create(1.5f, Vec2(-10, 0));
+	auto moveRight = MoveBy::create(1.5f, Vec2(10, 0));
 
-	auto easeForward = EaseSineInOut::create(moveForward);
-	auto easeBack = EaseSineInOut::create(moveBack);
-
-	auto seq = Sequence::create(easeForward, easeBack, nullptr);
+	auto seq = Sequence::create(moveLeft, moveRight, nullptr);
 	auto loop = RepeatForever::create(seq);
+	loop->setTag(IDLE_MOVE_TAG);
 
-	loop->setTag(ACTION_IDLE);
-	this->runAction(loop);
+	runAction(loop);
 }
+
 void Animal::stopIdleMove()
 {
-	this->stopActionByTag(ACTION_IDLE);
+	this->stopActionByTag(IDLE_MOVE_TAG);
 	this->setPositionX(roundf(this->getPositionX())); // 防止浮点残留抖动
 }
 
 // 玩耍
 void Animal::play()
 {
-	// 靠近动物时鼠标左键点击触发，动物向上跳两下
-	// 鼠标右键检测逻辑在场景管理类中实现，这里只实现跳跃动作
 	// 创建跳跃动作
 	auto jumpUp = MoveBy::create(0.2f, Vec2(0, 20));
 	auto jumpDown = MoveBy::create(0.2f, Vec2(0, -20));
 	auto jumpSequence = Sequence::create(jumpUp, jumpDown, jumpUp, jumpDown, nullptr);
 	this->runAction(jumpSequence);
-	_lastPetTime = Director::getInstance()->getTotalFrames();
+	lastPetTime = Director::getInstance()->getTotalFrames();
 
+	// 头顶冒爱心
 	stopIdleMove();
 	showHeart(); 
 	startIdleMove();
@@ -124,7 +117,7 @@ void Animal::showHeart()
 // 生产时更改外观
 void Animal::updateAnimalAppearance()
 {
-	if (_productReady && _visualState != AnimalVisualState::ProductReady)
+	if (productReady && visualState != AnimalVisualState::ProductReady)
 	{
 		this->stopActionByTag(1001);// 停止之前的动作
 
@@ -137,46 +130,68 @@ void Animal::updateAnimalAppearance()
 		loop->setTag(1001); // 给“产品准备好闪烁”打个标签
 		// 运行动作
 		this->runAction(loop);
-		_visualState = AnimalVisualState::ProductReady; // 更新视觉状态
+		visualState = AnimalVisualState::ProductReady; // 更新视觉状态
 	}
-	else if (!_productReady && _visualState != AnimalVisualState::Normal)
+	else if (!productReady && visualState != AnimalVisualState::Normal)
 	{
 		this->stopActionByTag(1001);// 停止之前的动作
 		this->setColor(Color3B::WHITE); // 恢复原色
-		_visualState = AnimalVisualState::Normal; // 更新视觉状态
+		visualState = AnimalVisualState::Normal; // 更新视觉状态
 	}
 }
 
 void Animal::updateStatus(float dt)
 {
-	// 示例：暂时用测试值
-	if (!_productReady)
+	// ===== 生产计时 =====
+	if (!productReady)
+	{
+		timeSinceLastHarvest += dt;
+
+		if (timeSinceLastHarvest >= PRODUCT_INTERVAL)
+		{
+			productReady = true;
+			stopIdleMove();          // 可收获 → 停止踱步
+		}
+	}
+
+	// ===== 踱步逻辑（只在普通状态）=====
+	if (!productReady)
 	{
 		// 距离上次抚摸超过 2 秒
-		if (Director::getInstance()->getTotalFrames() - _lastPetTime > 120)
+		if (Director::getInstance()->getTotalFrames() - lastPetTime > 120)
 		{
 			startIdleMove();
 		}
 	}
-	else
-	{
-		stopIdleMove();
-	}
 
 	updateAnimalAppearance();
 }
+	
 
 // 收获产品
 ItemType Animal::harvestProduct()
 {
-	if (!_productReady)
+	if (!productReady)
 		return ItemType::None;
 
-	_productReady = false;
+	productReady = false;
+	updateStatus(1);
+	timeSinceLastHarvest = 0.0f;   // ⭐关键：重置生产计时
 
-	// 更新外观或状态
-	updateStatus(0);
-	updateAnimalAppearance();
+	stopIdleMove();
+	stopActionByTag(PRODUCT_FLASH_TAG);
+	setColor(Color3B::WHITE);
 
-	return _productType;
+	switch (type)
+	{
+		case AnimalType::Chicken: return ItemType::Egg;
+		case AnimalType::Cow:     return ItemType::Milk;
+		case AnimalType::Sheep:   return ItemType::Wool;
+		default:                  return ItemType::None;
+	}
+}
+
+bool Animal::canHarvest() const
+{
+	return productReady;
 }

@@ -2,6 +2,17 @@
 #define __GAME_SCENE_H__
 
 #include "cocos2d.h"
+#include "Inventory/Inventory.h"
+#include "Inventory/ShippingBox.h"
+#include "Inventory/InventoryUI.h" // 记得包含 UI 头文件
+
+// 定义工具初始化的配置结构体
+struct ToolDef {
+    std::string id;
+    std::string name;
+    std::string icon;
+    bool isSeed;
+};
 
 class GameScene : public cocos2d::Scene
 {
@@ -17,29 +28,31 @@ public:
     // 每帧更新
     void update(float delta);
 
-    // implement the "static create()" method manually
+    // 手动实现静态 create() 方法
     CREATE_FUNC(GameScene);
 
 private:
-    // 地图精灵
-    cocos2d::Sprite* mapSprite;
-    // 瓦片地图
-    cocos2d::TMXTiledMap* tileMap;
+    /**
+     * @brief 初始化开局自带的工具和种子
+     * 逻辑：根据预设的列表创建 Item，设置属性并放入 inventory
+     */
+    void initStartingItems();
 
-    // 地图大小
-    cocos2d::Size mapSize;
-    // 缩放后的地图大小
-    cocos2d::Size scaledMapSize;
-    // 视图大小
-    cocos2d::Size viewSize;
-    // 地图位置
-    cocos2d::Vec2 mapPosition;
+    // --- 游戏数据 ---
+    Inventory* _inventory;           // 背包数据模型指针
+    InventoryUI* _inventoryUI;       // 背包界面指针
 
-    // 移动速度
-    float moveSpeed;
+    // --- 地图相关 ---
+    cocos2d::Sprite* mapSprite;      // 地图精灵
+    cocos2d::TMXTiledMap* tileMap;   // 瓦片地图
+    cocos2d::Size mapSize;           // 地图原始大小
+    cocos2d::Size scaledMapSize;     // 缩放后的地图大小
+    cocos2d::Size viewSize;          // 屏幕/视图大小
+    cocos2d::Vec2 mapPosition;       // 地图当前坐标
 
-    // 键盘按键状态
-    bool keys[256];
+    // --- 移动逻辑 ---
+    float moveSpeed;                 // 玩家/相机移动速度
+    bool keys[256];                  // 记录键盘按键状态的阵列
 };
 
 #endif // __GAME_SCENE_H__

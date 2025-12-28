@@ -66,6 +66,7 @@ bool GameScene::init()
         CCLOG("Tile map added successfully with scale: %f", desiredScale);
         CCLOG("Map initialized with anchor point: (%f, %f)", tileMap->getAnchorPoint().x, tileMap->getAnchorPoint().y);
 
+
         // 可以在这里获取特定的图层和瓦片，用于实现交互功能
         // 例如：auto groundLayer = tileMap->getLayer("Ground");
         // auto tileGID = groundLayer->getTileGIDAt(Vec2(tileX, tileY));
@@ -99,6 +100,27 @@ bool GameScene::init()
 
     // 开启更新
     scheduleUpdate();
+
+
+    // 1. 创建斧子实例 (调用 Item::init 设置基本信息)
+    auto axe = Item::create("xe_001", "axe", "tools/axe.png");
+
+    // 2. 为斧子增加开始的属性 (逻辑初始化)
+    axe->setMaxStackSize(1);      // 斧子不可堆叠，最大 1 个
+    axe->setCurrentStackSize(1);  // 当前拥有 1 个
+    axe->setIsUsable(true);       // 斧子是可用的
+    axe->setState(1);             // 假设 1 代表耐久度满
+
+    // 创建背包实例
+    auto playerInventory = Inventory::create(10); // 例如10格
+    // addItem 会自动寻找第一个空槽位 (调用了你代码里的 findEmptySlot)
+    playerInventory->addItem(axe);
+    auto inventoryUI = InventoryUI::create(playerInventory);
+    this->addChild(inventoryUI, 10); // zOrder 10 保证在地图之上
+    // 5. 创建 UI 并把数据传进去
+    auto ui = InventoryUI::create(playerInventory);
+    this->addChild(ui, 100);
+
 
     return true;
 }

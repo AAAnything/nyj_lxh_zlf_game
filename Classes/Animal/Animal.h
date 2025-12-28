@@ -4,8 +4,12 @@
 
 #pragma once
 #include "cocos2d.h"
+#include "AnimalConstant.h"
 #include "Item/Item.h"
 USING_NS_CC;
+
+// 动物枚举
+enum class AnimalType { Chicken, Cow, Sheep };
 
 // 动物视觉状态枚举
 enum class AnimalVisualState
@@ -18,32 +22,35 @@ class Animal : public cocos2d::Sprite
 {
 public:
 	// 创建动物的静态方法
-	static Animal* create(const std::string& animalImage);
+	static Animal* create(const std::string& animalImage, const AnimalType AniType);
 	// 初始化函数
 	virtual bool init(const std::string& animalImage);
 	// 设置动物属性
-	void setName(const std::string& name) { _name = name; } // 动物名字
+	void setName(const std::string& itname) { name = itname; } // 动物名字
+	AnimalType type;
 	// 动物视觉状态
-	AnimalVisualState _visualState = AnimalVisualState::Normal;
+	AnimalVisualState visualState = AnimalVisualState::Normal;
 	// 动物行为
 	void play();                            // 玩耍
 	void updateStatus(float dt);            // 更新状态
-	void Animal::showHeart(); // 爱心动效
-	void Animal::startIdleMove(); // 空闲自动移动
-	void Animal::stopIdleMove(); // 中断移动
+	void showHeart(); // 爱心动效
+	void startIdleMove(); // 空闲自动移动
+	void stopIdleMove(); // 中断移动
 
 	// 收获产品
 	ItemType harvestProduct();
+	// 是否可收获
+	bool canHarvest() const;
 	
 private:
-	std::string _name;       // 动物名字
-	float _lastPetTime = -100.f;  // 上一次被抚摸的时间
+	std::string name;       // 动物名字
+	float lastPetTime = -100.f;  // 上一次被抚摸的时间
+	float timeSinceLastHarvest = 0.0f;   // 距离上次收获的时间（秒）
 	int harvestTime; // 收获时间间隔（秒）
-	int timeSinceLastHarvest; // 自上次收获以来的时间（秒）
-	bool _productReady;	// 产品是否准备好
+	bool productReady;	// 产品是否准备好
 	// 更新动物外观或状态
 	void updateAnimalAppearance();
 protected:
-	ItemType _productType = ItemType::None;
+	ItemType productType = ItemType::None;
 
 };

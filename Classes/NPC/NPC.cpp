@@ -35,7 +35,7 @@ bool NPC::init(const std::string& npcImage)
     }
 
     // 初始化变量
-    _name = "NPC";
+    name = "NPC";
     _currentDialogueIndex = 0;
     _isTalking = false;
 
@@ -87,7 +87,7 @@ void NPC::createUI()
 
 
     // 3. 创建名字标签
-    _nameLabel = Label::createWithTTF(_name, "fonts/Marker Felt.ttf", 48);
+    _nameLabel = Label::createWithTTF(name, "fonts/Marker Felt.ttf", 48);
     float nameLabelX = headSpriteX;
     float nameLabelY = headSpriteY - 185;
     _nameLabel->setColor(Color3B::BLACK);

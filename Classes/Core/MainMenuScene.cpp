@@ -1,12 +1,4 @@
-#include "MainMenuScene.h"
-#include "SimpleAudioEngine.h"
-#include "MenuManager.h"
-#include "NPC\NPC.h"
-#include "NPC\NPCTestScene.h"
-#include "Audio\AudioManager.h"
-#include "Animal\Animal.h"
-
-USING_NS_CC;
+ï»¿#include "MainMenuScene.h"
 
 
 Scene* MainMenu::createScene()
@@ -15,44 +7,44 @@ Scene* MainMenu::createScene()
 }
 
 
-// ÐÂÓÎÏ·°´Å¥»Øµ÷º¯Êý
+// æ–°æ¸¸æˆæŒ‰é’®å›žè°ƒå‡½æ•°
 void MainMenu::menuNewGameCallback(cocos2d::Ref* pSender)
 {
-    // ²¥·Å°´Å¥µã»÷ÒôÐ§
+    // æ’­æ”¾æŒ‰é’®ç‚¹å‡»éŸ³æ•ˆ
     AudioManager::getInstance()->playButtonClickSound();
 
-    // ²¥·ÅÓÎÏ·½çÃæ±³¾°ÒôÀÖ
+    // æ’­æ”¾æ¸¸æˆç•Œé¢èƒŒæ™¯éŸ³ä¹
     AudioManager::getInstance()->playGameMusic();
 
 
-    // Í¨¹ýMenuManagerÇÐ»»µ½ÓÎÏ·Ö÷³¡¾°
+    // é€šè¿‡MenuManageråˆ‡æ¢åˆ°æ¸¸æˆä¸»åœºæ™¯
     MenuManager::getInstance()->goToGameScene();
 }
 
 
 
-// ¼ÓÔØ°´Å¥»Øµ÷º¯Êý
+// åŠ è½½æŒ‰é’®å›žè°ƒå‡½æ•°
 void MainMenu::menuLoadGameCallback(cocos2d::Ref* pSender)
 {
-    // ²¥·Å°´Å¥µã»÷ÒôÐ§
+    // æ’­æ”¾æŒ‰é’®ç‚¹å‡»éŸ³æ•ˆ
     AudioManager::getInstance()->playButtonClickSound();
 
-    // ²¥·ÅÓÎÏ·½çÃæ±³¾°ÒôÀÖ
+    // æ’­æ”¾æ¸¸æˆç•Œé¢èƒŒæ™¯éŸ³ä¹
     AudioManager::getInstance()->playGameMusic();
 
-    // ÕâÀïµ÷ÓÃÄãµÄ´æ´¢¼ÓÔØÂß¼­
+    // è¿™é‡Œè°ƒç”¨ä½ çš„å­˜å‚¨åŠ è½½é€»è¾‘
     // CollectSaveManager::getInstance()->loadFromFile();
 
-    // ÇÐ»»µ½ÓÎÏ·³¡¾°
+    // åˆ‡æ¢åˆ°æ¸¸æˆåœºæ™¯
     MenuManager::getInstance()->goToGameScene();
 }
 
 
 
-// ÍË³ö°´Å¥»Øµ÷º¯Êý
+// é€€å‡ºæŒ‰é’®å›žè°ƒå‡½æ•°
 void MainMenu::menuCloseCallback(Ref* pSender)
 {
-    // ²¥·Å°´Å¥µã»÷ÒôÐ§
+    // æ’­æ”¾æŒ‰é’®ç‚¹å‡»éŸ³æ•ˆ
     AudioManager::getInstance()->playButtonClickSound();
 
     Sleep(500);
@@ -62,14 +54,14 @@ void MainMenu::menuCloseCallback(Ref* pSender)
 
 
 
-// NPC²âÊÔ°´Å¥»Øµ÷º¯Êý
+// NPCæµ‹è¯•æŒ‰é’®å›žè°ƒå‡½æ•°
 void MainMenu::menuNPCTestCallback(cocos2d::Ref* pSender)
 {
-    // ²¥·Å°´Å¥µã»÷ÒôÐ§
+    // æ’­æ”¾æŒ‰é’®ç‚¹å‡»éŸ³æ•ˆ
     AudioManager::getInstance()->playButtonClickSound();
 
 
-    // ÇÐ»»µ½NPCTestScene
+    // åˆ‡æ¢åˆ°NPCTestScene
     auto scene = NPCTestScene::createScene();
     if (scene)
     {
@@ -77,7 +69,7 @@ void MainMenu::menuNPCTestCallback(cocos2d::Ref* pSender)
     }
     else
     {
-        CCLOG("´íÎó£ºÎÞ·¨´´½¨NPC²âÊÔ³¡¾°");
+        CCLOG("é”™è¯¯ï¼šæ— æ³•åˆ›å»ºNPCæµ‹è¯•åœºæ™¯");
     }
 }
 
@@ -87,40 +79,38 @@ bool MainMenu::init()
 {
     if (!Scene::init())
         return false;
-    // ²¥·ÅÖ÷²Ëµ¥±³¾°ÒôÀÖ
+    // æ’­æ”¾ä¸»èœå•èƒŒæ™¯éŸ³ä¹
     AudioManager::getInstance()->playMainMenuMusic();
 
     auto visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
 
-    // SpriteÊÇCocos2d-xÓÎÏ·ÒýÇæÖÐµÄÒ»¸öºËÐÄÀà£¬ÓÃÀ´±íÊ¾2DÍ¼Ïñ/¾«Áé¡£
-    // Ìí¼Ó³õÊ¼»¯±³¾°
+    // Spriteæ˜¯Cocos2d-xæ¸¸æˆå¼•æ“Žä¸­çš„ä¸€ä¸ªæ ¸å¿ƒç±»ï¼Œç”¨æ¥è¡¨ç¤º2Då›¾åƒ/ç²¾çµã€‚
+    // æ·»åŠ åˆå§‹åŒ–èƒŒæ™¯
     auto initialBackground = Sprite::create("background.png");
-    // ÖÃÓÚÆÁÄ»ÖÐ¼ä
+    // ç½®äºŽå±å¹•ä¸­é—´
     initialBackground->setPosition(Vec2(
         visibleSize.width / 2 + origin.x, 
         visibleSize.height / 2 + origin.y));
-    // ÖÃÓÚµ×²ã
+    // ç½®äºŽåº•å±‚
     this->addChild(initialBackground, 0);
 
-	CCLOG("Ö÷²Ëµ¥³¡¾°³õÊ¼»¯");
+	CCLOG("ä¸»èœå•åœºæ™¯åˆå§‹åŒ–");
 
 #if 0
-    // ===== ´´½¨Ò»Ö»¶¯Îï =====
-    auto animal = Animal::create("Animal/Chicken.png");
+    // ===== åˆ›å»ºä¸€åªåŠ¨ç‰© =====
+    auto animal = Animal::create("Animal/Chicken.png", AnimalType::Chicken);
     animal->setPosition(Vec2(
         visibleSize.width / 2 + origin.x,
-        visibleSize.height / 2 + origin.y)); // ÆÁÄ»ÖÐ¼ä£¨°´Äã´°¿Ú´óÐ¡µ÷£©
+        visibleSize.height / 2 + origin.y)); // å±å¹•ä¸­é—´ï¼ˆæŒ‰ç…§çª—å£å¤§å°è°ƒï¼‰
     this->addChild(animal,100);
     animal->setVisible(true);
-    // ===== ²âÊÔ£º5ÃëºóÈÃËü¡°¿ÉÊÕ»ñ¡± =====
+    // ===== æµ‹è¯•ï¼š5ç§’åŽè®©å®ƒâ€œå¯æ”¶èŽ·â€ =====
     this->runAction(Sequence::create(
         DelayTime::create(5.0f),
         CallFunc::create([animal]() {
-            animal->startIdleMove();
-			animal->harvestProduct();
-            animal->updateStatus(0); // »òÕßÄãÖ®ºó¸Ä³É setProductReady(true)
+            animal->updateStatus(0); // æˆ–è€…ä½ ä¹‹åŽæ”¹æˆ setProductReady(true)
             }),
         nullptr
     ));
@@ -130,94 +120,94 @@ bool MainMenu::init()
         };
     _eventDispatcher->addEventListenerWithSceneGraphPriority(listener, this);
 #endif
-    // 1.´´½¨ÓÎÏ·±êÌâ
+    // 1.åˆ›å»ºæ¸¸æˆæ ‡é¢˜
     auto titleBtn = Sprite::create("icon/title.png");
-    // ÖÃÓÚÆÁÄ»ÖÐ¼ä
+    // ç½®äºŽå±å¹•ä¸­é—´
     titleBtn->setPosition(Vec2(
         origin.x + visibleSize.width / 2,
         origin.y + visibleSize.height - titleBtn->getContentSize().height / 2 - 50));
-    // ÖÃÓÚ±³¾°ÉÏ²ã
+    // ç½®äºŽèƒŒæ™¯ä¸Šå±‚
     this->addChild(titleBtn, 1);
 
     
 
-    // 2. ´´½¨ÐÂÓÎÏ·°´Å¥
+    // 2. åˆ›å»ºæ–°æ¸¸æˆæŒ‰é’®
     auto newGameBtn = MenuItemImage::create(
         "icon/newGameButton.png",
         "icon/newGameButtonOn.png",
         CC_CALLBACK_1(MainMenu::menuNewGameCallback, this));
 
-    // ÉèÖÃÐÂÓÎÏ·°´Å¥Î»ÖÃ
+    // è®¾ç½®æ–°æ¸¸æˆæŒ‰é’®ä½ç½®
     float newGameX = origin.x + newGameBtn->getContentSize().width / 2 + 40;  
     float newGameY = origin.y + newGameBtn->getContentSize().height / 2 + 20;  
     newGameBtn->setPosition(Vec2(newGameX, newGameY));
 
 
 
-    // 3. ´´½¨¼ÓÔØ°´Å¥
+    // 3. åˆ›å»ºåŠ è½½æŒ‰é’®
     auto loadBtn = MenuItemImage::create(
         "icon/loadGameButton.png",
         "icon/loadGameButtonOn.png",
-        CC_CALLBACK_1(MainMenu::menuLoadGameCallback, this));  // ½¨ÒéÓÃ²»Í¬»Øµ÷º¯Êý
+        CC_CALLBACK_1(MainMenu::menuLoadGameCallback, this));  // å»ºè®®ç”¨ä¸åŒå›žè°ƒå‡½æ•°
 
-    // ÉèÖÃ¼ÓÔØ°´Å¥Î»ÖÃ
+    // è®¾ç½®åŠ è½½æŒ‰é’®ä½ç½®
     float loadX = newGameX + visibleSize.width/4;  
     float loadY = newGameY;  
     loadBtn->setPosition(Vec2(loadX, loadY));
 
 
 
-    // 4. ´´½¨ºÏ×÷°´Å¥
+    // 4. åˆ›å»ºåˆä½œæŒ‰é’®
     auto coopBtn = MenuItemImage::create(
         "icon/cooperationButton.png",
         "icon/cooperationButtonOn.png",
-        CC_CALLBACK_1(MainMenu::menuCloseCallback, this));  // ½¨ÒéÓÃ²»Í¬»Øµ÷º¯Êý
+        CC_CALLBACK_1(MainMenu::menuCloseCallback, this));  // å»ºè®®ç”¨ä¸åŒå›žè°ƒå‡½æ•°
 
-    // ÉèÖÃºÏ×÷°´Å¥Î»ÖÃ
+    // è®¾ç½®åˆä½œæŒ‰é’®ä½ç½®
     float coopX = loadX + visibleSize.width/4;  
     float coopY = newGameY; 
     coopBtn->setPosition(Vec2(coopX, coopY));
 
 
 
-    // 5. ´´½¨ÍË³ö°´Å¥
+    // 5. åˆ›å»ºé€€å‡ºæŒ‰é’®
     auto exitBtn = MenuItemImage::create(
         "icon/exitButton.png",
         "icon/exitButtonOn.png",
-        CC_CALLBACK_1(MainMenu::menuCloseCallback, this));  // ½¨ÒéÓÃ²»Í¬»Øµ÷º¯Êý
+        CC_CALLBACK_1(MainMenu::menuCloseCallback, this));  // å»ºè®®ç”¨ä¸åŒå›žè°ƒå‡½æ•°
 
-    // ÉèÖÃÍË³ö°´Å¥Î»ÖÃ
+    // è®¾ç½®é€€å‡ºæŒ‰é’®ä½ç½®
     float exitX = coopX + visibleSize.width / 4;  
     float exitY = newGameY; 
     exitBtn->setPosition(Vec2(exitX, exitY));
 
 
 
-    // 6. ´´½¨¿ª·¢ÈËÔ±ÐÅÏ¢
+    // 6. åˆ›å»ºå¼€å‘äººå‘˜ä¿¡æ¯
     auto developerBtn = MenuItemImage::create(
         "icon/versionButton.png",
         "icon/versionButtonOn.png",
-        CC_CALLBACK_1(MainMenu::menuCloseCallback, this));  // ½¨ÒéÓÃ²»Í¬»Øµ÷º¯Êý
+        CC_CALLBACK_1(MainMenu::menuCloseCallback, this));  // å»ºè®®ç”¨ä¸åŒå›žè°ƒå‡½æ•°
 
-    // ÉèÖÃ¿ª·¢ÈËÔ±ÐÅÏ¢Î»ÖÃ
+    // è®¾ç½®å¼€å‘äººå‘˜ä¿¡æ¯ä½ç½®
     float developerX = exitX + (exitBtn->getContentSize().width - developerBtn->getContentSize().width) / 2;
     float developerY = newGameY+200;
     developerBtn->setPosition(Vec2(developerX, developerY));
 
 
 
-    // ²âÊÔ
-    // ´´½¨NPCÐÅÏ¢
+    // æµ‹è¯•
+    // åˆ›å»ºNPCä¿¡æ¯
     auto npcBtn = MenuItemImage::create(
         "icon/versionButton.png",
         "icon/versionButtonOn.png",
-        CC_CALLBACK_1(MainMenu::menuNPCTestCallback, this));  // ½¨ÒéÓÃ²»Í¬»Øµ÷º¯Êý
+        CC_CALLBACK_1(MainMenu::menuNPCTestCallback, this));  // å»ºè®®ç”¨ä¸åŒå›žè°ƒå‡½æ•°
     npcBtn->setPosition(Vec2(developerX, developerY+200));
 
 
 
 
-    // 7. ´´½¨²Ëµ¥²¢Ìí¼ÓËùÓÐ°´Å¥
+    // 7. åˆ›å»ºèœå•å¹¶æ·»åŠ æ‰€æœ‰æŒ‰é’®
     auto menu = Menu::create(newGameBtn, loadBtn, coopBtn, exitBtn, developerBtn, npcBtn,nullptr);
     menu->setPosition(Vec2::ZERO);
     this->addChild(menu, 1);

@@ -1,9 +1,9 @@
-#include "AudioManager.h"
+ï»¿#include "AudioManager.h"
 
 USING_NS_CC;
 using namespace CocosDenshion;
 
-// ¾²Ì¬³ÉÔ±³õÊ¼»¯
+// é™æ€æˆå‘˜åˆå§‹åŒ–
 AudioManager* AudioManager::instance = nullptr;
 
 
@@ -27,31 +27,31 @@ void AudioManager::destroyInstance() {
 AudioManager::AudioManager()
     : currentMusicType("none") {
 
-    // ³õÊ¼»¯ÒôÆµÒıÇæÒôÁ¿
+    // åˆå§‹åŒ–éŸ³é¢‘å¼•æ“éŸ³é‡
     SimpleAudioEngine::getInstance()->setBackgroundMusicVolume(backgroundMusicVolume);
     SimpleAudioEngine::getInstance()->setEffectsVolume(effectsVolume);
 }
 
 
 AudioManager::~AudioManager() {
-    // Í£Ö¹ËùÓĞÒôÆµ
+    // åœæ­¢æ‰€æœ‰éŸ³é¢‘
     SimpleAudioEngine::getInstance()->stopAllEffects();
     SimpleAudioEngine::getInstance()->stopBackgroundMusic(true);
 }
 
 
-// ============= ±³¾°ÒôÀÖÏà¹Ø =============
+// ============= èƒŒæ™¯éŸ³ä¹ç›¸å…³ =============
 
 
-// Ö÷²Ëµ¥ÒôÀÖ
+// ä¸»èœå•éŸ³ä¹
 void AudioManager::playMainMenuMusic() {
-    // Èç¹ûÒÑ¾­ÔÚ²¥·ÅÖ÷²Ëµ¥ÒôÀÖ£¬²»ÖØ¸´²¥·Å
+    // å¦‚æœå·²ç»åœ¨æ’­æ”¾ä¸»èœå•éŸ³ä¹ï¼Œä¸é‡å¤æ’­æ”¾
     if (currentMusicType == "mainMenu") return;
 
-    // Í£Ö¹µ±Ç°ÒôÀÖ
+    // åœæ­¢å½“å‰éŸ³ä¹
     stopBackgroundMusic();
 
-    // ²¥·ÅÖ÷²Ëµ¥ÒôÀÖ£¨Ñ­»·²¥·Å£©
+    // æ’­æ”¾ä¸»èœå•éŸ³ä¹ï¼ˆå¾ªç¯æ’­æ”¾ï¼‰
     SimpleAudioEngine::getInstance()->playBackgroundMusic(
         audioPaths.mainMenuMusic.c_str(), true);
 
@@ -59,15 +59,15 @@ void AudioManager::playMainMenuMusic() {
 }
 
 
-// ÓÎÏ·½çÃæÒôÀÖ
+// æ¸¸æˆç•Œé¢éŸ³ä¹
 void AudioManager::playGameMusic() {
-    // Èç¹ûÒÑ¾­ÔÚ²¥·ÅÓÎÏ·ÒôÀÖ£¬²»ÖØ¸´²¥·Å
+    // å¦‚æœå·²ç»åœ¨æ’­æ”¾æ¸¸æˆéŸ³ä¹ï¼Œä¸é‡å¤æ’­æ”¾
     if (currentMusicType == "game") return;
 
-    // Í£Ö¹µ±Ç°ÒôÀÖ
+    // åœæ­¢å½“å‰éŸ³ä¹
     stopBackgroundMusic();
 
-    // ²¥·ÅÓÎÏ·ÒôÀÖ£¨Ñ­»·²¥·Å£©
+    // æ’­æ”¾æ¸¸æˆéŸ³ä¹ï¼ˆå¾ªç¯æ’­æ”¾ï¼‰
     SimpleAudioEngine::getInstance()->playBackgroundMusic(
         audioPaths.gameMusic.c_str(), true);
 
@@ -75,20 +75,20 @@ void AudioManager::playGameMusic() {
 }
 
 
-// Í£Ö¹ÒôÀÖ
+// åœæ­¢éŸ³ä¹
 void AudioManager::stopBackgroundMusic() {
     SimpleAudioEngine::getInstance()->stopBackgroundMusic();
     currentMusicType = "none";
 }
 
 
- // ÒôÁ¿µ÷½Ú
+ // éŸ³é‡è°ƒèŠ‚
 void AudioManager::setBackgroundMusicVolume(float volume) {
     backgroundMusicVolume = volume;
     SimpleAudioEngine::getInstance()->setBackgroundMusicVolume(volume);
 }
 
-// ============= ÒôĞ§Ïà¹Ø =============
+// ============= éŸ³æ•ˆç›¸å…³ =============
 
 
 // 

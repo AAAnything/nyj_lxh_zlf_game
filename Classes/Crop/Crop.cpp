@@ -1,14 +1,24 @@
-#include "Crop.h"
+﻿#include "Crop.h"
 
 Crop::Crop(int days)
-    : growDays(days), currentDays(0) {
+    : growDays(days), currentDay(1), wateredToday(false)
+{
 }
 
-void Crop::OnDayPass() {
-    if (currentDays < growDays)
-        currentDays++;
+void Crop::water()
+{
+    wateredToday = true;
 }
 
-bool Crop::IsMature() const {
-    return currentDays >= growDays;
+void Crop::onDayPass()
+{
+    if (currentDay < growDays)
+        currentDay++;
+
+    wateredToday = false;
+}
+
+bool Crop::isMature() const
+{
+    return currentDay >= growDays;
 }
