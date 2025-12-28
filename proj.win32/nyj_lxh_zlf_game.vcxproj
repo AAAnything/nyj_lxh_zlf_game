@@ -172,6 +172,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)\Resources\" /D /E /I /F /Y
     <ClCompile Include="..\Classes\Crop\ParsnipCrop.cpp" />
     <ClCompile Include="..\Classes\Inventory\Inventory.cpp" />
     <ClCompile Include="..\Classes\Inventory\ShippingBox.cpp" />
+    <ClCompile Include="..\Classes\Item\Item.cpp" />
     <ClCompile Include="..\Classes\Item\ItemManager.cpp" />
     <ClCompile Include="..\Classes\NPC\NPC.cpp" />
     <ClCompile Include="..\Classes\NPC\NPCTestScene.cpp" />
@@ -180,7 +181,6 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)\Resources\" /D /E /I /F /Y
     <ClCompile Include="..\Classes\SaveSystem\CollectSaveData.cpp" />
     <ClCompile Include="..\Classes\SaveSystem\SaveManager.cpp" />
     <ClCompile Include="..\Classes\UI\InventoryUI.cpp" />
-    <ClCompile Include="C:\Users\Nnyj\xwechat_files\wxid_323ysvftuwsk22_bce4\msg\file\2025-12\简化后背包系统\简化后背包系统\Item.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -205,6 +205,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)\Resources\" /D /E /I /F /Y
     <ClInclude Include="..\Classes\Crop\ParsnipCrop.h" />
     <ClInclude Include="..\Classes\Inventory\Inventory.h" />
     <ClInclude Include="..\Classes\Inventory\ShippingBox.h" />
+    <ClInclude Include="..\Classes\Item\Item.h" />
     <ClInclude Include="..\Classes\Item\ItemManager.h" />
     <ClInclude Include="..\Classes\NPC\NPC.h" />
     <ClInclude Include="..\Classes\NPC\NPCTestScene.h" />
@@ -212,7 +213,6 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)\Resources\" /D /E /I /F /Y
     <ClInclude Include="..\Classes\SaveSystem\CollectSaveData.h" />
     <ClInclude Include="..\Classes\SaveSystem\SaveManager.h" />
     <ClInclude Include="..\Classes\UI\InventoryUI.h" />
-    <ClInclude Include="C:\Users\Nnyj\xwechat_files\wxid_323ysvftuwsk22_bce4\msg\file\2025-12\简化后背包系统\简化后背包系统\Item.h" />
     <ClInclude Include="main.h" />
   </ItemGroup>
   <ItemGroup>

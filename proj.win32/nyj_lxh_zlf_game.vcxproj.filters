@@ -44,8 +44,8 @@
     <ClCompile Include="..\Classes\Core\GameObject.cpp" />
     <ClCompile Include="..\Classes\Inventory\ShippingBox.cpp" />
     <ClCompile Include="..\Classes\UI\InventoryUI.cpp" />
-    <ClCompile Include="C:\Users\Nnyj\xwechat_files\wxid_323ysvftuwsk22_bce4\msg\file\2025-12\简化后背包系统\简化后背包系统\Item.cpp" />
     <ClCompile Include="..\Classes\Inventory\Inventory.cpp" />
+    <ClCompile Include="..\Classes\Item\Item.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -82,8 +82,8 @@
     <ClInclude Include="..\Classes\Core\GameObject.h" />
     <ClInclude Include="..\Classes\Inventory\ShippingBox.h" />
     <ClInclude Include="..\Classes\UI\InventoryUI.h" />
-    <ClInclude Include="C:\Users\Nnyj\xwechat_files\wxid_323ysvftuwsk22_bce4\msg\file\2025-12\简化后背包系统\简化后背包系统\Item.h" />
     <ClInclude Include="..\Classes\Inventory\Inventory.h" />
+    <ClInclude Include="..\Classes\Item\Item.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="game.rc">
