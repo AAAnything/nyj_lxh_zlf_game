@@ -52,19 +52,19 @@ void CollectManager::initializeItemDatabase() {
     // 木头
     CollectItem* wood = CollectItem::create("Wood", "items/wood.png", CollectType::WOOD, 10);
     wood->setRequiredTool("axe");
-    wood->setRequiredClicks(1);
+    wood->setRequiredClicks(2);
     itemDB["wood"] = wood;
 
     // 石头
     CollectItem* stone = CollectItem::create("Stone", "collect/stone.png", CollectType::STONE, 15);
     stone->setRequiredTool("pickaxe");
-    stone->setRequiredClicks(1);
+    stone->setRequiredClicks(2);
     itemDB["stone"] = stone;
 
     // 草
     CollectItem* grass = CollectItem::create("Grass", "items/grass.png", CollectType::GRASS, 5);
     grass->setRequiredTool("sickle");
-    grass->setRequiredClicks(1);
+    grass->setRequiredClicks(2);
     itemDB["grass"] = grass;
 
     // 树
@@ -72,6 +72,13 @@ void CollectManager::initializeItemDatabase() {
     tree->setRequiredTool("axe");
     tree->setRequiredClicks(5);
     itemDB["tree"] = tree;
+
+    // 贝壳
+    CollectItem* shell = CollectItem::create("Shell", "items/shell.png", CollectType::SHELL, 8);
+    // 可以显式设置无需工具
+    shell->setRequiredTool("");
+    shell->setRequiredClicks(1);
+    itemDB["shell"] = shell;
 }
 
 
@@ -320,6 +327,7 @@ std::string CollectManager::getCollectIdFromTileType(const std::string& tileType
     if (tileType == "wood") return "wood";
     if (tileType == "rock") return "stone";
     if (tileType == "grass") return "grass";
+    if (tileType == "shell") return "shell";
     return "wood";
 }
 
@@ -336,4 +344,10 @@ void CollectManager::update(float dt) {
             ++it;
         }
     }
+}
+
+
+void CollectManager::handleCollectSuccess(CollectSpot* spot) {
+    // 这里可以写采集成功后的逻辑：比如添加物品到背包、播放音效、刷新UI等
+    
 }

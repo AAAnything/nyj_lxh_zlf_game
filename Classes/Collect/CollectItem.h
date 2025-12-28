@@ -12,7 +12,8 @@ enum class CollectType {
     WOOD,       // 木头
     STONE,      // 石头  
     GRASS,      // 草
-    TREE        // 树（大树，产更多木材）
+    TREE,       // 树
+    SHELL       // 贝壳
 };
 
 // 采集物品类

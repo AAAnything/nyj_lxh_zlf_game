@@ -30,9 +30,9 @@ public:
     // 背包系统连接
     void setInventorySystem(IInventorySystem* inventory);
 
-    // 交互处理
-    bool handleCollectInteraction(Vec2 touchPos, Vec2 playerPos);
+    void handleCollectSuccess(CollectSpot* spot);
 
+    
     // 鼠标有关
     void handleTouchEvent(Vec2 touchPos);
 
@@ -56,9 +56,7 @@ private:
         int treeMinGID, int treeMaxGID,
         const std::string& collectType,
         int downOffset);
-    CollectSpot* findCollectAtPosition(Vec2 position) const;
-    void handleCollectSuccess(CollectSpot* spot);
-    void updateCollectHighlights(Vec2 playerPos);
+   
 
 
    

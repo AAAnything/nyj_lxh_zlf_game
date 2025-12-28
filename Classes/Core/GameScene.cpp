@@ -77,6 +77,7 @@ bool GameScene::init()
 
 
          // 2. 初始化采集管理器
+         //    设置可以采集的物品
         CollectManager::getInstance()->initialize(tileMap);
         CCLOG("CollectManager 初始化完成");
 
@@ -141,7 +142,7 @@ bool GameScene::init()
     _eventDispatcher->addEventListenerWithSceneGraphPriority(keyboardListener, this);
 
 
-    // 新增：添加鼠标事件监听器（与NPCTestScene相同）
+    // 添加鼠标事件监听器（NPC调用）
     auto mouseListener = EventListenerMouse::create();
     mouseListener->onMouseDown = CC_CALLBACK_1(GameScene::onMouseDown, this);
     _eventDispatcher->addEventListenerWithSceneGraphPriority(mouseListener, this);
@@ -166,7 +167,7 @@ void GameScene::onKeyReleased(EventKeyboard::KeyCode keyCode, Event* event)
 }
 
 
-// 新增：处理鼠标点击事件（与NPCTestScene相同逻辑）
+// 处理鼠标点击事件（与NPC有关）
 void GameScene::onMouseDown(cocos2d::Event* event)
 {
     if (_npc)

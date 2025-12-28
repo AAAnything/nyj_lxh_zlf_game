@@ -14,6 +14,10 @@ public:
     virtual bool init(const std::string& itemId, const std::string& tileType);
 
 
+    // 鼠标事件处理函数
+    void onMouseDown(cocos2d::Event* event);
+
+
     // 添加触摸相关方法
     void enableTouch(bool enable = true);
     void disableTouch() { enableTouch(false); }
@@ -54,7 +58,7 @@ private:
     Sprite* sprite;
 
     // 新增：触摸事件监听器成员变量
-    EventListenerTouchOneByOne* touchListener;
+    EventListenerMouse* touchListener;
 };
 
 #endif // __COLLECT_SPOT_H__

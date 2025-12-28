@@ -44,6 +44,9 @@ bool CollectSpot::init(const std::string& itemId, const std::string& tileType) {
         else if (tileType == "wood") {
             spriteName = "collect/wood.png";        // 木头
         }
+        else if (tileType == "shell") {
+            spriteName = "collect/shell.png";       // 贝壳
+        }
         else {
             spriteName = "collect/default.png";    // 默认
         }
@@ -52,10 +55,14 @@ bool CollectSpot::init(const std::string& itemId, const std::string& tileType) {
         if (sprite) {
             addChild(sprite, 0);
 
-            // 设置锚点在底部中心，这样抖动效果更自然
-            sprite->setAnchorPoint(Vec2(0.5f, 0));
+            // 设置锚点
+            if (tileType != "tree")
+                sprite->setAnchorPoint(Vec2(0.5f, 0.1f));
+            else
+                sprite->setAnchorPoint(Vec2(0.5f, 0));
 
-            // ===== 调试框代码 =====
+            sprite->setScale(1.2f);
+            /* ==== = 调试框代码 ==== =
             // 根据精灵实际大小绘制边框
             Size spriteSize = sprite->getContentSize();
 
@@ -81,7 +88,7 @@ bool CollectSpot::init(const std::string& itemId, const std::string& tileType) {
                 "Arial", 20);
             label->setPosition(Vec2(0, spriteSize.height + 20));
             label->setTextColor(Color4B::YELLOW);
-            this->addChild(label, 101);
+            this->addChild(label, 101);*/
             // =======================
         }
     }
@@ -96,61 +103,45 @@ bool CollectSpot::init(const std::string& itemId, const std::string& tileType) {
 
 
     // ==============================================
-    // 添加触摸事件监听器
-    auto listener = EventListenerTouchOneByOne::create();
-    listener->setSwallowTouches(true);
-    listener->onTouchBegan = [this](Touch* touch, Event* event) -> bool {
-        if (collected) return false;
+    // 添加鼠标事件监听
+    auto mouseListener = EventListenerMouse::create();
+    mouseListener->onMouseDown = CC_CALLBACK_1(CollectSpot::onMouseDown, this);
 
-        // 获取触摸坐标
-        Vec2 touchPos = touch->getLocation();
-
-        // 检查是否点击在采集点范围内
-        // 方法1：使用简单的距离判断
-        // float distance = touchPos.distance(this->getPosition());
-        // if (distance <= collectRange) {
-        //     return true; // 触摸事件被此节点消费
-        // }
-
-        // 方法2：使用边界框检测（更精确）
-        Rect bbox = this->getBoundingBox();
-        // 注意：需要转换为世界坐标
-        bbox.origin = this->getParent()->convertToWorldSpace(bbox.origin);
-
-        if (bbox.containsPoint(touchPos)) {
-            return true;
-        }
-
-        return false;
-        };
-
-    listener->onTouchEnded = [this](Touch* touch, Event* event) {
-        // 执行采集逻辑
-        bool completed = this->collect();
-        if (completed) {
-            // 采集完成，可以通知背包系统
-            if (auto manager = CollectManager::getInstance()) {
-                // 可能需要添加接口方法
-                // manager->onCollectCompleted(this, item);
-            }
-        }
-        };
-
-    _eventDispatcher->addEventListenerWithSceneGraphPriority(listener, this);
-    this->touchListener = listener; // 需要定义成员变量保存引用
+    _eventDispatcher->addEventListenerWithSceneGraphPriority(mouseListener, this);
+    this->touchListener = mouseListener; 
     // ==============================================
-
-
 
 
     return true;
 }
+
+
+// 在CollectSpot.cpp中实现鼠标事件处理
+void CollectSpot::onMouseDown(Event* event) {
+    EventMouse* mouseEvent = dynamic_cast<EventMouse*>(event);
+    if (mouseEvent && mouseEvent->getMouseButton() == EventMouse::MouseButton::BUTTON_LEFT) {
+        // 将鼠标屏幕坐标转换为节点局部坐标（更准确的精灵范围内判定）
+        Vec2 mouseWorldPos = this->convertToNodeSpace(Vec2(mouseEvent->getCursorX(), mouseEvent->getCursorY()));
+
+        // 使用精灵自身的碰撞盒判断点击（替代原有的矩形范围判定）
+        if (sprite && sprite->getBoundingBox().containsPoint(mouseWorldPos) && !collected) {
+            bool completed = this->collect();
+            if (completed && CollectManager::getInstance()) {
+                CollectManager::getInstance()->handleCollectSuccess(this);
+            }
+        }
+    }
+}
+
+
 // 功能2：判断玩家是否在采集范围内
 bool CollectSpot::isPlayerInRange(Vec2 playerPos) const {
-    if (collected) return false;  // 已采集的物品不在范围内
+    
 
     // 先注释掉，进行调试
-    /*float distance = playerPos.distance(getPosition());
+    /*if (collected) return false;  // 已采集的物品不在范围内
+    
+    float distance = playerPos.distance(getPosition());
     return distance <= collectRange;*/
 
     return true;
@@ -158,11 +149,13 @@ bool CollectSpot::isPlayerInRange(Vec2 playerPos) const {
 
 // 功能4：检查工具是否匹配
 bool CollectSpot::canCollectWithTool(const std::string& currentTool) const {
-    if (!item || collected) return false;
+    
 
 
     // 先注释掉，进行调试
-    /*std::string requiredTool = item->getRequiredTool();
+    /*if (!item || collected) return false;
+    
+    std::string requiredTool = item->getRequiredTool();
 
     // 特殊处理：草可以用镰刀或斧子（功能5）
     if (tileType == "grass") {
@@ -213,28 +206,51 @@ void CollectSpot::playShakeEffect() {
         nullptr
     ));
 
-    // 可选：添加粒子效果增强视觉反馈
-    auto emitter = ParticleSystemQuad::create("particles/shake.plist");
-    if (emitter) {
-        emitter->setPosition(getPosition() + Vec2(0, 30));
-        emitter->setAutoRemoveOnFinish(true);
-        getParent()->addChild(emitter, 100);
-    }
+   
 }
 
 // 采集完成效果
+// 修改playCollectCompleteEffect函数，添加采集后图片替换逻辑
 void CollectSpot::playCollectCompleteEffect() {
     if (!sprite) return;
 
-    // 缩放消失效果
-    auto scaleDown = ScaleTo::create(0.3f, 0.1f);
-    auto fadeOut = FadeOut::create(0.3f);
-    auto spawn = Spawn::create(scaleDown, fadeOut, nullptr);
+    // 1. 先执行消失动画
+    auto scaleDown = ScaleTo::create(0.3f, 0.1f);  // 0.3秒内缩小到0.1倍（接近消失）
+    auto spawn = Spawn::create(scaleDown, nullptr);  // 只执行缩放动作
 
+    // 2. 动画结束后显示采集后的状态图片
+    auto showCollected = CallFunc::create([this]() {
+        if (!sprite) return;
 
-    // 延迟后移除节点
-    auto delay = DelayTime::create(0.5f);
-    auto remove = RemoveSelf::create();
+        // 根据物体类型设置对应的采集后图片
+        std::string collectedSprite;
+        if (tileType == "tree") {
+            collectedSprite = "collect/groundTree.png";  
+        }
+        else if (tileType == "rock") {
+            collectedSprite = "collect/ground.png";  
+        }
+        else if (tileType == "grass") {
+            collectedSprite = "collect/ground.png"; 
+        }
+        else if (tileType == "wood") {
+            collectedSprite = "collect/ground.png";  
+        }
+        else if (tileType == "shell") {
+            collectedSprite = "collect/beach.png";
+        }
 
-    sprite->runAction(Sequence::create(spawn, delay, remove->clone(), nullptr));
+        // 创建新精灵替换原有精灵
+        Sprite* newSprite = Sprite::create(collectedSprite);
+        if (newSprite) {
+            newSprite->setAnchorPoint(sprite->getAnchorPoint());  // 保持锚点一致
+            newSprite->setScale(1.4f);  // 放大1.3倍
+            this->removeChild(sprite);  // 移除原精灵
+            this->addChild(newSprite);  // 添加新精灵
+            sprite = newSprite;  // 更新精灵指针
+        }
+        });
+
+    // 执行动画序列：消失 -> 显示采集后状态
+    sprite->runAction(Sequence::create(spawn, showCollected, nullptr));
 }

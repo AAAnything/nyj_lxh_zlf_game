@@ -12,19 +12,23 @@ CollectItem* CollectItem::create(const std::string& name, const std::string& spr
         switch (type) {
             case CollectType::WOOD:
                 item->requiredTool = "axe";
-                item->requiredClicks = 1;
+                item->requiredClicks = 2;
                 break;
             case CollectType::STONE:
                 item->requiredTool = "pickaxe";
-                item->requiredClicks = 1;
+                item->requiredClicks = 2;
                 break;
             case CollectType::GRASS:
                 item->requiredTool = "sickle";
-                item->requiredClicks = 1;
+                item->requiredClicks = 2;
                 break;
             case CollectType::TREE:
                 item->requiredTool = "axe";
                 item->requiredClicks = 5;
+                break;
+            case CollectType::SHELL:
+                item->requiredTool = "";  // 空字符串表示无需工具
+                item->requiredClicks = 1;
                 break;
         }
 
