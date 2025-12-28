@@ -1,7 +1,7 @@
 #include "AppDelegate.h"
 #include "MainMenuScene.h"
 
-// ÓÃÓÚÒôÆµÒýÇæÑ¡Ôñ
+// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æµï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½
 // #define USE_AUDIO_ENGINE 1
 // #define USE_SIMPLE_AUDIO_ENGINE 1
 
@@ -19,7 +19,7 @@ using namespace CocosDenshion;
 
 USING_NS_CC;
 
-static cocos2d::Size designResolutionSize = cocos2d::Size(1280, 720); // Éè¼Æ·Ö±æÂÊ£¬´°¿Ú´óÐ¡
+static cocos2d::Size designResolutionSize = cocos2d::Size(1280, 720); // ï¿½ï¿½Æ·Ö±ï¿½ï¿½Ê£ï¿½ï¿½ï¿½ï¿½Ú´ï¿½Ð¡
 static cocos2d::Size smallResolutionSize = cocos2d::Size(480, 320);
 static cocos2d::Size mediumResolutionSize = cocos2d::Size(1024, 768);
 static cocos2d::Size largeResolutionSize = cocos2d::Size(2048, 1536);
@@ -37,7 +37,7 @@ AppDelegate::~AppDelegate()
 #endif
 }
 
-// Èç¹ûÄãÏëÊ¹ÓÃ°ü¹ÜÀíÆ÷°²×°¸ü¶àµÄ°ü£¬Çë²»ÒªÐÞ¸Ä»òÉ¾³ý´Ëº¯Êý
+// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½Ã°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×°ï¿½ï¿½ï¿½ï¿½Ä°ï¿½ï¿½ï¿½ï¿½ë²»Òªï¿½Þ¸Ä»ï¿½É¾ï¿½ï¿½ï¿½Ëºï¿½ï¿½ï¿½
 void AppDelegate::initGLContextAttrs()
 {
     // set OpenGL context attributes: red,green,blue,alpha,depth,stencil,multisamplesCount
@@ -66,29 +66,28 @@ bool AppDelegate::applicationDidFinishLaunching() {
         director->setOpenGLView(glview);
     }
 
-	// ÏÔÊ¾Ã¿ÃëÖ¡Êý
-	director->setDisplayStats(true); // false ²»ÏÔÊ¾£¬true ÏÔÊ¾
+	// ï¿½ï¿½Ê¾Ã¿ï¿½ï¿½Ö¡ï¿½ï¿½
+	director->setDisplayStats(true); // false ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½true ï¿½ï¿½Ê¾
 
-	// ÉèÖÃÃ¿ÃëÖ¡Êý¡£Èç¹ûÄã²»µ÷ÓÃ´Ëº¯Êý£¬Ä¬ÈÏÖµÊÇ1.0/60¡£
+	// ï¿½ï¿½ï¿½ï¿½Ã¿ï¿½ï¿½Ö¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ã²»ï¿½ï¿½ï¿½Ã´Ëºï¿½ï¿½ï¿½ï¿½ï¿½Ä¬ï¿½ï¿½Öµï¿½ï¿½1.0/60ï¿½ï¿½
     director->setAnimationInterval(1.0f / 60);
 
-	// ÉèÖÃÉè¼Æ·Ö±æÂÊ
+	// è®¾ç½®ç‰©å“åˆ†è¾¨çŽ‡
     glview->setDesignResolutionSize(designResolutionSize.width, 
         designResolutionSize.height, ResolutionPolicy::SHOW_ALL);
-    
 #if 0
     auto frameSize = glview->getFrameSize();
-	// Èç¹ûÖ¡µÄ¸ß¶È´óÓÚÖÐµÈ´óÐ¡µÄ¸ß¶È
+	// ï¿½ï¿½ï¿½Ö¡ï¿½Ä¸ß¶È´ï¿½ï¿½ï¿½ï¿½ÐµÈ´ï¿½Ð¡ï¿½Ä¸ß¶ï¿½
     if (frameSize.height > mediumResolutionSize.height)
     {        
         director->setContentScaleFactor(MIN(largeResolutionSize.height/designResolutionSize.height, largeResolutionSize.width/designResolutionSize.width));
     }
-	// Èç¹ûÖ¡µÄ¸ß¶È´óÓÚÐ¡³ß´çµÄ¸ß¶È¡£
+	// ï¿½ï¿½ï¿½Ö¡ï¿½Ä¸ß¶È´ï¿½ï¿½ï¿½Ð¡ï¿½ß´ï¿½Ä¸ß¶È¡ï¿½
     else if (frameSize.height > smallResolutionSize.height)
     {        
         director->setContentScaleFactor(MIN(mediumResolutionSize.height/designResolutionSize.height, mediumResolutionSize.width/designResolutionSize.width));
     }
-	// Èç¹ûÖ¡µÄ¸ß¶ÈÐ¡ÓÚÖÐµÈ´óÐ¡µÄ¸ß¶È¡£
+	// ï¿½ï¿½ï¿½Ö¡ï¿½Ä¸ß¶ï¿½Ð¡ï¿½ï¿½ï¿½ÐµÈ´ï¿½Ð¡ï¿½Ä¸ß¶È¡ï¿½
     else
     {        
         director->setContentScaleFactor(MIN(smallResolutionSize.height/designResolutionSize.height, smallResolutionSize.width/designResolutionSize.width));
