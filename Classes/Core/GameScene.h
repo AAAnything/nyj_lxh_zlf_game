@@ -4,7 +4,7 @@
 #include "cocos2d.h"
 #include "Inventory/Inventory.h"
 #include "Inventory/ShippingBox.h"
-#include "Inventory/InventoryUI.h" // 记得包含 UI 头文件
+#include "ui/InventoryUI.h" // 记得包含 UI 头文件
 
 // 定义工具初始化的配置结构体
 struct ToolDef {
