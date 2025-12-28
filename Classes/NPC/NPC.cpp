@@ -1,3 +1,6 @@
+// 文件名: NPC.cpp
+// 功能:  NPC类的实现文件，负责NPC的创建、对话和交互逻辑。
+// Author: Shu
 #include "NPC.h"
 
 USING_NS_CC;
@@ -191,9 +194,9 @@ void NPC::startDialogue()
     _dialogueBubble->setVisible(true);
     _dialogueBubble->setScale(0.1f);
     // 缩放动画
-    auto scaleIn = ScaleTo::create(0.2f, 1.0f);
-    auto easeOut = EaseBackOut::create(scaleIn);
-    _dialogueBubble->runAction(easeOut);
+	auto scaleIn = ScaleTo::create(0.2f, 1.0f);// 0.2秒放大到正常大小
+	auto easeOut = EaseBackOut::create(scaleIn);// 回弹效果
+	_dialogueBubble->runAction(easeOut); // 执行动画
 
 
 
@@ -202,11 +205,12 @@ void NPC::startDialogue()
     _headSprite->setScale(0.1f); // 初始缩到0.1倍（几乎看不见）
     // 头像动画：时长和对话框一致，晚0.05秒开始（层次感）
     auto scaleInHead = ScaleTo::create(0.2f, 1.0f);
-    auto easeOutHead = EaseBackOut::create(scaleInHead);
+	auto easeOutHead = EaseBackOut::create(scaleInHead); // 回弹效果
     auto delayHead = DelayTime::create(0.05f); // 延迟0.05秒
     auto seqHead = Sequence::create(delayHead, easeOutHead, nullptr); // 先延迟再放大
-    _headSprite->runAction(seqHead);
-
+	_headSprite->runAction(seqHead); // 执行动画
+	//runAction只能执行一个动作序列，所以这里用seqHead
+	//其他的scaleInHead等变量只是为了更清晰地表达逻辑
 
 
     // 显示NPC名字

@@ -42,7 +42,7 @@ AppDelegate::~AppDelegate()
 // 如果你想使用包管理器安装更多的包，请不要修改或删除此函数
 void AppDelegate::initGLContextAttrs()
 {
-    // set OpenGL context attributes: red,green,blue,alpha,depth,stencil,multisamplesCount
+	// 设置OpenGL上下文属性：红色、绿色、蓝色、alpha、深度、模板缓冲区的位数
     GLContextAttrs glContextAttrs = {8, 8, 8, 8, 24, 8, 0};
 
     GLView::setGLContextAttrs(glContextAttrs);
@@ -99,7 +99,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
 
     register_all_packages();
 
-    // create a scene. it's an autorelease object
+	// 创建主菜单场景
     auto scene = MainMenu::createScene();
 
     // run

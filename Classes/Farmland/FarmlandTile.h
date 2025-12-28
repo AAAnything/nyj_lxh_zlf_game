@@ -93,7 +93,7 @@ public:
     Vec2 getPosition() const { return position; }
 
     // 更新显示
-    void updateAppearance();
+    void updateTileAppearance();
 
     // 地块信息
     std::string getStatusString() const;

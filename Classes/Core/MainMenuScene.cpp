@@ -4,8 +4,10 @@
 #include "NPC\NPC.h"
 #include "NPC\NPCTestScene.h"
 #include "Audio\AudioManager.h"
+#include "Animal\Animal.h"
 
 USING_NS_CC;
+
 
 Scene* MainMenu::createScene()
 {
@@ -85,7 +87,6 @@ bool MainMenu::init()
 {
     if (!Scene::init())
         return false;
-
     // 播放主菜单背景音乐
     AudioManager::getInstance()->playMainMenuMusic();
 
@@ -103,8 +104,32 @@ bool MainMenu::init()
     // 置于底层
     this->addChild(initialBackground, 0);
 
-    
+	CCLOG("主菜单场景初始化");
 
+#if 0
+    // ===== 创建一只动物 =====
+    auto animal = Animal::create("Animal/Chicken.png");
+    animal->setPosition(Vec2(
+        visibleSize.width / 2 + origin.x,
+        visibleSize.height / 2 + origin.y)); // 屏幕中间（按你窗口大小调）
+    this->addChild(animal,100);
+    animal->setVisible(true);
+    // ===== 测试：5秒后让它“可收获” =====
+    this->runAction(Sequence::create(
+        DelayTime::create(5.0f),
+        CallFunc::create([animal]() {
+            animal->startIdleMove();
+			animal->harvestProduct();
+            animal->updateStatus(0); // 或者你之后改成 setProductReady(true)
+            }),
+        nullptr
+    ));
+    auto listener = EventListenerMouse::create();
+    listener->onMouseDown = [animal](EventMouse* event) {
+        animal->play();
+        };
+    _eventDispatcher->addEventListenerWithSceneGraphPriority(listener, this);
+#endif
     // 1.创建游戏标题
     auto titleBtn = Sprite::create("icon/title.png");
     // 置于屏幕中间

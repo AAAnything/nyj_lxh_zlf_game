@@ -64,7 +64,7 @@ bool FarmlandTile::init() {
     }
 
     createDefaultSprite();
-    updateAppearance();
+    updateTileAppearance();
 
     return true;
 }
@@ -77,7 +77,7 @@ bool FarmlandTile::till() {
     }
 
     state = TileState::TILLED;
-    updateAppearance();
+    updateTileAppearance();
 
     CCLOG("Tile tilled at position: (%.0f, %.0f)", position.x, position.y);
     return true;
@@ -103,7 +103,7 @@ bool FarmlandTile::plant(Crop* crop) {
     consecutiveWaterDays = 0;
     cropStress = 0;
 
-    updateAppearance();
+    updateTileAppearance();
 
     CCLOG("Planted %s at position: (%.0f, %.0f)",
         crop->getName().c_str(), position.x, position.y);
@@ -123,7 +123,7 @@ bool FarmlandTile::water() {
     applyWaterEffects();
 
     state = TileState::WATERED;
-    updateAppearance();
+    updateTileAppearance();
 
     CCLOG("Tile watered at position: (%.0f, %.0f)", position.x, position.y);
     return true;
@@ -141,7 +141,7 @@ bool FarmlandTile::fertilize() {
 
     applyFertilizerEffects();
 
-    updateAppearance();
+    updateTileAppearance();
 
     CCLOG("Tile fertilized at position: (%.0f, %.0f)", position.x, position.y);
     return true;
@@ -209,7 +209,7 @@ void FarmlandTile::clear() {
     cropStress = 0;
     fertilizerBonusDays = 0;
 
-    updateAppearance();
+    updateTileAppearance();
 }
 
 // 每天调用
@@ -224,7 +224,7 @@ void FarmlandTile::onDayPassed() {
     // 检查枯萎
     checkWithering();
     if (state == TileState::WITHERED) {
-        updateAppearance();
+        updateTileAppearance();
         return;
     }
 
@@ -276,7 +276,7 @@ void FarmlandTile::onDayPassed() {
     }
     hasWaterToday = false;
 
-    updateAppearance();
+    updateTileAppearance();
 }
 
 // 重置每日状态
@@ -327,7 +327,7 @@ void FarmlandTile::setPosition(const Vec2& pos) {
 }
 
 // 更新显示
-void FarmlandTile::updateAppearance() {
+void FarmlandTile::updateTileAppearance() {
     updateTileSprite();
     updateCropSprite();
 }
@@ -619,6 +619,6 @@ bool FarmlandTile::fromValueMap(const ValueMap& map) {
         // 暂时留空，需要CropFactory支持
     }
 
-    updateAppearance();
+    updateTileAppearance();
     return true;
 }

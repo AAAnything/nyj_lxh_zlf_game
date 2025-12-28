@@ -154,8 +154,10 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)\Resources\" /D /E /I /F /Y
     <ClCompile Include="..\Classes\Core\MainMenuScene.cpp" />
 	<ClCompile Include="..\Classes\Core\MenuManager.cpp" />
 	<ClCompile Include="..\Classes\Core\GameScene.cpp" />
+	<ClCompile Include="..\Classes\Item\Item.cpp" />
 	<ClCompile Include="..\Classes\NPC\NPC.cpp" />
 	<ClCompile Include="..\Classes\NPC\NPCTestScene.cpp" />
+	<ClCompile Include="..\Classes\Animal\Animal.cpp" />
 	<ClCompile Include="..\Classes\Audio\AudioManager.cpp" />
     <ClCompile Include="..\Classes\SaveSystem\CollectSaveData.cpp" />
 	<ClCompile Include="..\Classes\SaveSystem\SaveManager.cpp" />
@@ -166,6 +168,8 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)\Resources\" /D /E /I /F /Y
     <ClInclude Include="..\Classes\Core\MainMenuScene.h" />
 	<ClInclude Include="..\Classes\Core\MenuManager.h" />
 	<ClInclude Include="..\Classes\Core\GameScene.h" />
+	<ClInclude Include="..\Classes\Animal\Animal.h" />
+	<ClCompile Include="..\Classes\Item\Item.h" />
 	<ClInclude Include="..\Classes\NPC\NPC.h" />
 	<ClInclude Include="..\Classes\NPC\NPCTestScene.h" />
 	<ClInclude Include="..\Classes\Audio\AudioManager.h" />
