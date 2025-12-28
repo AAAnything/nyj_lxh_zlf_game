@@ -209,6 +209,7 @@ void CollectSpot::playShakeEffect() {
    
 }
 
+
 // 采集完成效果
 // 修改playCollectCompleteEffect函数，添加采集后图片替换逻辑
 void CollectSpot::playCollectCompleteEffect() {

@@ -79,7 +79,7 @@ bool GameScene::init()
          // 2. 初始化采集管理器
          //    设置可以采集的物品
         CollectManager::getInstance()->initialize(tileMap);
-        CCLOG("CollectManager 初始化完成");
+        
 
     }
     else
