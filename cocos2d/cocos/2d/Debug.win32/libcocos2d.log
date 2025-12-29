@@ -153,3 +153,4 @@ libbullet.lib(btGeometryUtil.obj) : warning LNK4099: 未找到 PDB“libbullet.p
 libbullet.lib(btQuickprof.obj) : warning LNK4099: 未找到 PDB“libbullet.pdb”(使用“libbullet.lib(btQuickprof.obj)”或在“D:\AAAschool\coding\craft\ProgrammingParadigm\nyj_lxh_zlf_game\proj.win32\Debug.win32\libbullet.pdb”中寻找)；正在链接对象，如同没有调试信息一样
 libbullet.lib(btVector3.obj) : warning LNK4099: 未找到 PDB“libbullet.pdb”(使用“libbullet.lib(btVector3.obj)”或在“D:\AAAschool\coding\craft\ProgrammingParadigm\nyj_lxh_zlf_game\proj.win32\Debug.win32\libbullet.pdb”中寻找)；正在链接对象，如同没有调试信息一样
 librecast.lib(fastlz.obj) : warning LNK4204: “D:\AAAschool\coding\craft\ProgrammingParadigm\nyj_lxh_zlf_game\proj.win32\Debug.win32\librecast.pdb”缺少引用模块的调试信息；正在链接对象，如同没有调试信息一样
+  libcocos2d.vcxproj -> D:\AAAschool\coding\craft\ProgrammingParadigm\nyj_lxh_zlf_game\proj.win32\Debug.win32\libcocos2d.dll
