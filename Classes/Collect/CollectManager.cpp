@@ -1,6 +1,6 @@
 #include "CollectManager.h"
 #include "cocos2d.h"
-
+#include "CollectSpot.h"  // 在 .cpp 中包含完整定义
 USING_NS_CC;
 
 // 静态成员初始化

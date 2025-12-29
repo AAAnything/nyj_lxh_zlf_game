@@ -1,8 +1,5 @@
 #include "CollectSpot.h"
-#include "CollectManager.h"
-#include "cocos2d.h"
-
-USING_NS_CC;
+#include "CollectManager.h"  // 在 .cpp 中包含完整定义
 
 CollectSpot* CollectSpot::create(const std::string& itemId, Vec2 position, const std::string& tileType) {
     CollectSpot* spot = new CollectSpot();

@@ -18,7 +18,7 @@ public:
     void menuNewGameCallback(cocos2d::Ref* pSender);
 
     // NPC测试
-    void MainMenu::menuNPCTestCallback(cocos2d::Ref* pSender);
+    void menuNPCTestCallback(cocos2d::Ref* pSender);
 
     // 加载函数按钮回调函数
     void menuLoadGameCallback(cocos2d::Ref* pSender);

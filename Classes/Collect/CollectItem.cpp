@@ -1,12 +1,12 @@
 #include "CollectItem.h"
 
 CollectItem* CollectItem::create(const std::string& name, const std::string& sprite,
-    CollectType type, int baseValue) {
+CollectType type, int baseValue) {
     CollectItem* item = new CollectItem();
     if (item && item->init(name, sprite)) {
         item->autorelease();
         item->collectType = type;
-        item->sellPrice = baseValue;
+        item->setSellPrice(baseValue);  // 设置基础价值
 
         // 根据类型设置默认工具和点击次数
         switch (type) {

@@ -2,10 +2,12 @@
 #define __COLLECT_SPOT_H__
 
 #include "cocos2d.h"
+#include "ui/CocosGUI.h"
 #include "CollectItem.h"
 
 USING_NS_CC;
-
+// Ç°ÏòÉùÃ÷ CollectManager
+class CollectManager;
 class CollectSpot : public Node {
 public:
     static CollectSpot* create(const std::string& itemId, Vec2 position,

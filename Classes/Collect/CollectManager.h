@@ -4,10 +4,12 @@
 #include "cocos2d.h"
 #include <vector>
 #include <unordered_map>
-#include "CollectSpot.h"
 #include "CollectItem.h"
 
 USING_NS_CC;
+
+// 前向声明 CollectSpot
+class CollectSpot;
 
 // 背包系统接口
 class IInventorySystem {

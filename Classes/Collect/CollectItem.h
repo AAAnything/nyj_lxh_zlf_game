@@ -1,7 +1,8 @@
 #ifndef __COLLECT_ITEM_H__
 #define __COLLECT_ITEM_H__
 
-#include "Core/Item.h"
+#include "Core/GameObject.h"
+#include "Item/Item.h"
 #include "cocos2d.h" 
 #include <string>
 
@@ -17,9 +18,14 @@ enum class CollectType {
 };
 
 // 采集物品类
-class CollectItem : public Item, public Ref {
+// 继承自Item，可以直接放入背包系统
+class CollectItem : public Item{
 public:
     // 创建采集物品的工厂方法
+    // @param name: 物品名称
+    // @param sprite: 图标路径
+    // @param type: 采集类型
+    // @param baseValue: 基础价值
     static CollectItem* create(const std::string& name, const std::string& sprite,
         CollectType type, int baseValue);
 
@@ -27,21 +33,30 @@ public:
     bool init(const std::string& name, const std::string& sprite);
 
     // Item接口实现
-    std::string getName() const override { return name; }
-    std::string getSpriteName() const override { return spriteName; }
-    int getSellPrice() const override { return sellPrice; }
-    void setSellPrice(int price) override { sellPrice = price; }
-    std::string getItemType() const override { return "Collectible"; }
+    std::string getName() const{ return name; }
+    std::string getSpriteName() const{ return spriteName; }
+    int getSellPrice() const{ return sellPrice; }
+    void setSellPrice(int price){ sellPrice = price; }
+    std::string getItemType() const{ return "Collectible"; }
 
     // 采集物品特有方法
+    // 获取采集类型
     CollectType getCollectType() const { return collectType; }
+
+    // 获取所需工具类型
     std::string getRequiredTool() const { return requiredTool; }
+
+    // 获取需要点击次数
     int getRequiredClicks() const { return requiredClicks; }
+
+    // 设置所需工具类型
     void setRequiredTool(const std::string& tool) { requiredTool = tool; }
+
+    // 设置需要点击次数
     void setRequiredClicks(int clicks) { requiredClicks = clicks; }
 
 private:
-    CollectItem() : collectType(CollectType::WOOD), requiredClicks(0), sellPrice(0) {}
+    //CollectItem() : collectType(CollectType::WOOD), requiredClicks(0), sellPrice(0) {}
 
     // 采集类型
     CollectType collectType;
