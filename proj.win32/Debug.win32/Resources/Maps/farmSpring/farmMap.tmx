@@ -148,16 +148,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <objectgroup id="10" name="teleport">
-  <object id="1" x="1923.15" y="637.333" width="60.6061" height="69.697">
-   <properties>
-    <property name="targetMap" value="forestMap.tmx"/>
-    <property name="targetX" type="float" value="1"/>
-    <property name="targetY" value="mapSize/2"/>
-   </properties>
-  </object>
- </objectgroup>
- <layer id="7" name="shrub" width="31" height="17" visible="0">
+ <layer id="7" name="shrub" width="31" height="17">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -178,4 +169,13 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
+ <objectgroup id="10" name="teleport">
+  <object id="1" x="1821.15" y="637.333" width="162.606" height="69.697">
+   <properties>
+    <property name="targetMap" value="forestMap.tmx"/>
+    <property name="targetX" type="float" value="1"/>
+    <property name="targetY" value="mapSize/2"/>
+   </properties>
+  </object>
+ </objectgroup>
 </map>

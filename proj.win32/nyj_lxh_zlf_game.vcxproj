@@ -232,6 +232,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)\Resources\" /D /E /I /F /Y
     <ResourceCompile Include="game.rc" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="..\Resources\background.png" />
     <Image Include="..\Resources\collect\beach.png" />
     <Image Include="..\Resources\collect\grass.png" />
     <Image Include="..\Resources\collect\ground.png" />
@@ -240,6 +241,28 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)\Resources\" /D /E /I /F /Y
     <Image Include="..\Resources\collect\stone.png" />
     <Image Include="..\Resources\collect\tree.png" />
     <Image Include="..\Resources\collect\wood.png" />
+    <Image Include="..\Resources\Maps\beach\beachMap.png" />
+    <Image Include="..\Resources\Maps\cave\cave.png" />
+    <Image Include="..\Resources\Maps\farmSpring\farmMap.png" />
+    <Image Include="..\Resources\Maps\forest\flowers.png" />
+    <Image Include="..\Resources\Maps\forest\forest.png" />
+    <Image Include="..\Resources\Maps\forest\forest1.png" />
+    <Image Include="..\Resources\Maps\forest\grass.png" />
+    <Image Include="..\Resources\Maps\forest\mountain.png" />
+    <Image Include="..\Resources\Maps\forest\tree2.png" />
+    <Image Include="..\Resources\Maps\forest\tree3.png" />
+    <Image Include="..\Resources\plants\grass.png" />
+    <Image Include="..\Resources\plants\tree.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Resources\Maps\beach\beachMap.tmx" />
+    <None Include="..\Resources\Maps\beach\beachMap.tsx" />
+    <None Include="..\Resources\Maps\cave\cave.tmx" />
+    <None Include="..\Resources\Maps\farmSpring\farmMap.tmx" />
+    <None Include="..\Resources\Maps\farmSpring\farmMap.tsx" />
+    <None Include="..\Resources\Maps\forest\forest.tmx" />
+    <None Include="..\Resources\Maps\forest\forest1.tsx" />
+    <None Include="..\Resources\Maps\forest\forestMap.tmx" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

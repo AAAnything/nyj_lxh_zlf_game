@@ -10,6 +10,48 @@
     <Filter Include="src">
       <UniqueIdentifier>{bb6c862e-70e9-49d9-81b7-3829a6f50471}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Classes">
+      <UniqueIdentifier>{973f42b6-ded4-41b5-a6bf-5f2e233fd659}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources">
+      <UniqueIdentifier>{3b87e8af-31c4-4db7-b87c-b6af33ec0828}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\Animal">
+      <UniqueIdentifier>{dd19cc8e-4074-4dfb-9cd4-36f94329eae0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\Audio">
+      <UniqueIdentifier>{6f6c6da5-a1c1-49b5-b516-a1be99313915}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\Collect">
+      <UniqueIdentifier>{a7375fcd-fc03-4491-a7f6-0c86e4ba19c6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\Crop">
+      <UniqueIdentifier>{13e6a208-5fa3-4bae-9a2c-b438132e560d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\SaveSystem">
+      <UniqueIdentifier>{13bd91f9-822d-4f4d-a25b-22286ea856f5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\Farmland">
+      <UniqueIdentifier>{897c7668-e4b1-42dd-a8eb-d0ba64401f1d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\Core">
+      <UniqueIdentifier>{9c63a7da-ec42-4514-b0a7-024c14059b99}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\Inventory">
+      <UniqueIdentifier>{67aeaea7-e899-4f8b-bf92-8dd756609598}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\UI">
+      <UniqueIdentifier>{e0f0307a-2bb5-4c9e-8119-e0c40766c67d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\Item">
+      <UniqueIdentifier>{b6536804-41aa-413c-b90e-7f161734b628}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\NPC">
+      <UniqueIdentifier>{7f0402e4-93c6-4aad-8414-e8250c4eac6a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\Player">
+      <UniqueIdentifier>{bd51d925-5d8d-406c-b776-993383fe92b4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -21,31 +63,81 @@
     <ClCompile Include="..\Classes\Core\MainMenuScene.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\Core\MenuManager.cpp" />
-    <ClCompile Include="..\Classes\Core\GameScene.cpp" />
-    <ClCompile Include="..\Classes\Audio\AudioManager.cpp" />
-    <ClCompile Include="..\Classes\Collect\CollectItem.cpp" />
-    <ClCompile Include="..\Classes\Collect\CollectManager.cpp" />
-    <ClCompile Include="..\Classes\Collect\CollectSpot.cpp" />
-    <ClCompile Include="..\Classes\Crop\Carrot.cpp" />
-    <ClCompile Include="..\Classes\Crop\Crop.cpp" />
-    <ClCompile Include="..\Classes\NPC\NPC.cpp" />
-    <ClCompile Include="..\Classes\NPC\NPCTestScene.cpp" />
-    <ClCompile Include="..\Classes\SaveSystem\CollectSaveData.cpp" />
-    <ClCompile Include="..\Classes\SaveSystem\SaveManager.cpp" />
-    <ClCompile Include="..\Classes\UI\InventoryUI.cpp" />
-    <ClCompile Include="..\Classes\Inventory\Inventory.cpp" />
-    <ClCompile Include="..\Classes\Inventory\ShippingBox.cpp" />
-    <ClCompile Include="..\Classes\Item\Item.cpp" />
-    <ClCompile Include="..\Classes\Item\ItemManager.cpp" />
-    <ClCompile Include="..\Classes\Core\GameObject.cpp" />
-    <ClCompile Include="..\Classes\Farmland\FarmlandTile.cpp" />
-    <ClCompile Include="..\Classes\Core\GameManager.cpp" />
-    <ClCompile Include="..\Classes\Animal\Animal.cpp" />
-    <ClCompile Include="..\Classes\Animal\Chicken.cpp" />
-    <ClCompile Include="..\Classes\Animal\Cow.cpp" />
-    <ClCompile Include="..\Classes\Animal\Sheep.cpp" />
-    <ClCompile Include="..\Classes\Player\Player.cpp" />
+    <ClCompile Include="..\Classes\Animal\Animal.cpp">
+      <Filter>Classes\Animal</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Audio\AudioManager.cpp">
+      <Filter>Classes\Animal</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Crop\Carrot.cpp">
+      <Filter>Classes\Crop</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Animal\Chicken.cpp">
+      <Filter>Classes\Animal</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Collect\CollectItem.cpp">
+      <Filter>Classes\Collect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Collect\CollectManager.cpp">
+      <Filter>Classes\Collect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SaveSystem\CollectSaveData.cpp">
+      <Filter>Classes\SaveSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Collect\CollectSpot.cpp">
+      <Filter>Classes\Collect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Animal\Cow.cpp">
+      <Filter>Classes\Animal</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Crop\Crop.cpp">
+      <Filter>Classes\Crop</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Farmland\FarmlandTile.cpp">
+      <Filter>Classes\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Core\GameManager.cpp">
+      <Filter>Classes\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Core\GameObject.cpp">
+      <Filter>Classes\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Core\GameScene.cpp">
+      <Filter>Classes\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Inventory\Inventory.cpp">
+      <Filter>Classes\Inventory</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\UI\InventoryUI.cpp">
+      <Filter>Classes\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Item\Item.cpp">
+      <Filter>Classes\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Item\ItemManager.cpp">
+      <Filter>Classes\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Core\MenuManager.cpp">
+      <Filter>Classes\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\NPC\NPC.cpp">
+      <Filter>Classes\NPC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\NPC\NPCTestScene.cpp">
+      <Filter>Classes\NPC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Player\Player.cpp">
+      <Filter>Classes\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SaveSystem\SaveManager.cpp">
+      <Filter>Classes\SaveSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Animal\Sheep.cpp">
+      <Filter>Classes\Animal</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Inventory\ShippingBox.cpp">
+      <Filter>Classes\Inventory</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -57,32 +149,84 @@
     <ClInclude Include="..\Classes\Core\MainMenuScene.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\Core\MenuManager.h" />
-    <ClInclude Include="..\Classes\Core\GameScene.h" />
-    <ClInclude Include="..\Classes\Audio\AudioManager.h" />
-    <ClInclude Include="..\Classes\Collect\CollectItem.h" />
-    <ClInclude Include="..\Classes\Collect\CollectManager.h" />
-    <ClInclude Include="..\Classes\Collect\CollectSpot.h" />
-    <ClInclude Include="..\Classes\Core\GameManager.h" />
-    <ClInclude Include="..\Classes\Crop\Carrot.h" />
-    <ClInclude Include="..\Classes\Crop\Crop.h" />
-    <ClInclude Include="..\Classes\NPC\NPC.h" />
-    <ClInclude Include="..\Classes\NPC\NPCTestScene.h" />
-    <ClInclude Include="..\Classes\SaveSystem\CollectSaveData.h" />
-    <ClInclude Include="..\Classes\SaveSystem\SaveManager.h" />
-    <ClInclude Include="..\Classes\UI\InventoryUI.h" />
-    <ClInclude Include="..\Classes\Inventory\Inventory.h" />
-    <ClInclude Include="..\Classes\Inventory\ShippingBox.h" />
-    <ClInclude Include="..\Classes\Item\Item.h" />
-    <ClInclude Include="..\Classes\Item\ItemManager.h" />
-    <ClInclude Include="..\Classes\Core\GameObject.h" />
-    <ClInclude Include="..\Classes\Farmland\FarmlandTile.h" />
-    <ClInclude Include="..\Classes\Animal\Animal.h" />
-    <ClInclude Include="..\Classes\Animal\AnimalConstant.h" />
-    <ClInclude Include="..\Classes\Animal\Chicken.h" />
-    <ClInclude Include="..\Classes\Animal\Cow.h" />
-    <ClInclude Include="..\Classes\Animal\Sheep.h" />
-    <ClInclude Include="..\Classes\Player\Player.h" />
+    <ClInclude Include="..\Classes\Animal\Animal.h">
+      <Filter>Classes\Animal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Animal\AnimalConstant.h">
+      <Filter>Classes\Animal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Audio\AudioManager.h">
+      <Filter>Classes\Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Crop\Carrot.h">
+      <Filter>Classes\Crop</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Animal\Chicken.h">
+      <Filter>Classes\Animal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Collect\CollectItem.h">
+      <Filter>Classes\Collect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Collect\CollectManager.h">
+      <Filter>Classes\Collect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SaveSystem\CollectSaveData.h">
+      <Filter>Classes\SaveSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Collect\CollectSpot.h">
+      <Filter>Classes\Collect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Animal\Cow.h">
+      <Filter>Classes\Animal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Crop\Crop.h">
+      <Filter>Classes\Crop</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Farmland\FarmlandTile.h">
+      <Filter>Classes\Farmland</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Core\GameManager.h">
+      <Filter>Classes\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Core\GameObject.h">
+      <Filter>Classes\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Core\GameScene.h">
+      <Filter>Classes\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Inventory\Inventory.h">
+      <Filter>Classes\Inventory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\UI\InventoryUI.h">
+      <Filter>Classes\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Item\Item.h">
+      <Filter>Classes\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Item\ItemManager.h">
+      <Filter>Classes\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Core\MenuManager.h">
+      <Filter>Classes\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\NPC\NPC.h">
+      <Filter>Classes\NPC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\NPC\NPCTestScene.h">
+      <Filter>Classes\NPC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Player\Player.h">
+      <Filter>Classes\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SaveSystem\SaveManager.h">
+      <Filter>Classes\SaveSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Animal\Sheep.h">
+      <Filter>Classes\Animal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Inventory\ShippingBox.h">
+      <Filter>Classes\Inventory</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="game.rc">
@@ -90,13 +234,94 @@
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="..\Resources\collect\beach.png" />
-    <Image Include="..\Resources\collect\grass.png" />
-    <Image Include="..\Resources\collect\ground.png" />
-    <Image Include="..\Resources\collect\groundTree.png" />
-    <Image Include="..\Resources\collect\shell.png" />
-    <Image Include="..\Resources\collect\stone.png" />
-    <Image Include="..\Resources\collect\tree.png" />
-    <Image Include="..\Resources\collect\wood.png" />
+    <Image Include="..\Resources\background.png">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="..\Resources\collect\beach.png">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="..\Resources\Maps\beach\beachMap.png">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="..\Resources\collect\stone.png">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="..\Resources\collect\tree.png">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="..\Resources\Maps\forest\tree2.png">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="..\Resources\plants\tree.png">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="..\Resources\Maps\forest\tree3.png">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="..\Resources\collect\wood.png">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="..\Resources\collect\shell.png">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="..\Resources\Maps\forest\mountain.png">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="..\Resources\collect\groundTree.png">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="..\Resources\collect\ground.png">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="..\Resources\plants\grass.png">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="..\Resources\Maps\forest\grass.png">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="..\Resources\collect\grass.png">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="..\Resources\Maps\forest\forest1.png">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="..\Resources\Maps\forest\forest.png">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="..\Resources\Maps\forest\flowers.png">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="..\Resources\Maps\farmSpring\farmMap.png">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="..\Resources\Maps\cave\cave.png">
+      <Filter>Resources</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Resources\Maps\beach\beachMap.tmx">
+      <Filter>Resources</Filter>
+    </None>
+    <None Include="..\Resources\Maps\beach\beachMap.tsx">
+      <Filter>Resources</Filter>
+    </None>
+    <None Include="..\Resources\Maps\forest\forestMap.tmx">
+      <Filter>Resources</Filter>
+    </None>
+    <None Include="..\Resources\Maps\forest\forest1.tsx">
+      <Filter>Resources</Filter>
+    </None>
+    <None Include="..\Resources\Maps\forest\forest.tmx">
+      <Filter>Resources</Filter>
+    </None>
+    <None Include="..\Resources\Maps\farmSpring\farmMap.tsx">
+      <Filter>Resources</Filter>
+    </None>
+    <None Include="..\Resources\Maps\farmSpring\farmMap.tmx">
+      <Filter>Resources</Filter>
+    </None>
+    <None Include="..\Resources\Maps\cave\cave.tmx">
+      <Filter>Resources</Filter>
+    </None>
   </ItemGroup>
 </Project>
