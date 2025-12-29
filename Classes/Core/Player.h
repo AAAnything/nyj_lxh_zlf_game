@@ -1,4 +1,4 @@
-#ifndef __PLAYER_H__
+﻿#ifndef __PLAYER_H__
 #define __PLAYER_H__
 
 #include "cocos2d.h"
@@ -7,7 +7,7 @@
 class Player : public cocos2d::Sprite
 {
 public:
-	//构造函数声明
+    //构造函数声明
     Player();
 
     //析构函数声明

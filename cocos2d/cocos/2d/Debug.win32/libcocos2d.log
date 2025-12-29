@@ -154,4 +154,5 @@ libbullet.lib(btConvexHullComputer.obj) : warning LNK4099: 未找到 PDB“”(�
 libbullet.lib(btGeometryUtil.obj) : warning LNK4099: 未找到 PDB“”(使用“libbullet.lib(btGeometryUtil.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
 libbullet.lib(btQuickprof.obj) : warning LNK4099: 未找到 PDB“”(使用“libbullet.lib(btQuickprof.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
 libbullet.lib(btVector3.obj) : warning LNK4099: 未找到 PDB“”(使用“libbullet.lib(btVector3.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
+librecast.lib(fastlz.obj) : warning LNK4204: “”缺少引用模块的调试信息；正在链接对象，如同没有调试信息一样
   libcocos2d.vcxproj -> C:\Users\emma\Documents\nyj_lxh_zlf_game\proj.win32\Debug.win32\libcocos2d.dll

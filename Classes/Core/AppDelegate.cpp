@@ -72,9 +72,14 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	// ����ÿ��֡��������㲻���ô˺�����Ĭ��ֵ��1.0/60��
     director->setAnimationInterval(1.0f / 60);
 
-	// 设置物品分辨率
+	// ������Ʒֱ���
     glview->setDesignResolutionSize(designResolutionSize.width, 
         designResolutionSize.height, ResolutionPolicy::SHOW_ALL);
+    
+    // 添加资源搜索路径
+    FileUtils::getInstance()->addSearchPath("Resources");
+    FileUtils::getInstance()->addSearchPath("Resources/Maps");
+    
 #if 0
     auto frameSize = glview->getFrameSize();
 	// ���֡�ĸ߶ȴ����еȴ�С�ĸ߶�

@@ -1,1 +1,0 @@
-C:\Users\emma\Documents\nyj_lxh_zlf_game\cocos2d\cocos\editor-support\spine\proj.win32\Debug.win32\libSpine.lib
