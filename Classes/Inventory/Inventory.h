@@ -2,11 +2,10 @@
 #pragma once
 
 #include "cocos2d.h"
-#include "Item/Item.h"
 #include <vector>
 
 USING_NS_CC;
-
+class Item;
 class Inventory : public Ref {
 private:
     std::vector<Item*> items;

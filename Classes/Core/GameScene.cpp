@@ -1,4 +1,5 @@
 ﻿#include "GameScene.h"
+#include "Item/Item.h"
 
 USING_NS_CC;
 

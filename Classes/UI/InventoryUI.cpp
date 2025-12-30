@@ -1,4 +1,5 @@
 ﻿#include"InventoryUI.h"
+#include "Item/Item.h"
 
 // 静态创建函数：用于实例化背包UI
 InventoryUI* InventoryUI::create(Inventory* inventory) {

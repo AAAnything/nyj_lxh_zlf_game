@@ -1,6 +1,7 @@
 ﻿// ItemManager.cpp
 #include "ItemManager.h"
 #include "cocos2d.h"
+#include "Item.h"
 
 #include <iostream>
 #include <filesystem>

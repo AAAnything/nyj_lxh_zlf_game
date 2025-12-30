@@ -1,5 +1,6 @@
 // Inventory.cpp
 #include "Inventory.h"
+#include "Item/Item.h"
 
 Inventory* Inventory::create(int capacity) {
     Inventory* inventory = new Inventory();

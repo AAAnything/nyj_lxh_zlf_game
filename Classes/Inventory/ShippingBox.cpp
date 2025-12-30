@@ -1,4 +1,5 @@
 ﻿#include "ShippingBox.h"
+#include "Item/Item.h"
 
 ShippingBox* ShippingBox::create(TMXTiledMap* tileMap, const Rect& interactionArea) {
     ShippingBox* box = new ShippingBox();
