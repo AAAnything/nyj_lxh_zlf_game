@@ -57,16 +57,7 @@
     <ClCompile Include="main.cpp">
       <Filter>win32</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\Core\AppDelegate.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\Core\MainMenuScene.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\Animal\Animal.cpp">
-      <Filter>Classes\Animal</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\Audio\AudioManager.cpp">
       <Filter>Classes\Animal</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\Crop\Carrot.cpp">
@@ -138,16 +129,19 @@
     <ClCompile Include="..\Classes\Inventory\ShippingBox.cpp">
       <Filter>Classes\Inventory</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Audio\AudioManager.cpp">
+      <Filter>Classes\Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Core\MainMenuScene.cpp">
+      <Filter>Classes\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Core\AppDelegate.cpp">
+      <Filter>Classes\Core</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
       <Filter>win32</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Core\AppDelegate.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Core\MainMenuScene.h">
-      <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Animal\Animal.h">
       <Filter>Classes\Animal</Filter>
@@ -226,6 +220,12 @@
     </ClInclude>
     <ClInclude Include="..\Classes\Inventory\ShippingBox.h">
       <Filter>Classes\Inventory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Core\MainMenuScene.h">
+      <Filter>Classes\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Core\AppDelegate.h">
+      <Filter>Classes\Core</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
